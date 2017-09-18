@@ -82,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="StylesAndTemplate\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="StylesAndTemplate\SimpleStatic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

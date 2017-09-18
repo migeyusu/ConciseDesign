@@ -5,6 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ConciseDesign.WPF;component/StylesAndTemplate/Buttons.xaml"/>
+                <ResourceDictionary Source="/ConciseDesign.WPF;component/StylesAndTemplate/SimpleStatic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid Margin="10"
           MaxWidth="500">
         <Grid.RowDefinitions>
