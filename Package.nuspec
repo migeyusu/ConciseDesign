@@ -2,12 +2,12 @@
 <package >
   <metadata>
     <id>Package</id>
-    <version>1.0.0</version>
-    <authors>98197</authors>
-    <owners>98197</owners>
+    <version>1.0.0.4</version>
+    <authors>pc</authors>
+    <owners>pc</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Package description</description>
-    <releaseNotes>Bug Fixed.</releaseNotes>
+    <releaseNotes>Fix Test.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>WPF</tags>
     <dependencies>

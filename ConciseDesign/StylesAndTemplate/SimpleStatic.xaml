@@ -6,11 +6,11 @@
 
     <Thickness x:Key="ControlMargin">0,10,0,0</Thickness>
 
-    <RoutedCommand x:Key="OpenDialogCommand"/>
+    <!--<RoutedCommand x:Key="OpenDialogCommand"/>
     <RoutedCommand x:Key="CloseDialogCommand" />
     
     <RoutedCommand x:Key="SubmitDialogCommand" />
-    <RoutedCommand x:Key="CancelDialogCommand"/>
+    <RoutedCommand x:Key="CancelDialogCommand"/>-->
 
     <DropShadowEffect x:Key="GenDropShadowEffect"
                       BlurRadius="10"
