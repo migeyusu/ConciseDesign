@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:control="clr-namespace:ConciseDesign.WPF.Controls"
              mc:Ignorable="d" 
              Background="White">
     <UserControl.Resources>
@@ -26,7 +27,7 @@
                    FontSize="14"/>
         <!--防止root传递style -->
         <Button Style="{StaticResource FlatTextButton}"
-                Command="{StaticResource CloseDialogCommand}"
+                Command="{x:Static control:Commands.CloseDialogCommand}"
                 Height="30"
                 Width="100"
                 Margin="{StaticResource ControlMargin}"

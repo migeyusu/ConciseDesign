@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>1.0.0.4</version>
+    <version>1.0.0.5</version>
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Bug Fix Test.</releaseNotes>
+    <releaseNotes>Bug Fixed.</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>WPF</tags>
+    <tags>UI</tags>
   </metadata>
 </package>
