@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.3.2.0</version>
+    <title>$title$</title>
+    <authors>Zhu Jie</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/migeyusu/ConciseDesign</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>WPF Library</description>
+    <releaseNotes>Bug Fixed</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>WPF</tags>
+  </metadata>
+</package>

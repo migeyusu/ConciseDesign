@@ -1,0 +1,477 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="BaseDefination.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <ControlTemplate x:Key="BaseListBoxItemTemplate"
+        TargetType="{x:Type ListBoxItem}">
+        <Border Background="{TemplateBinding Background}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <ContentPresenter/>
+        </Border>
+    </ControlTemplate>
+
+    <Style x:Key="BaseListBoxItemStyle"
+           TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Template"
+                Value="{StaticResource BaseListBoxItemTemplate}" />
+        <Setter Property="BorderThickness"
+                Value="0"/>
+    </Style>
+    
+    <!--成员显示块-->
+    <ControlTemplate x:Key="BlockView"
+                     TargetType="{x:Type Expander}">
+        <Border x:Name="ExpanderBorder"
+                SnapsToDevicePixels="True"
+                Tag="{TemplateBinding Tag}"
+                ClipToBounds="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="100*" />
+                </Grid.RowDefinitions>
+                <Border x:Name="baseLayer"
+                        Grid.RowSpan="2"
+                        Background="Black"
+                        Opacity="0" />
+                <ToggleButton x:Name="HeaderSite"
+                              Content="{TemplateBinding Header}"
+                              DockPanel.Dock="Top"
+                              IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                              Margin="0"
+                              MinWidth="0"
+                              MinHeight="0"
+                              Grid.Row="0">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Grid x:Name="ToggleGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+                                <Border Grid.ColumnSpan="2"
+                                        Grid.RowSpan="2"
+                                        Background="Black"
+                                        Opacity="0.3" />
+                                <TextBlock Grid.Row="0"
+                                           Grid.Column="0"
+                                           TextAlignment="Left"
+                                           Text="{Binding ElementName=HeaderSite,Path=Content}"
+                                           Foreground="White"
+                                           VerticalAlignment="Center"
+                                           FontSize="16"
+                                           FontFamily="Nirmala UI" />
+                                <Image Grid.Column="1"
+                                       x:Name="ico"
+                                       Source="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Down-32.png" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked"
+                                         Value="True">
+                                    <Setter TargetName="ico"
+                                            Property="Source"
+                                            Value="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Up-32.png" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+                <ContentPresenter x:Name="ExpandSite"
+                                  Grid.Row="1"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  Content="{TemplateBinding Content}"
+                                  ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                  DockPanel.Dock="Bottom"
+                                  Focusable="False"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  Margin="{TemplateBinding Padding}"
+                                  Visibility="Collapsed"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsExpanded"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="ExpandSite"
+                        Value="Visible" />
+            </Trigger>
+            <EventTrigger RoutedEvent="Expander.Expanded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="baseLayer"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0"
+                                         To="0.4"
+                                         Duration="0:0:0.5" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Expander.Collapsed">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="baseLayer"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0.4"
+                                         To="0"
+                                         Duration="0:0:0.5" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate TargetType="{x:Type TreeViewItem}"
+                     x:Key="ChildTreeViewItemFixLen">
+        <Grid x:Name="Backs"
+              Background="{TemplateBinding Background}">
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>-->
+            <ContentPresenter x:Name="ItemsHost"
+                              Content="{Binding Header,RelativeSource={RelativeSource TemplatedParent},Mode=OneTime}" />
+            <!--<ToggleButton  Grid.Column="1"
+                           HorizontalAlignment="Right"
+                           IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,Path=IsSelected}"
+                           Template="{StaticResource CircleCheckButton}" />-->
+        </Grid>
+        <!--<ControlTemplate.Triggers>
+            <EventTrigger RoutedEvent="TreeViewItem.Selected">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+                                        Storyboard.TargetName="Backs"
+                                        Duration="0:0:0.4"
+                                        To="#7F000000" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="TreeViewItem.Unselected">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+                                        Storyboard.TargetName="Backs"
+                                        Duration="0:0:0.4"
+                                        To="Transparent" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </ControlTemplate.Triggers>-->
+    </ControlTemplate>
+
+    <ControlTemplate TargetType="{x:Type TreeViewItem}"
+                     x:Key="HasChildTreeViewItemFixLen">
+        <Grid Height="{TemplateBinding Height}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"
+                               MinHeight="30" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <ToggleButton x:Name="Expander"
+                          Grid.ColumnSpan="2"
+                          IsChecked="{Binding IsExpanded,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
+                          Background="Transparent">
+                <ToggleButton.Template>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Background="{TemplateBinding Background}" />
+                    </ControlTemplate>
+                </ToggleButton.Template>
+            </ToggleButton>
+            <Image Source="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Down-32.png"
+                   Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   x:Name="img" />
+            <!--<ToggleButton  Grid.Column="1"
+                           HorizontalAlignment="Right"
+                           IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,Path=IsSelected}"
+                           Template="{StaticResource CircleCheckButton}"/>-->
+            <ContentPresenter Content="{Binding Header,RelativeSource={RelativeSource TemplatedParent},Mode=OneTime}" />
+            <ItemsPresenter Grid.Row="1"
+                            Grid.Column="1"
+                            Visibility="Collapsed"
+                            x:Name="ItemsHost"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsExpanded"
+                     Value="True">
+                <Setter TargetName="img"
+                        Property="Source"
+                        Value="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Up-32.png" />
+            </Trigger>
+            <EventTrigger RoutedEvent="TreeViewItem.Expanded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                       Storyboard.TargetName="ItemsHost">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="{x:Static Visibility.Visible}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)"
+                                         Storyboard.TargetName="ItemsHost"
+                                         From="0"
+                                         To="1"
+                                         Duration="0:0:0.4" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="TreeViewItem.Collapsed">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                       Storyboard.TargetName="ItemsHost">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.4"
+                                                    Value="{x:Static Visibility.Collapsed}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)"
+                                         Storyboard.TargetName="ItemsHost"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:0.4" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger> 
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!--限制以不被选择-->
+    <ControlTemplate TargetType="{x:Type TreeViewItem}"
+                     x:Key="TreeViewHasChildItem">
+        <Grid Height="{TemplateBinding Height}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="40"
+                                  Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"
+                               MinHeight="40" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <ToggleButton x:Name="Expander"
+                          ClickMode="Press"
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding IsExpanded,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
+                          Content="{Binding Header,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
+                          Grid.ColumnSpan="3">
+                <ToggleButton.Template>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border x:Name="bd">
+                            <ContentPresenter ContentSource="{TemplateBinding Content}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="{StaticResource Mouselectback}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </ToggleButton.Template>
+            </ToggleButton>
+            <ItemsPresenter Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="1"
+                            x:Name="ItemsHost"
+                            Visibility="Collapsed" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsExpanded"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="ItemsHost"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsExpanded"
+                     Value="False">
+                <Setter Property="Visibility"
+                        TargetName="ItemsHost"
+                        Value="Collapsed" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate TargetType="{x:Type TreeViewItem}"
+                     x:Key="TreeViewUnChildItem">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4" />
+                <ColumnDefinition  Width="10" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"
+                               MinHeight="40" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle Height="20"
+                       Fill="{StaticResource FlatCover}"
+                       Visibility="Collapsed"
+                       x:Name="rect" />
+            <Border Grid.Column="2"
+                    x:Name="bd"
+                    Grid.ColumnSpan="2">
+                <ContentPresenter VerticalAlignment="Center"
+                                  Content="{Binding Header,RelativeSource={RelativeSource TemplatedParent}}" />
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <!--<Trigger Property="IsSelected"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="rect"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsSelected"
+                     Value="False">
+                <Setter Property="Visibility"
+                        TargetName="rect"
+                        Value="Collapsed" />
+            </Trigger>-->
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter TargetName="bd"
+                        Property="Background"
+                        Value="{StaticResource Mouselectback}" />
+            </Trigger>
+            <EventTrigger RoutedEvent="TreeViewItem.Selected">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                       Storyboard.TargetName="rect">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                    Value="{x:Static Visibility.Visible}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)"
+                                         Storyboard.TargetName="rect"
+                                         From="0"
+                                         To="1"
+                                         Duration="0:0:0.3" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="TreeViewItem.Unselected">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                       Storyboard.TargetName="rect">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:3"
+                                                    Value="{x:Static Visibility.Collapsed}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)"
+                                         Storyboard.TargetName="rect"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:0.3" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate TargetType="{x:Type Button}"
+                     x:Key="ExpanderMenuItem">
+        <Grid x:Name="self">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding ElementName=self,Path=TemplatedParent.Tag}" />
+            <TextBlock Grid.Column="1"
+                       VerticalAlignment="Center"
+                       Foreground="Black"
+                       Text="{Binding ElementName=self,Path=TemplatedParent.Content}"
+                       TextWrapping="Wrap" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter TargetName="self"
+                        Property="Background"
+                        Value="{StaticResource BlockBase}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="MenuBlock"
+                     TargetType="{x:Type Expander}">
+        <ControlTemplate.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Template"
+                        Value="{StaticResource ExpanderMenuItem}" />
+            </Style>
+        </ControlTemplate.Resources>
+        <Border x:Name="ExpanderBorder"
+                SnapsToDevicePixels="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <ToggleButton x:Name="HeaderSite"
+                              Content="{TemplateBinding Header}"
+                              IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                              Tag="{TemplateBinding Tag}">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Grid x:Name="ToggleGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock VerticalAlignment="Center"
+                                           Grid.Column="1"
+                                           Text="{Binding ElementName=ToggleGrid,Path=TemplatedParent.Content}" />
+                                <Border Width="48"
+                                        Height="48">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="{Binding ElementName=ToggleGrid,Path=TemplatedParent.Tag}" />
+                                    </Border.Background>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter TargetName="ToggleGrid"
+                                            Property="Background"
+                                            Value="{StaticResource BlockBase}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter x:Name="ExpandSite"
+                                      Grid.Column="1"
+                                      Visibility="Collapsed" />
+                </Grid>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsExpanded"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="ExpandSite"
+                        Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

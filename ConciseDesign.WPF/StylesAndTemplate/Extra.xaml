@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--高显单选效果-->
+    <Style x:Key="HighLightRadioBtn"
+           TargetType="{x:Type RadioButton}">
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <!--<Setter Property="FontFamily"
+                Value="Yahei" />-->
+        <Setter Property="Effect"
+                Value="{StaticResource HighLight}" />
+        <Setter Property="RenderOptions.BitmapScalingMode"
+                Value="NearestNeighbor" />
+    </Style>
+    <!--高显多选效果-->
+    <Style x:Key="HighLightCheckbox"
+           TargetType="{x:Type CheckBox}">
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="VerticalAlignment"
+                Value="Center"/>
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Effect"
+                Value="{StaticResource HighLight}" />
+        <Setter Property="RenderOptions.BitmapScalingMode"
+                Value="NearestNeighbor" />
+    </Style>
+    
+    
+
+</ResourceDictionary>
+                   

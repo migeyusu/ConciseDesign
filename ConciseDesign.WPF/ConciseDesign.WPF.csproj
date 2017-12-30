@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EEDCA853-0B75-4AED-B6C7-58A25E79226D}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>ConciseDesign.WPF</RootNamespace>
+    <AssemblyName>ConciseDesign.WPF</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Dialog\ImageResourceDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ImageResources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ImageResources\IconsNonShared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StylesAndTemplate\BaseDefination.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StylesAndTemplate\Extra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StylesAndTemplate\ControlItems.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StylesAndTemplate\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StylesAndTemplate\Texts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StylesAndTemplate\ControlStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StylesAndTemplate\InteractionControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StylesAndTemplate\MenuControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StylesAndTemplate\ContentControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StylesAndTemplate\Animations.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ConfirmDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\DialogHostControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MessageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\AlertMessageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Behavior\BindableSelectedItemListBoxBehavior.cs" />
+    <Compile Include="Behavior\BindableSelectedItemTreeViewBehavior.cs" />
+    <Compile Include="Behavior\WaterMarkBehavior.cs" />
+    <Compile Include="Converters\MenuAutoWidthConverter.cs" />
+    <Compile Include="CustomControls\ActiveBackButton.cs" />
+    <Compile Include="CustomControls\CircularProgress.cs" />
+    <Compile Include="CustomControls\CircularProgressBar.cs" />
+    <Compile Include="CustomControls\ColorTip.cs" />
+    <Compile Include="CustomControls\ConciseButton.cs" />
+    <Compile Include="CustomControls\SearchBox.cs" />
+    <Compile Include="CustomControls\SelectBox.cs" />
+    <Compile Include="Dialog\ImageResourceDialog.xaml.cs">
+      <DependentUpon>ImageResourceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ImageResourceDialogViewModel.cs" />
+    <Compile Include="Message\AlertMessage.cs" />
+    <Compile Include="Message\AlertType.cs" />
+    <Compile Include="Message\IAlertMessage.cs" />
+    <Compile Include="Message\ILocalMessageService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UserControls\Commands.cs" />
+    <Compile Include="UserControls\ConfirmDialog.xaml.cs">
+      <DependentUpon>ConfirmDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DialogHostControl.xaml.cs">
+      <DependentUpon>DialogHostControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DialogRegister.cs" />
+    <Compile Include="UserControls\MessageDialog.xaml.cs">
+      <DependentUpon>MessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StreamRichTextBox.cs" />
+    <Compile Include="Windows\AlertMessageWindow.xaml.cs">
+      <DependentUpon>AlertMessageWindow.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="update.ps1" />
+    <Resource Include="ImageResources\Entypo.ttf" />
+    <None Include="ConciseDesign.WPF.nuspec" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResources\Arrowhead-Down-01-32.png" />
+    <Resource Include="ImageResources\ArrowUP.png" />
+    <Resource Include="ImageResources\Close-24.png" />
+    <Resource Include="ImageResources\Message-Information-48.png" />
+    <Resource Include="ImageResources\Search-Find-48.png" />
+    <Resource Include="ImageResources\Warning-Message-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResources\Warning-Shield-24.png" />
+    <Resource Include="ImageResources\Window-New-Open-32.png" />
+    <Resource Include="ImageResources\WindowsIcons-license.txt" />
+    <Resource Include="ImageResources\x-02-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResources\Search-Find-w.png" />
+    <Resource Include="ImageResources\SetIco.png" />
+    <Resource Include="ImageResources\Settled credit record-32.png" />
+    <Resource Include="ImageResources\Share-Sharing-128.png" />
+    <Resource Include="ImageResources\size.png" />
+    <Resource Include="ImageResources\sizefi.png" />
+    <Resource Include="ImageResources\small.png" />
+    <Resource Include="ImageResources\smallfu.png" />
+    <Resource Include="ImageResources\Start.png" />
+    <Resource Include="ImageResources\status.png" />
+    <Resource Include="ImageResources\Stop-48.png" />
+    <Resource Include="ImageResources\Student-Read-02-24.png" />
+    <Resource Include="ImageResources\Student-Read-02-32.png" />
+    <Resource Include="ImageResources\Submit-01-32.png" />
+    <Resource Include="ImageResources\Submit-01-48-Black.png" />
+    <Resource Include="ImageResources\Submit-01-48.png" />
+    <Resource Include="ImageResources\SubmitPre48.png" />
+    <Resource Include="ImageResources\Subway-256.png" />
+    <Resource Include="ImageResources\superadmin.png" />
+    <Resource Include="ImageResources\Tag-48.png" />
+    <Resource Include="ImageResources\tag.png" />
+    <Resource Include="ImageResources\Teacher-32.png" />
+    <Resource Include="ImageResources\teacherIco.png" />
+    <Resource Include="ImageResources\toleft1.png" />
+    <Resource Include="ImageResources\Train-Side-View-01-48.png" />
+    <Resource Include="ImageResources\Train-Side-View-02-48.png" />
+    <Resource Include="ImageResources\User-Group-32.png" />
+    <Resource Include="ImageResources\User-Time-24.png" />
+    <Resource Include="ImageResources\User_Exchange-512.png" />
+    <Resource Include="ImageResources\View-List-48.png" />
+    <Resource Include="ImageResources\View-Settings-128.png" />
+    <Resource Include="ImageResources\View-Small-Icons-48.png" />
+    <Resource Include="ImageResources\View-Small-Iconsmargin.png" />
+    <Resource Include="ImageResources\wait.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResources\metropointImg.png" />
+    <Resource Include="ImageResources\Minus-48.png" />
+    <Resource Include="ImageResources\Minus-48w.png" />
+    <Resource Include="ImageResources\Monitor-48.png" />
+    <Resource Include="ImageResources\NewEX-48.png" />
+    <Resource Include="ImageResources\Next-32.png" />
+    <Resource Include="ImageResources\noneleft.png" />
+    <Resource Include="ImageResources\Orientation-Landscape-128.png" />
+    <Resource Include="ImageResources\outline.png" />
+    <Resource Include="ImageResources\Outlined-Triangular-Left-Arrow-32.png" />
+    <Resource Include="ImageResources\Pencil-48.png" />
+    <Resource Include="ImageResources\pingmubanner.png" />
+    <Resource Include="ImageResources\Plus-32.png" />
+    <Resource Include="ImageResources\plus.png" />
+    <Resource Include="ImageResources\Previous-32.png" />
+    <Resource Include="ImageResources\Previous-48.png" />
+    <Resource Include="ImageResources\question42.png" />
+    <Resource Include="ImageResources\Real-Time-24.png" />
+    <Resource Include="ImageResources\rec.png" />
+    <Resource Include="ImageResources\RecordIco.png" />
+    <Resource Include="ImageResources\Rectangle Stroked Filled-50.png" />
+    <Resource Include="ImageResources\rename.png" />
+    <Resource Include="ImageResources\Save-128.png" />
+    <Resource Include="ImageResources\Save-48.png" />
+    <Resource Include="ImageResources\school.png" />
+    <Resource Include="ImageResources\screenico.png" />
+    <Resource Include="ImageResources\Search-Find-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResources\Close-48.png" />
+    <Resource Include="ImageResources\Close-48w.png" />
+    <Resource Include="ImageResources\close.png" />
+    <Resource Include="ImageResources\Close_Red.png" />
+    <Resource Include="ImageResources\close副本.png" />
+    <Resource Include="ImageResources\Command-Redo-48.png" />
+    <Resource Include="ImageResources\Command-Refresh-48.png" />
+    <Resource Include="ImageResources\Command-Undow.png" />
+    <Resource Include="ImageResources\config.png" />
+    <Resource Include="ImageResources\Customize-01-48.png" />
+    <Resource Include="ImageResources\Customize-02-48.png" />
+    <Resource Include="ImageResources\Data-Edit.png" />
+    <Resource Include="ImageResources\Data-Error-128.png" />
+    <Resource Include="ImageResources\Data-Export-48.png" />
+    <Resource Include="ImageResources\Debit-Card-128.png" />
+    <Resource Include="ImageResources\Debit-Card-256.png" />
+    <Resource Include="ImageResources\Document-Edit-48.png" />
+    <Resource Include="ImageResources\document.png" />
+    <Resource Include="ImageResources\draw.png" />
+    <Resource Include="ImageResources\Entypo-license.txt" />
+    <Resource Include="ImageResources\Envelope.png" />
+    <Resource Include="ImageResources\Erase-64.png" />
+    <Resource Include="ImageResources\eraser.png" />
+    <Resource Include="ImageResources\Exam.png" />
+    <Resource Include="ImageResources\examimg.png" />
+    <Resource Include="ImageResources\Export-RTF-48.png" />
+    <Resource Include="ImageResources\f146.png" />
+    <Resource Include="ImageResources\File-Format-PDF-48.png" />
+    <Resource Include="ImageResources\firemen.jpg" />
+    <Resource Include="ImageResources\Folder-Edit-32.png" />
+    <Resource Include="ImageResources\Folder-New-48.png" />
+    <Resource Include="ImageResources\Folder-Share-01-48.png" />
+    <Resource Include="ImageResources\Format-Numbering-01-48.png" />
+    <Resource Include="ImageResources\Full Moon Filled-50.png" />
+    <Resource Include="ImageResources\FunctionIco.png" />
+    <Resource Include="ImageResources\Garbage-Closed-32.png" />
+    <Resource Include="ImageResources\Garbage-Closed-48.png" />
+    <Resource Include="ImageResources\Garbage-Closedw.png" />
+    <Resource Include="ImageResources\hand113.png" />
+    <Resource Include="ImageResources\head.png" />
+    <Resource Include="ImageResources\homeico.png" />
+    <Resource Include="ImageResources\ic_message_white_48dp.png" />
+    <Resource Include="ImageResources\Key-Access-01-48.png" />
+    <Resource Include="ImageResources\Lesson.png" />
+    <Resource Include="ImageResources\Line Filled-50.png" />
+    <Resource Include="ImageResources\line.png" />
+    <Resource Include="ImageResources\Link-48.png" />
+    <Resource Include="ImageResources\log.png" />
+    <Resource Include="ImageResources\Login-Door-32.png" />
+    <Resource Include="ImageResources\login.png" />
+    <Resource Include="ImageResources\loginhead.png" />
+    <Resource Include="ImageResources\Logout-24.png" />
+    <Resource Include="ImageResources\ManageIco.png" />
+    <Resource Include="ImageResources\Marker Pen-50.png" />
+    <Resource Include="ImageResources\Media-Play-02-256.png" />
+    <Resource Include="ImageResources\Media-Play-48.png" />
+    <Resource Include="ImageResources\Message-Information-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResources\Back.jpg" />
+    <Resource Include="ImageResources\BingWallpaper-2017-03-06.jpg" />
+    <Resource Include="ImageResources\Book-Settings-32.png" />
+    <Resource Include="ImageResources\Book-Shelf-48.png" />
+    <Resource Include="ImageResources\Bookmark-Delete-128.png" />
+    <Resource Include="ImageResources\Cancel-32.png" />
+    <Resource Include="ImageResources\Cancel-48.png" />
+    <Resource Include="ImageResources\chart.png" />
+    <Resource Include="ImageResources\Check-32.png" />
+    <Resource Include="ImageResources\checked.png" />
+    <Resource Include="ImageResources\checked_checkbox.png" />
+    <Resource Include="ImageResources\circle.png" />
+    <Resource Include="ImageResources\class.png" />
+    <Resource Include="ImageResources\Clean-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResources\Arrowhead-Down-24.png" />
+    <Resource Include="ImageResources\Arrowhead-Down-32.png" />
+    <Resource Include="ImageResources\Arrowhead-Left-01-128.png" />
+    <Resource Include="ImageResources\Arrowhead-Right-01-128.png" />
+    <Resource Include="ImageResources\Arrowhead-Right-01-24.png" />
+    <Resource Include="ImageResources\Arrowhead-Up-32.png" />
+    <Resource Include="ImageResources\Arrowhead.png" />
+    <Resource Include="ImageResources\Arrowhead0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResources\Add-New-128 Red.png" />
+    <Resource Include="ImageResources\Add-New-128.png" />
+    <Resource Include="ImageResources\Add-New-24.png" />
+    <Resource Include="ImageResources\Add-New-48.png" />
+    <Resource Include="ImageResources\Add-New.png" />
+    <Resource Include="ImageResources\Addw.png" />
+    <Resource Include="ImageResources\adminico.png" />
+    <Resource Include="ImageResources\adminico1.png" />
+    <Resource Include="ImageResources\adminico2.png" />
+    <Resource Include="ImageResources\Align-Left-48.png" />
+    <Resource Include="ImageResources\Arrowhead-.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Command\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForceBuild\FORCEBuild.csproj">
+      <Project>{96b3811c-7f33-4e01-96d7-59a7bf54cec2}</Project>
+      <Name>FORCEBuild</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

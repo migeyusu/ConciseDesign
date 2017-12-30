@@ -1,0 +1,74 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:converters="clr-namespace:ConciseDesign.WPF.Converters"
+                    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions">
+    <Thickness x:Key="ControlMargin">0,10,0,0</Thickness>
+
+    <!--经过测试，如果在xaml中定义commands 然后发布到nuget后，使用的工程无法运行 -->
+    <!--<RoutedCommand x:Key="OpenDialogCommand"/>
+    <RoutedCommand x:Key="CloseDialogCommand" />
+    
+    <RoutedCommand x:Key="SubmitDialogCommand" />
+    <RoutedCommand x:Key="CancelDialogCommand"/>-->
+    
+    <converters:MenuAutoWidthConverter x:Key="MenuAutoWidthConverter"/> 
+    <RoutedUICommand x:Key="Previous"
+                     Text="pageback" />
+
+    <DropShadowEffect x:Key="GenDropShadowEffect"
+                      BlurRadius="10"
+                      ShadowDepth="0" />
+    <SolidColorBrush x:Key="BlockCover">#7FFFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="BlockBase">#33FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="Listboxitemback">#FF4FD7ED</SolidColorBrush>
+    <SolidColorBrush x:Key="Mouselectback">#FF86C3FF</SolidColorBrush>
+    <SolidColorBrush x:Key="UnFocusColor">DimGray</SolidColorBrush>
+    <SolidColorBrush x:Key="FlatCover">DodgerBlue</SolidColorBrush>
+    <SolidColorBrush x:Key="AlarmColor">Red</SolidColorBrush>
+    <SolidColorBrush x:Key="DialogBlockBlackColor">#FF242424</SolidColorBrush>
+    <SolidColorBrush x:Key="MaterialLightBack">#FFFAFAFA</SolidColorBrush>
+    <SolidColorBrush x:Key="DialogBackBrush">#FF1B1B1B</SolidColorBrush>
+    <SolidColorBrush x:Key="MainWindowSolidColorBrush">#D81D1D1D</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondlyMainWindowSolidColorBrush">#32645C54</SolidColorBrush>
+    <SolidColorBrush x:Key="MainTextColor">Black</SolidColorBrush>
+    <SolidColorBrush x:Key="ScdTextColor">DimGray</SolidColorBrush>
+    <SolidColorBrush x:Key="DialogBackColor">#29292C</SolidColorBrush>
+    <system:Double x:Key="MainSubject">40</system:Double>
+    <system:Double x:Key="ScdSubject">20</system:Double>
+    <system:Double x:Key="TrdSubject">13</system:Double>
+    <system:Double x:Key="PageTitle">35</system:Double>
+    <system:Double x:Key="PageSecondTitle">14.5</system:Double>
+    <system:Double x:Key="BlockTitle">30</system:Double>
+    <Thickness x:Key="TextMargin">20,0,0,0</Thickness>
+    <Thickness x:Key="LineMargin">0,20,0,0</Thickness>
+    <system:String x:Key="DateTimeFormat">yyyy年MM.dd日HH:mm</system:String>
+    <system:String x:Key="TimeSpanFormat">{0:hh}小时{0:mm}分</system:String>
+
+    <RoutedUICommand x:Key="CheckRepeat"
+                     Text="检查重复" />
+    <RoutedUICommand x:Key="Submit"
+                     Text="提交新建项" />
+    <!--高显效果-->
+    <DropShadowEffect x:Key="HighLight"
+                      BlurRadius="3"
+                      Color="Black"
+                      ShadowDepth="0" />
+
+    <DropShadowEffect x:Key="DialogDropShadowEffect"
+                      BlurRadius="8"
+                      ShadowDepth="2"
+                      Color="DimGray"
+                      Direction="-90" />
+    <!--<ei:FluidMoveBehavior x:Key="DefaultFluidMoveBehavior"
+                          AppliesTo="Children"
+                          Duration="0:0:0.6">
+        <ei:FluidMoveBehavior.EaseY>
+            <CircleEase EasingMode="EaseOut" />
+        </ei:FluidMoveBehavior.EaseY>
+        <ei:FluidMoveBehavior.EaseX>
+            <CircleEase EasingMode="EaseOut" />
+        </ei:FluidMoveBehavior.EaseX>
+    </ei:FluidMoveBehavior>-->
+
+</ResourceDictionary>
