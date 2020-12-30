@@ -1,17 +1,17 @@
-﻿using System.Collections;
+﻿using Microsoft.Xaml.Behaviors;
+using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Interactivity;
 
 namespace ConciseDesign.WPF.Behavior
 {
-    public class BindableSelectedItemListBoxBehavior:Behavior<ListBox>
+    public class BindableSelectedItemListBoxBehavior : Behavior<ListBox>
     {
         /// <summary>
         /// 只读
         /// </summary>
-        public IEnumerable SelectedItems   
+        public IEnumerable SelectedItems
         {
             get { return (IEnumerable) GetValue(SelectedItemsProperty); }
             set { SetValue(SelectedItemsProperty, value); }
@@ -20,7 +20,8 @@ namespace ConciseDesign.WPF.Behavior
         public static readonly DependencyProperty SelectedItemsProperty =
             DependencyProperty.Register(nameof(SelectedItems), typeof(IList),
                 typeof(BindableSelectedItemListBoxBehavior),
-                new FrameworkPropertyMetadata(new ArrayList()) {
+                new FrameworkPropertyMetadata(new ArrayList())
+                {
                     BindsTwoWayByDefault = true,
                     DefaultUpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
                 });
@@ -53,21 +54,21 @@ namespace ConciseDesign.WPF.Behavior
             base.OnAttached();
             this.AssociatedObject.SelectionChanged += AssociatedObject_SelectionChanged;
         }
-        
+
         protected override void OnDetaching()
         {
             base.OnDetaching();
-            if (this.AssociatedObject!=null) {
+            if (this.AssociatedObject != null)
+            {
                 this.AssociatedObject.SelectionChanged -= AssociatedObject_SelectionChanged;
             }
         }
 
 
-
         private void AssociatedObject_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.SelectedItems = AssociatedObject.SelectedItems;
-         //   this.SelectedItem = AssociatedObject.SelectedItem;
+            //   this.SelectedItem = AssociatedObject.SelectedItem;
             //if (e.AddedItems.Count>0) {
             //    this.SelectedItems.Add(e.AddedItems);
             //}

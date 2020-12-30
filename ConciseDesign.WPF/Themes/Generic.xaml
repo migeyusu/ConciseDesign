@@ -4,7 +4,8 @@
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
     xmlns:local="clr-namespace:ConciseDesign.WPF"
-    xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls">
+    xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/ConciseDesign.WPF;component/StylesAndTemplate/ContentControl.xaml"/>
     </ResourceDictionary.MergedDictionaries>
@@ -77,12 +78,12 @@
                                      FontSize="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FontSize}"
                                      FontFamily="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FontFamily}"
                                      Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=SearchString,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="TextChanged"
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="TextChanged"
                                                     SourceName="textBox">
-                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource TemplatedParent},Path=TextChangedCommand}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
+                                        <b:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource TemplatedParent},Path=TextChangedCommand}"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
                             </TextBox>
                             <Border x:Name="clearbtn"
                                     Grid.Column="0"
@@ -103,12 +104,12 @@
                                 <Image Source="/ConciseDesign.WPF;component/ImageResources/Close-24.png"
                                        Margin="5"
                                        Opacity="0.5" />
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseDown">
-                                        <ei:CallMethodAction TargetObject="{Binding ElementName=textBox}"
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="MouseDown">
+                                        <b:CallMethodAction TargetObject="{Binding ElementName=textBox}"
                                                              MethodName="Clear" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
                             </Border>
                             <Button x:Name="bd"
                                     Width="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ActualHeight}"

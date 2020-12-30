@@ -1,38 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EEDCA853-0B75-4AED-B6C7-58A25E79226D}</ProjectGuid>
     <OutputType>library</OutputType>
+    <UseWPF>true</UseWPF>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>ConciseDesign.WPF</RootNamespace>
     <AssemblyName>ConciseDesign.WPF</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <UserSecretsId>af371226-ad84-4862-ad23-b30a8fdc5121</UserSecretsId>
+    <Version>3.0.0</Version>
+    <Description>WPF UI Library</Description>
+    <Copyright>2021</Copyright>
+    <PackageIcon>xixi.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/migeyusu/ConciseDesign</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
+    <RepositoryType>.Net</RepositoryType>
+    <PackageTags>WPF</PackageTags>
+    <PackageReleaseNotes>Beta</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <None Remove="xixi.png" />
+    <None Remove="xixi.png" />
+    <None Include="xixi.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FORCEBuild" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
+  </ItemGroup>
+  <!-- <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -41,155 +40,7 @@
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Dialog\ImageResourceDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ImageResources\Icons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ImageResources\IconsNonShared.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="StylesAndTemplate\BaseDefination.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="StylesAndTemplate\Extra.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="StylesAndTemplate\ControlItems.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="StylesAndTemplate\Buttons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="StylesAndTemplate\Texts.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="StylesAndTemplate\ControlStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="StylesAndTemplate\InteractionControls.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="StylesAndTemplate\MenuControls.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="StylesAndTemplate\ContentControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="StylesAndTemplate\Animations.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\ConfirmDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\DialogHostControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\MessageDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\AlertMessageWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Behavior\BindableSelectedItemListBoxBehavior.cs" />
-    <Compile Include="Behavior\BindableSelectedItemTreeViewBehavior.cs" />
-    <Compile Include="Behavior\WaterMarkBehavior.cs" />
-    <Compile Include="Converters\MenuAutoWidthConverter.cs" />
-    <Compile Include="CustomControls\ActiveBackButton.cs" />
-    <Compile Include="CustomControls\CircularProgress.cs" />
-    <Compile Include="CustomControls\CircularProgressBar.cs" />
-    <Compile Include="CustomControls\ColorTip.cs" />
-    <Compile Include="CustomControls\ConciseButton.cs" />
-    <Compile Include="CustomControls\SearchBox.cs" />
-    <Compile Include="CustomControls\SelectBox.cs" />
-    <Compile Include="Dialog\ImageResourceDialog.xaml.cs">
-      <DependentUpon>ImageResourceDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialog\ImageResourceDialogViewModel.cs" />
-    <Compile Include="Message\AlertMessage.cs" />
-    <Compile Include="Message\AlertType.cs" />
-    <Compile Include="Message\IAlertMessage.cs" />
-    <Compile Include="Message\ILocalMessageService.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="UserControls\Commands.cs" />
-    <Compile Include="UserControls\ConfirmDialog.xaml.cs">
-      <DependentUpon>ConfirmDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\DialogHostControl.xaml.cs">
-      <DependentUpon>DialogHostControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\DialogRegister.cs" />
-    <Compile Include="UserControls\MessageDialog.xaml.cs">
-      <DependentUpon>MessageDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\StreamRichTextBox.cs" />
-    <Compile Include="Windows\AlertMessageWindow.xaml.cs">
-      <DependentUpon>AlertMessageWindow.xaml</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="update.ps1" />
-    <Resource Include="ImageResources\Entypo.ttf" />
-    <None Include="ConciseDesign.WPF.nuspec" />
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
+    </Reference> -->
   <ItemGroup>
     <Resource Include="ImageResources\Arrowhead-Down-01-32.png" />
     <Resource Include="ImageResources\ArrowUP.png" />
@@ -368,13 +219,9 @@
     <Resource Include="ImageResources\Arrowhead-.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Command\" />
+    <None Include="C:\Users\zhujie\Desktop\xixi.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ForceBuild\FORCEBuild.csproj">
-      <Project>{96b3811c-7f33-4e01-96d7-59a7bf54cec2}</Project>
-      <Name>FORCEBuild</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
