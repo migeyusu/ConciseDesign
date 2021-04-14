@@ -14,6 +14,18 @@ namespace ConciseDesign.WPF.CustomControls
 
         public CircularProgressBar() { }
 
+
+        public object Content {
+            get { return (object) GetValue(ContentProperty); }
+            set { SetValue(ContentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ContentProperty =
+            DependencyProperty.Register("Content", typeof(object), typeof(CircularProgressBar),
+                new PropertyMetadata(null));
+
+
         protected override void OnMaximumChanged(double oldMaximum, double newMaximum)
         {
             base.OnMaximumChanged(oldMaximum, newMaximum);
@@ -31,7 +43,6 @@ namespace ConciseDesign.WPF.CustomControls
             base.OnValueChanged(oldValue, newValue);
             PercentageValue = ProcessValue(this.Maximum, this.Minimum, newValue);
         }
-
 
         /// <summary>
         /// 
@@ -57,17 +68,6 @@ namespace ConciseDesign.WPF.CustomControls
         public static readonly DependencyProperty PercentageValueProperty =
             DependencyProperty.Register("PercentageValue", typeof(double), typeof(CircularProgressBar),
                 new PropertyMetadata(0d));
-
-
-        public Brush HeaderBrush {
-            get { return (Brush) GetValue(HeaderBrushProperty); }
-            set { SetValue(HeaderBrushProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for HeaderBrush.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HeaderBrushProperty =
-            DependencyProperty.Register("HeaderBrush", typeof(Brush), typeof(CircularProgressBar),
-                new PropertyMetadata(Brushes.DimGray));
 
         public double Thickness {
             get { return (int) GetValue(ThicknessProperty); }
