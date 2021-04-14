@@ -8,11 +8,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <customControls:CircularProgressBar Width="200"
-                                            Height="200"
+        <customControls:CircularProgressBar Width="80"
+                                            Height="80"
+                                            Maximum="100"
+                                            Thickness="26"
+                                            Minimum="0"
                                             Value="100"
                                             Background="Yellow"
                                             HeaderBrush="Aquamarine"
-                                            Foreground="Black"/>
+                                            Foreground="Black" />
     </Grid>
 </Window>

@@ -8,19 +8,22 @@
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors">
 
     <Style TargetType="{x:Type customControls:CircularProgressBar}">
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type customControls:CircularProgressBar}">
                     <Grid>
                         <customControls:CircularProgress Stroke="{TemplateBinding Background}"
+                                                         StrokeThickness="{TemplateBinding Thickness}"
                                                          Value="100" />
-                        <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Value,StringFormat={}{0}%}"
-                                   Foreground="{TemplateBinding HeaderBrush}"
+                        <TextBlock Foreground="{TemplateBinding HeaderBrush}"
+                                   Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Value,StringFormat={}{0}%}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center" />
                         <customControls:CircularProgress x:Name="CircularProgress"
                                                          Stroke="{TemplateBinding Foreground}"
-                                                         Value="{TemplateBinding Value}" />
+                                                         StrokeThickness="{TemplateBinding Thickness}"
+                                                         Value="{TemplateBinding PercentageValue}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -35,7 +38,7 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter ContentSource="{TemplateBinding Content}"/>
+                        <ContentPresenter ContentSource="{TemplateBinding Content}" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver"
@@ -78,7 +81,8 @@
                                 <b:Interaction.Triggers>
                                     <b:EventTrigger EventName="TextChanged"
                                                     SourceName="textBox">
-                                        <b:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource TemplatedParent},Path=TextChangedCommand}"/>
+                                        <b:InvokeCommandAction
+                                            Command="{Binding RelativeSource={RelativeSource TemplatedParent},Path=TextChangedCommand}" />
                                     </b:EventTrigger>
                                 </b:Interaction.Triggers>
                             </TextBox>
@@ -104,7 +108,7 @@
                                 <b:Interaction.Triggers>
                                     <b:EventTrigger EventName="MouseDown">
                                         <b:CallMethodAction TargetObject="{Binding ElementName=textBox}"
-                                                             MethodName="Clear" />
+                                                            MethodName="Clear" />
                                     </b:EventTrigger>
                                 </b:Interaction.Triggers>
                             </Border>
@@ -135,7 +139,8 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Button.Style>
-                                <ContentControl Content="{Binding RelativeSource={RelativeSource TemplatedParent},Path=SearchButtonIcon}"/>
+                                <ContentControl
+                                    Content="{Binding RelativeSource={RelativeSource TemplatedParent},Path=SearchButtonIcon}" />
                             </Button>
                         </Grid>
                     </Border>
@@ -153,13 +158,13 @@
         <Setter Property="Height"
                 Value="34" />
         <Setter Property="Width"
-                Value="160"/>
+                Value="160" />
         <Setter Property="FontSize"
-                Value="15"/>
+                Value="15" />
         <Setter Property="SearchButtonIcon">
             <Setter.Value>
                 <Image Source="/ConciseDesign.WPF;component/ImageResources/Search-Find-48.png"
-                       Stretch="Uniform"/>
+                       Stretch="Uniform" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -178,7 +183,7 @@
                                    Visibility="Collapsed"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
-                                   Margin="0,0,20,0"/>
+                                   Margin="0,0,20,0" />
                         <ToggleButton x:Name="toggle"
                                       Content="{TemplateBinding SelectedValue}"
                                       IsChecked="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent}}"
@@ -217,8 +222,9 @@
                             </ToggleButton.Template>
                         </ToggleButton>
 
-                        <Popup IsOpen="{Binding IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
-                               Style="{StaticResource PopupSite}">
+                        <Popup
+                            IsOpen="{Binding IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                            Style="{StaticResource PopupSite}">
                             <StackPanel Background="White"
                                         Width="{Binding ElementName=toggle,Path=ActualWidth}">
                                 <ItemsPresenter />

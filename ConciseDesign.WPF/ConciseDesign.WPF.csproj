@@ -8,7 +8,7 @@
     <AssemblyName>ConciseDesign.WPF</AssemblyName>
     <WarningLevel>4</WarningLevel>
     <UserSecretsId>af371226-ad84-4862-ad23-b30a8fdc5121</UserSecretsId>
-    <Version>3.0.0</Version>
+    <Version>3.0.1</Version>
     <Description>WPF UI Library</Description>
     <Copyright>2021</Copyright>
     <PackageIcon>xixi.png</PackageIcon>
