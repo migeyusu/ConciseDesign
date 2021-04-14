@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConciseDesign.WPF", "ConciseDesign.WPF\ConciseDesign.WPF.csproj", "{EEDCA853-0B75-4AED-B6C7-58A25E79226D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConciseDesign.WPF", "ConciseDesign.WPF\ConciseDesign.WPF.csproj", "{EEDCA853-0B75-4AED-B6C7-58A25E79226D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{D5FD0FF4-47E8-4AE8-A9AA-CAF99C12458C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EEDCA853-0B75-4AED-B6C7-58A25E79226D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEDCA853-0B75-4AED-B6C7-58A25E79226D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEDCA853-0B75-4AED-B6C7-58A25E79226D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FD0FF4-47E8-4AE8-A9AA-CAF99C12458C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FD0FF4-47E8-4AE8-A9AA-CAF99C12458C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FD0FF4-47E8-4AE8-A9AA-CAF99C12458C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FD0FF4-47E8-4AE8-A9AA-CAF99C12458C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

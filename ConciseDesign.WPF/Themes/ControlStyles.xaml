@@ -13,6 +13,7 @@
         <ResourceDictionary Source="InteractionControls.xaml"/>
         <ResourceDictionary Source="MenuControls.xaml" />
         <ResourceDictionary Source="Texts.xaml" />
+        <ResourceDictionary Source="Generic.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

@@ -6,9 +6,6 @@
     xmlns:local="clr-namespace:ConciseDesign.WPF"
     xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/ConciseDesign.WPF;component/StylesAndTemplate/ContentControl.xaml"/>
-    </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type customControls:CircularProgressBar}">
         <Setter Property="Template">
