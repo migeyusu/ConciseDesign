@@ -10,8 +10,8 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/ConciseDesign.WPF;component/StylesAndTemplate/Buttons.xaml" />
-                <ResourceDictionary Source="/ConciseDesign.WPF;component/StylesAndTemplate/BaseDefination.xaml" />
+                <ResourceDictionary Source="/ConciseDesign.WPF;component/Themes/Buttons.xaml" />
+                <ResourceDictionary Source="/ConciseDesign.WPF;component/Themes/BaseDefination.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>

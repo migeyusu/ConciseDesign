@@ -19,7 +19,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/ConciseDesign.WPF;component/StylesAndTemplate/ControlStyles.xaml" />
+                <ResourceDictionary Source="/ConciseDesign.WPF;component/Themes/ControlStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>

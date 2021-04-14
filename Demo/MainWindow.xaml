@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo"
         xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls;assembly=ConciseDesign.WPF"
+        xmlns:userControls="clr-namespace:ConciseDesign.WPF.UserControls;assembly=ConciseDesign.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -16,5 +17,6 @@
                                             Value="100"
                                             Background="Yellow"
                                             Foreground="Black" />
+        <userControls:DialogHostControl userControls:DialogRegister.Register="MainDialog" />
     </Grid>
 </Window>
