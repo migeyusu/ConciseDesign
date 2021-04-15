@@ -8,7 +8,7 @@
     <AssemblyName>ConciseDesign.WPF</AssemblyName>
     <WarningLevel>4</WarningLevel>
     <UserSecretsId>af371226-ad84-4862-ad23-b30a8fdc5121</UserSecretsId>
-    <Version>3.0.5</Version>
+    <Version>3.0.7</Version>
     <Description>WPF UI Library</Description>
     <Copyright>2021</Copyright>
     <PackageIcon>xixi.png</PackageIcon>
@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>Bug fixed.</PackageReleaseNotes>
+    <PackageReleaseNotes>Removed image resource to reduce size.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="xixi.png" />
@@ -41,183 +41,6 @@
       <HintPath>..\packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference> -->
-  <ItemGroup>
-    <Resource Include="ImageResources\Arrowhead-Down-01-32.png" />
-    <Resource Include="ImageResources\ArrowUP.png" />
-    <Resource Include="ImageResources\Close-24.png" />
-    <Resource Include="ImageResources\Message-Information-48.png" />
-    <Resource Include="ImageResources\Search-Find-48.png" />
-    <Resource Include="ImageResources\Warning-Message-128.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ImageResources\Warning-Shield-24.png" />
-    <Resource Include="ImageResources\Window-New-Open-32.png" />
-    <Resource Include="ImageResources\WindowsIcons-license.txt" />
-    <Resource Include="ImageResources\x-02-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ImageResources\Search-Find-w.png" />
-    <Resource Include="ImageResources\SetIco.png" />
-    <Resource Include="ImageResources\Settled credit record-32.png" />
-    <Resource Include="ImageResources\Share-Sharing-128.png" />
-    <Resource Include="ImageResources\size.png" />
-    <Resource Include="ImageResources\sizefi.png" />
-    <Resource Include="ImageResources\small.png" />
-    <Resource Include="ImageResources\smallfu.png" />
-    <Resource Include="ImageResources\Start.png" />
-    <Resource Include="ImageResources\status.png" />
-    <Resource Include="ImageResources\Stop-48.png" />
-    <Resource Include="ImageResources\Student-Read-02-24.png" />
-    <Resource Include="ImageResources\Student-Read-02-32.png" />
-    <Resource Include="ImageResources\Submit-01-32.png" />
-    <Resource Include="ImageResources\Submit-01-48-Black.png" />
-    <Resource Include="ImageResources\Submit-01-48.png" />
-    <Resource Include="ImageResources\SubmitPre48.png" />
-    <Resource Include="ImageResources\Subway-256.png" />
-    <Resource Include="ImageResources\superadmin.png" />
-    <Resource Include="ImageResources\Tag-48.png" />
-    <Resource Include="ImageResources\tag.png" />
-    <Resource Include="ImageResources\Teacher-32.png" />
-    <Resource Include="ImageResources\teacherIco.png" />
-    <Resource Include="ImageResources\toleft1.png" />
-    <Resource Include="ImageResources\Train-Side-View-01-48.png" />
-    <Resource Include="ImageResources\Train-Side-View-02-48.png" />
-    <Resource Include="ImageResources\User-Group-32.png" />
-    <Resource Include="ImageResources\User-Time-24.png" />
-    <Resource Include="ImageResources\User_Exchange-512.png" />
-    <Resource Include="ImageResources\View-List-48.png" />
-    <Resource Include="ImageResources\View-Settings-128.png" />
-    <Resource Include="ImageResources\View-Small-Icons-48.png" />
-    <Resource Include="ImageResources\View-Small-Iconsmargin.png" />
-    <Resource Include="ImageResources\wait.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ImageResources\metropointImg.png" />
-    <Resource Include="ImageResources\Minus-48.png" />
-    <Resource Include="ImageResources\Minus-48w.png" />
-    <Resource Include="ImageResources\Monitor-48.png" />
-    <Resource Include="ImageResources\NewEX-48.png" />
-    <Resource Include="ImageResources\Next-32.png" />
-    <Resource Include="ImageResources\noneleft.png" />
-    <Resource Include="ImageResources\Orientation-Landscape-128.png" />
-    <Resource Include="ImageResources\outline.png" />
-    <Resource Include="ImageResources\Outlined-Triangular-Left-Arrow-32.png" />
-    <Resource Include="ImageResources\Pencil-48.png" />
-    <Resource Include="ImageResources\pingmubanner.png" />
-    <Resource Include="ImageResources\Plus-32.png" />
-    <Resource Include="ImageResources\plus.png" />
-    <Resource Include="ImageResources\Previous-32.png" />
-    <Resource Include="ImageResources\Previous-48.png" />
-    <Resource Include="ImageResources\question42.png" />
-    <Resource Include="ImageResources\Real-Time-24.png" />
-    <Resource Include="ImageResources\rec.png" />
-    <Resource Include="ImageResources\RecordIco.png" />
-    <Resource Include="ImageResources\Rectangle Stroked Filled-50.png" />
-    <Resource Include="ImageResources\rename.png" />
-    <Resource Include="ImageResources\Save-128.png" />
-    <Resource Include="ImageResources\Save-48.png" />
-    <Resource Include="ImageResources\school.png" />
-    <Resource Include="ImageResources\screenico.png" />
-    <Resource Include="ImageResources\Search-Find-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ImageResources\Close-48.png" />
-    <Resource Include="ImageResources\Close-48w.png" />
-    <Resource Include="ImageResources\close.png" />
-    <Resource Include="ImageResources\Close_Red.png" />
-    <Resource Include="ImageResources\close副本.png" />
-    <Resource Include="ImageResources\Command-Redo-48.png" />
-    <Resource Include="ImageResources\Command-Refresh-48.png" />
-    <Resource Include="ImageResources\Command-Undow.png" />
-    <Resource Include="ImageResources\config.png" />
-    <Resource Include="ImageResources\Customize-01-48.png" />
-    <Resource Include="ImageResources\Customize-02-48.png" />
-    <Resource Include="ImageResources\Data-Edit.png" />
-    <Resource Include="ImageResources\Data-Error-128.png" />
-    <Resource Include="ImageResources\Data-Export-48.png" />
-    <Resource Include="ImageResources\Debit-Card-128.png" />
-    <Resource Include="ImageResources\Debit-Card-256.png" />
-    <Resource Include="ImageResources\Document-Edit-48.png" />
-    <Resource Include="ImageResources\document.png" />
-    <Resource Include="ImageResources\draw.png" />
-    <Resource Include="ImageResources\Entypo-license.txt" />
-    <Resource Include="ImageResources\Envelope.png" />
-    <Resource Include="ImageResources\Erase-64.png" />
-    <Resource Include="ImageResources\eraser.png" />
-    <Resource Include="ImageResources\Exam.png" />
-    <Resource Include="ImageResources\examimg.png" />
-    <Resource Include="ImageResources\Export-RTF-48.png" />
-    <Resource Include="ImageResources\f146.png" />
-    <Resource Include="ImageResources\File-Format-PDF-48.png" />
-    <Resource Include="ImageResources\firemen.jpg" />
-    <Resource Include="ImageResources\Folder-Edit-32.png" />
-    <Resource Include="ImageResources\Folder-New-48.png" />
-    <Resource Include="ImageResources\Folder-Share-01-48.png" />
-    <Resource Include="ImageResources\Format-Numbering-01-48.png" />
-    <Resource Include="ImageResources\Full Moon Filled-50.png" />
-    <Resource Include="ImageResources\FunctionIco.png" />
-    <Resource Include="ImageResources\Garbage-Closed-32.png" />
-    <Resource Include="ImageResources\Garbage-Closed-48.png" />
-    <Resource Include="ImageResources\Garbage-Closedw.png" />
-    <Resource Include="ImageResources\hand113.png" />
-    <Resource Include="ImageResources\head.png" />
-    <Resource Include="ImageResources\homeico.png" />
-    <Resource Include="ImageResources\ic_message_white_48dp.png" />
-    <Resource Include="ImageResources\Key-Access-01-48.png" />
-    <Resource Include="ImageResources\Lesson.png" />
-    <Resource Include="ImageResources\Line Filled-50.png" />
-    <Resource Include="ImageResources\line.png" />
-    <Resource Include="ImageResources\Link-48.png" />
-    <Resource Include="ImageResources\log.png" />
-    <Resource Include="ImageResources\Login-Door-32.png" />
-    <Resource Include="ImageResources\login.png" />
-    <Resource Include="ImageResources\loginhead.png" />
-    <Resource Include="ImageResources\Logout-24.png" />
-    <Resource Include="ImageResources\ManageIco.png" />
-    <Resource Include="ImageResources\Marker Pen-50.png" />
-    <Resource Include="ImageResources\Media-Play-02-256.png" />
-    <Resource Include="ImageResources\Media-Play-48.png" />
-    <Resource Include="ImageResources\Message-Information-128.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ImageResources\Back.jpg" />
-    <Resource Include="ImageResources\BingWallpaper-2017-03-06.jpg" />
-    <Resource Include="ImageResources\Book-Settings-32.png" />
-    <Resource Include="ImageResources\Book-Shelf-48.png" />
-    <Resource Include="ImageResources\Bookmark-Delete-128.png" />
-    <Resource Include="ImageResources\Cancel-32.png" />
-    <Resource Include="ImageResources\Cancel-48.png" />
-    <Resource Include="ImageResources\chart.png" />
-    <Resource Include="ImageResources\Check-32.png" />
-    <Resource Include="ImageResources\checked.png" />
-    <Resource Include="ImageResources\checked_checkbox.png" />
-    <Resource Include="ImageResources\circle.png" />
-    <Resource Include="ImageResources\class.png" />
-    <Resource Include="ImageResources\Clean-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ImageResources\Arrowhead-Down-24.png" />
-    <Resource Include="ImageResources\Arrowhead-Down-32.png" />
-    <Resource Include="ImageResources\Arrowhead-Left-01-128.png" />
-    <Resource Include="ImageResources\Arrowhead-Right-01-128.png" />
-    <Resource Include="ImageResources\Arrowhead-Right-01-24.png" />
-    <Resource Include="ImageResources\Arrowhead-Up-32.png" />
-    <Resource Include="ImageResources\Arrowhead.png" />
-    <Resource Include="ImageResources\Arrowhead0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ImageResources\Add-New-128 Red.png" />
-    <Resource Include="ImageResources\Add-New-128.png" />
-    <Resource Include="ImageResources\Add-New-24.png" />
-    <Resource Include="ImageResources\Add-New-48.png" />
-    <Resource Include="ImageResources\Add-New.png" />
-    <Resource Include="ImageResources\Addw.png" />
-    <Resource Include="ImageResources\adminico.png" />
-    <Resource Include="ImageResources\adminico1.png" />
-    <Resource Include="ImageResources\adminico2.png" />
-    <Resource Include="ImageResources\Align-Left-48.png" />
-    <Resource Include="ImageResources\Arrowhead-.png" />
-  </ItemGroup>
   <ItemGroup>
     <None Include="C:\Users\zhujie\Desktop\xixi.png">
       <Pack>True</Pack>

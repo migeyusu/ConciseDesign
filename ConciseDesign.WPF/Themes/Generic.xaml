@@ -15,14 +15,13 @@
                         <customControls:CircularProgress Stroke="{TemplateBinding Background}"
                                                          StrokeThickness="{TemplateBinding Thickness}"
                                                          Value="100" />
+                        <customControls:CircularProgress Stroke="{TemplateBinding Foreground}"
+                                                         StrokeThickness="{TemplateBinding Thickness}"
+                                                         Value="{TemplateBinding PercentageValue}" />
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           Margin="{TemplateBinding Padding}" />
-                        <customControls:CircularProgress x:Name="CircularProgress"
-                                                         Stroke="{TemplateBinding Foreground}"
-                                                         StrokeThickness="{TemplateBinding Thickness}"
-                                                         Value="{TemplateBinding PercentageValue}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
