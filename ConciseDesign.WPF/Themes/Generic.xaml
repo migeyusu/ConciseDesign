@@ -12,16 +12,19 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type customControls:CircularProgressBar}">
                     <Grid>
+
                         <customControls:CircularProgress Stroke="{TemplateBinding Background}"
                                                          StrokeThickness="{TemplateBinding Thickness}"
                                                          Value="100" />
                         <customControls:CircularProgress Stroke="{TemplateBinding Foreground}"
                                                          StrokeThickness="{TemplateBinding Thickness}"
                                                          Value="{TemplateBinding PercentageValue}" />
+                        
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           Margin="{TemplateBinding Padding}" />
+
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

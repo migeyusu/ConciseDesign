@@ -16,7 +16,15 @@
                                             Minimum="0"
                                             Value="100"
                                             Background="Yellow"
-                                            Foreground="Black" />
+                                            Foreground="Black" 
+                                            Click="CircularProgressBar_OnClick">
+            <!--<customControls:CircularProgressBar.Content>
+                <Border Width="50"
+                        Height="50"
+                        Background="DimGray"/>
+            </customControls:CircularProgressBar.Content>-->
+        </customControls:CircularProgressBar>
+
         <userControls:DialogHostControl userControls:DialogRegister.Register="MainDialog" />
     </Grid>
 </Window>

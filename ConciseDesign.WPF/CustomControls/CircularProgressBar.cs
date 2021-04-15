@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
+using System.Windows.Input;
 
 namespace ConciseDesign.WPF.CustomControls
 {
@@ -14,6 +16,58 @@ namespace ConciseDesign.WPF.CustomControls
 
         public CircularProgressBar() { }
 
+        public static RoutedEvent ClickEvent =
+            EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler),
+                typeof(CircularProgressBar));
+
+        public event RoutedEventHandler Click {
+            add { AddHandler(ClickEvent, value); }
+            remove { RemoveHandler(ClickEvent, value); }
+        }
+
+        Point zeroPoint = new Point(0, 0);
+
+        protected virtual void OnClick()
+        {
+            RoutedEventArgs args = new RoutedEventArgs(ClickEvent, this);
+            var position = Mouse.GetPosition(this);
+            //转换坐标系
+            var x = position.X - ActualWidth / 2.0;
+            var y = -position.Y + ActualHeight / 2.0;
+            var actualWidth = ActualWidth / 2.0 - Thickness;
+            var actualHeight = ActualHeight / 2.0 - Thickness;
+            if ((int) actualWidth == (int) actualHeight) {
+                //圆形算法
+                var point = new Point(x, y);
+                var length = Point.Subtract(zeroPoint, point).Length;
+                if (actualWidth < length && length < ActualWidth / 2.0) {
+                    x = -x;
+                    var atan = Math.Atan2(y, x) * 180.0 / Math.PI;
+                    if (atan < 0) {
+                        atan = 360.0 + atan;
+                    }
+
+                    //旋转90度
+                    if (atan > 90.0) {
+                        atan -= 90.0;
+                    }
+                    else {
+                        atan += 270.0;
+                    }
+
+                    PercentageValue = atan / 360.0 * 100;
+                }
+            }
+
+
+            RaiseEvent(args);
+        }
+
+        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonUp(e);
+            OnClick();
+        }
 
         public object Content {
             get { return (object) GetValue(ContentProperty); }
@@ -70,7 +124,7 @@ namespace ConciseDesign.WPF.CustomControls
                 new PropertyMetadata(0d));
 
         public double Thickness {
-            get { return (int) GetValue(ThicknessProperty); }
+            get { return (double) GetValue(ThicknessProperty); }
             set { SetValue(ThicknessProperty, value); }
         }
 
