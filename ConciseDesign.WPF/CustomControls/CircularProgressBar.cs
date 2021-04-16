@@ -55,7 +55,8 @@ namespace ConciseDesign.WPF.CustomControls
                         atan += 270.0;
                     }
 
-                    PercentageValue = atan / 360.0 * 100;
+                    var percentage = atan / 360.0 * 100;
+                    Value = (Maximum - Minimum) * percentage;
                 }
             }
 
