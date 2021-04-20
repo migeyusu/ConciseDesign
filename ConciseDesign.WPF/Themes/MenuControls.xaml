@@ -2,18 +2,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                     xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Buttons.xaml"/>
-        <ResourceDictionary Source="BaseDefination.xaml"/>
-        <ResourceDictionary Source="ContentControl.xaml"/>
+        <ResourceDictionary Source="Buttons.xaml" />
+        <ResourceDictionary Source="BaseDefination.xaml" />
+        <ResourceDictionary Source="ContentControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <!--菜单按钮项-->
     <RoutedUICommand x:Key="SubmitPre"
-                     Text="提交当前"/>
+                     Text="提交当前" />
     <RoutedUICommand x:Key="Clear"
-                     Text="清空所有项"/>
-   <!--已选择item-->
+                     Text="清空所有项" />
+    <!--已选择item-->
     <ControlTemplate x:Key="SelectedSwitchMenuItem"
                      TargetType="{x:Type ListBoxItem}">
         <Border x:Name="item"
@@ -53,7 +54,7 @@
     <Style x:Key="LayersSwitchMenu"
            TargetType="{x:Type ListBoxItem}">
         <Setter Property="Width"
-                Value="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType=ListBox},Converter={StaticResource MenuAutoWidthConverter}}"/>
+                Value="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType=ListBox},Converter={StaticResource MenuAutoWidthConverter}}" />
         <Style.Triggers>
             <Trigger Property="IsSelected"
                      Value="True">
@@ -85,24 +86,23 @@
                             <TextBlock Text="{Binding ElementName=header,Path=TemplatedParent.Content}"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center" />
-                            <Image x:Name="ico"
-                                   Grid.Column="1"
-                                   HorizontalAlignment="Center"
-                                   Width="20"
-                                   Source="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Down-01-32.png"
-                                   Stretch="Uniform" />
+                            <iconPacks:PackIconMaterial Kind="ArrowDown"
+                                                        x:Name="ico"
+                                                        Grid.Column="1"
+                                                        HorizontalAlignment="Center"
+                                                        Width="20" />
                             <GridSplitter Grid.Column="0"
                                           Width="2"
                                           Height="23"
-                                          Background="LightGray" 
-                                          IsEnabled="False"/>
+                                          Background="LightGray"
+                                          IsEnabled="False" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked"
                                      Value="True">
                                 <Setter TargetName="ico"
-                                        Property="Source"
-                                        Value="/ConciseDesign.WPF;component/ImageResources/ArrowUP.png" />
+                                        Property="Kind"
+                                        Value="ArrowUp" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -118,11 +118,11 @@
         </Grid>
     </ControlTemplate>
 
-    
+
     <ControlTemplate TargetType="{x:Type ToggleButton}"
                      x:Key="ImageToggleButton">
         <Border x:Name="img">
-            <Rectangle Fill="{TemplateBinding Background}"/>
+            <Rectangle Fill="{TemplateBinding Background}" />
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsChecked"
@@ -139,8 +139,8 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-   
-    
+
+
     <ControlTemplate x:Key="XComboboxTemplate"
                      TargetType="{x:Type ComboBox}">
         <Grid>
@@ -162,7 +162,7 @@
                                     CornerRadius="3">
                                 <Border.Effect>
                                     <DropShadowEffect BlurRadius="1"
-                                                      ShadowDepth="0"/>
+                                                      ShadowDepth="0" />
                                 </Border.Effect>
                             </Border>
                             <TextBlock Grid.Column="0"
@@ -175,19 +175,18 @@
                                        VerticalAlignment="Center"
                                        Foreground="Black"
                                        FontSize="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FontSize}" />
-                            <Image x:Name="ico"
-                                   Grid.Column="1"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Source="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Down-01-32.png"
-                                   Stretch="Uniform" />
+                            <iconPacks:PackIconMaterial x:Name="ico"
+                                                        Grid.Column="1"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Kind="ChevronDown" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked"
                                      Value="True">
                                 <Setter TargetName="ico"
-                                        Property="Source"
-                                        Value="/ConciseDesign.WPF;component/ImageResources/ArrowUP.png" />
+                                        Property="Kind"
+                                        Value="ChevronUp" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -204,15 +203,15 @@
     </ControlTemplate>
 
     <Style x:Key="MemberComboboxStyle"
-        TargetType="{x:Type ComboBox}">
+           TargetType="{x:Type ComboBox}">
         <Setter Property="Width"
-                Value="140"/>
+                Value="140" />
         <Setter Property="Height"
-                Value="30"/>
+                Value="30" />
         <Setter Property="Template"
-                Value="{StaticResource XComboboxTemplate}"/>
+                Value="{StaticResource XComboboxTemplate}" />
         <Setter Property="Foreground"
-                Value="Black"/>
+                Value="Black" />
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect BlurRadius="2"
@@ -220,8 +219,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    
 
 
     <ControlTemplate x:Key="ComboBoxItem"
@@ -333,8 +330,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <TextBlock Text="{TemplateBinding Content}"
-                                   Margin="10,5,0,5" />
-                        <!--<ControlTemplate.Triggers>
+                               Margin="10,5,0,5" />
+                    <!--<ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver"
                                  Value="True">
                             <Setter Property="Background"
@@ -354,17 +351,17 @@
             <ToggleButton Content="{TemplateBinding Text}"
                           x:Name="btn"
                           IsChecked="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent}}"
-                          Template="{StaticResource ImageToggleButton}"/>
+                          Template="{StaticResource ImageToggleButton}" />
             <Popup IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,Path=IsDropDownOpen}"
-                   PlacementTarget="{Binding ElementName=img}"
+                   PlacementTarget="{Binding ElementName=btn}"
                    Style="{StaticResource PopupSite}"
                    x:Name="content">
                 <Grid Margin="10">
                     <Border Background="White"
-                            Effect="{StaticResource GenDropShadowEffect}"/>
+                            Effect="{StaticResource GenDropShadowEffect}" />
                     <StackPanel>
-                        <ItemsPresenter/>
-                    </StackPanel>                    
+                        <ItemsPresenter />
+                    </StackPanel>
                 </Grid>
 
             </Popup>
@@ -386,360 +383,5 @@
             </EventTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
-    <ControlTemplate TargetType="{x:Type ToggleButton}"
-                     x:Key="ToggleButtonMenu">
-        <Grid>
-            <Border x:Name="img">
-                <Rectangle>
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="/ConciseDesign.WPF;component/ImageResources/Format-Numbering-01-48.png" />
-                    </Rectangle.Fill>
-                </Rectangle>
-            </Border>
-            <Popup PlacementTarget="{Binding ElementName=img}"
-                   IsOpen="{Binding IsChecked, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                   Style="{StaticResource PopupSite}">
-                <ContentPresenter x:Name="content"
-                                  ContentSource="{TemplateBinding Content}" />
-            </Popup>
-        </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="IsChecked"
-                     Value="True">
-                <Setter Property="Background"
-                        Value="{StaticResource FlatCover}"
-                        TargetName="img" />
-            </Trigger>
-            <Trigger Property="IsMouseOver"
-                     Value="True">
-                <Setter Property="Background"
-                        Value="{StaticResource Mouselectback}"
-                        TargetName="img" />
-            </Trigger>
-            <EventTrigger RoutedEvent="ToggleButton.Checked">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-                                                       Storyboard.TargetName="content">
-                            <EasingDoubleKeyFrame KeyTime="0"
-                                                  Value="0" />
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.2"
-                                                  Value="1" />
-                        </DoubleAnimationUsingKeyFrames>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-    
-    
-    <Style TargetType="{x:Type Button}"
-                     x:Key="NewMember"
-           BasedOn="{StaticResource FlatImageButton}">
-        <Setter Property="ToolTip"
-                Value="新建项"/>
-        <Setter Property="Command"
-                Value="New"/>
-        
-        <Setter Property="Content">
-            <Setter.Value>
-                <Image Stretch="Uniform"
-                       Source="/ConciseDesign.WPF;component/ImageResources/Add-New-48.png" />
-            </Setter.Value>
-        </Setter>
-    </Style>
 
-    <Style TargetType="{x:Type Button}"
-           x:Key="SaveMember"
-           BasedOn="{StaticResource FlatImageButton}">
-        <Setter Property="ToolTip"
-                Value="保存当前项"/>
-        <Setter Property="Command"
-                Value="Save" />
-        <Setter Property="Content">
-            <Setter.Value>
-                <ImageBrush Stretch="Uniform"
-                            ImageSource="/ConciseDesign.WPF;component/ImageResources/Save-48.png" />
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type Button}"
-           x:Key="DeleMember"
-           BasedOn="{StaticResource FlatImageButton}">
-        <Setter Property="ToolTip"
-                Value="删除当前项"/>
-        <Setter Property="Command"
-                Value="Delete" />
-        <Setter Property="Content">
-            <Setter.Value>
-                <Image Stretch="Uniform"
-                       Source="/ConciseDesign.WPF;component/ImageResources/Garbage-Closed-48.png" />
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-
-    <Style TargetType="{x:Type Button}"
-           x:Key="ClearMembers"
-           BasedOn="{StaticResource FlatImageButton}">
-        <Setter Property="ToolTip"
-                Value="清空所有项"/>
-        <!--<Setter Property="Command"
-                Value="{StaticResource Clear}" />-->
-        <Setter Property="Content">
-            <Setter.Value>
-                <Image Source="/ConciseDesign.WPF;component/ImageResources/Clean-48.png" />
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-
-    <Style TargetType="{x:Type Button}"
-           x:Key="UndoMember"
-           BasedOn="{StaticResource FlatImageButton}">
-        <Setter Property="ToolTip"
-                Value="撤销"/>
-        <Setter Property="Command"
-                Value="Undo"/>
-        <Setter Property="Content">
-            <Setter.Value>
-                <Image Source="/ConciseDesign.WPF;component/ImageResources/Command-Redo-48.png" />
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type ToggleButton}"
-           x:Key="ConfigButton">
-        <Setter Property="ToolTip"
-                Value="设置" />
-        <Setter Property="Template"
-                Value="{StaticResource ImageToggleButton}"/>
-        <Setter Property="Background">
-            <Setter.Value>
-                <ImageBrush ImageSource="/ConciseDesign.WPF;component/ImageResources/config.png"/>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type Button}"
-           x:Key="DelePreMember"
-           BasedOn="{StaticResource MaskImageButton}">
-        <Setter Property="ToolTip"
-                Value="删除当前项"/>
-        <Setter Property="Command"
-                Value="Delete" />
-        <Setter Property="CommandParameter"
-                Value="pre" />
-        <Setter Property="OpacityMask">
-            <Setter.Value>
-                <ImageBrush ImageSource="/ConciseDesign.WPF;component/ImageResources/Cancel-48.png" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Background"
-                Value="Black" />
-    </Style>
-    
-    <!--<ControlTemplate TargetType="{x:Type Button}"
-                     x:Key="SearchButton">
-        <Grid Height="{TemplateBinding Height}"
-              Width="{TemplateBinding Width}"
-              x:Name="sp">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <TextBox x:Name="content"
-                     Margin="5,5,0,5">
-                <TextBox.Template>
-                    <ControlTemplate TargetType="TextBox">
-                        <Grid>
-                            <TextBox  FontSize="13"
-                                      VerticalContentAlignment="Center"
-                                      x:Name="textBox"
-                                      BorderThickness="0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="TextChanged"
-                                                    SourceObject="{Binding ElementName=textBox}"
-                                                    SourceName="textBox">
-                                        <i:InvokeCommandAction Command="Search" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </TextBox>
-                            <Border Width="30"
-                                    HorizontalAlignment="Right"
-                                    Visibility="Visible"
-                                    x:Name="clearbtn">
-                                <Border.Style>
-                                    <Style TargetType="Border">
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver"
-                                                     Value="True">
-                                                <Setter Property="Background"
-                                                        Value="IndianRed" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Border.Style>
-                                <Image Source="/ConciseDesign.WPF;component/ImageResources/Close-24.png"
-                                       Stretch="None"
-                                       Opacity="0.5" />
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseDown">
-                                        <ei:CallMethodAction TargetObject="{Binding ElementName=textBox}"
-                                                             MethodName="Clear" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=textBox,Path=Text.Length}"
-                                         Value="0">
-                                <Setter Property="Visibility"
-                                        TargetName="clearbtn"
-                                        Value="Collapsed" />
-                            </DataTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </TextBox.Template>
-                <TextBox.Effect>
-                    <DropShadowEffect BlurRadius="3"
-                                      ShadowDepth="0"
-                                      Color="DimGray" />
-                </TextBox.Effect>
-            </TextBox>
-            <Border Width="40"
-                    x:Name="bd"
-                    Grid.Column="1">
-                <Border.Background>
-                    <ImageBrush ImageSource="/ConciseDesign.WPF;component/ImageResources/Search-Find-48.png" />
-                </Border.Background>
-            </Border>
-        </Grid>
-    </ControlTemplate>
-
-    <ControlTemplate TargetType="{x:Type Button}"
-                     x:Key="SearchDisableCommand">
-        <Grid Height="{TemplateBinding Height}"
-              Width="{TemplateBinding Width}"
-              x:Name="sp">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <TextBox x:Name="content"
-                     Margin="5,5,0,5"
-                     Text="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}">
-                <TextBox.Template>
-                    <ControlTemplate TargetType="TextBox">
-                        <Grid>
-                            <TextBox  FontSize="13"
-                                      VerticalContentAlignment="Center"
-                                      x:Name="textBox"
-                                      Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent}}"
-                                      BorderThickness="0"/>
-                                <Border Width="30"
-                                    HorizontalAlignment="Right"
-                                    Visibility="Visible"
-                                    x:Name="clearbtn">
-                                <Border.Style>
-                                    <Style TargetType="Border">
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver"
-                                                     Value="True">
-                                                <Setter Property="Background"
-                                                        Value="IndianRed" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Border.Style>
-                                <Image Source="/ConciseDesign.WPF;component/ImageResources/Close-24.png"
-                                       Stretch="None"
-                                       Opacity="0.5" />
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseDown">
-                                        <ei:CallMethodAction TargetObject="{Binding ElementName=textBox}"
-                                                             MethodName="Clear" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=textBox,Path=Text.Length}"
-                                         Value="0">
-                                <Setter Property="Visibility"
-                                        TargetName="clearbtn"
-                                        Value="Collapsed" />
-                            </DataTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </TextBox.Template>
-                <TextBox.Effect>
-                    <DropShadowEffect BlurRadius="3"
-                                      ShadowDepth="0"
-                                      Color="DimGray" />
-                </TextBox.Effect>
-            </TextBox>
-            <Button Width="40"
-                    Grid.Column="1"
-                    ToolTip="查找"
-                    Command="{TemplateBinding Command}"
-                    Style="{StaticResource FlatImageButton}">
-                <Image Source="/ConciseDesign.WPF;component/ImageResources/Search-Find-48.png" 
-                                Stretch="Uniform"/>
-            </Button>
-        </Grid>
-    </ControlTemplate>-->
-
-    <Style x:Key="RefreshButton"
-           TargetType="{x:Type customControls:ActiveBackButton}">
-        <Setter Property="Content">
-            <Setter.Value>
-                <Image Stretch="Uniform"
-                       Source="/ConciseDesign.WPF;component/ImageResources/Command-Refresh-48.png" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Background"
-                Value="Transparent"/>
-        <Setter Property="MouseOverBackground"
-                Value="DodgerBlue"/>
-        <Setter Property="ToolTip"
-                Value="刷新"/>
-    </Style>
-    
-    <Style x:Key="PreviousButton"
-           TargetType="Button"
-           BasedOn="{StaticResource MaskImageButton}">
-        <Setter Property="ToolTip"
-                Value="回到上一层" />
-        <Setter Property="OpacityMask">
-            <Setter.Value>
-                <ImageBrush Stretch="None"
-                            RenderOptions.BitmapScalingMode="NearestNeighbor"
-                            ImageSource="/ConciseDesign.WPF;component/ImageResources/Previous-48.png" />
-            </Setter.Value>
-        </Setter>
-        <!--<Setter Property ="Command"
-                Value="{StaticResource Previous}" />-->
-    </Style>
-
-    <Style x:Key="PlayButton"
-           TargetType="{x:Type Button}"
-           BasedOn="{StaticResource MaskImageButton}">
-        <Setter Property="ToolTip"
-                Value="选择" />
-        <Setter Property="Command"
-                Value="Play"/>
-        <Setter Property="CommandParameter"
-                Value="{Binding}"/>
-        <Setter Property="OpacityMask">
-            <Setter.Value>
-                <ImageBrush Stretch="None"
-                            ImageSource="/ConciseDesign.WPF;component/ImageResources/Outlined-Triangular-Left-Arrow-32.png" />
-
-            </Setter.Value>
-        </Setter>
-    </Style>
-    
 </ResourceDictionary>

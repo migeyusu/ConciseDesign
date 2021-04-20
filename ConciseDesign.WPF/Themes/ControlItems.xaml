@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="BaseDefination.xaml"/>
     </ResourceDictionary.MergedDictionaries>
@@ -67,16 +68,17 @@
                                            VerticalAlignment="Center"
                                            FontSize="16"
                                            FontFamily="Nirmala UI" />
-                                <Image Grid.Column="1"
-                                       x:Name="ico"
-                                       Source="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Down-32.png" />
+                                <iconPacks:PackIconMaterial Grid.Row="1" 
+                                                            Grid.Column="0"
+                                                            Kind="ArrowDown" 
+                                                            Name="ico"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsChecked"
                                          Value="True">
                                     <Setter TargetName="ico"
-                                            Property="Source"
-                                            Value="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Up-32.png" />
+                                            Property="Kind"
+                                            Value="ArrowUp" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -188,10 +190,11 @@
                     </ControlTemplate>
                 </ToggleButton.Template>
             </ToggleButton>
-            <Image Source="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Down-32.png"
-                   Grid.Column="1"
-                   HorizontalAlignment="Left"
-                   x:Name="img" />
+            <iconPacks:PackIconMaterial Grid.Row="0" 
+                                        Grid.Column="1"
+                                        Kind="ArrowDown" 
+                                        HorizontalAlignment="Left"
+                                        x:Name="img" />
             <!--<ToggleButton  Grid.Column="1"
                            HorizontalAlignment="Right"
                            IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,Path=IsSelected}"
@@ -206,8 +209,8 @@
             <Trigger Property="IsExpanded"
                      Value="True">
                 <Setter TargetName="img"
-                        Property="Source"
-                        Value="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Up-32.png" />
+                        Property="Kind"
+                        Value="ArrowUp" />
             </Trigger>
             <EventTrigger RoutedEvent="TreeViewItem.Expanded">
                 <BeginStoryboard>

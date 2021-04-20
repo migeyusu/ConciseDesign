@@ -8,7 +8,7 @@
     <AssemblyName>ConciseDesign.WPF</AssemblyName>
     <WarningLevel>4</WarningLevel>
     <UserSecretsId>af371226-ad84-4862-ad23-b30a8fdc5121</UserSecretsId>
-    <Version>3.1.0</Version>
+    <Version>3.2.0</Version>
     <Description>WPF UI Library</Description>
     <Copyright>2021</Copyright>
     <PackageIcon>xixi.png</PackageIcon>
@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>Support xml namespace.</PackageReleaseNotes>
+    <PackageReleaseNotes>Removed unused menu item, import 3rd party icon.</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="xixi.png" />
@@ -28,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FORCEBuild" Version="3.1.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.8.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
   </ItemGroup>

@@ -54,8 +54,6 @@ namespace ConciseDesign.WPF.CustomControls
             DependencyProperty.Register("SearchString", typeof(string), typeof(SearchBox), new PropertyMetadata(string.Empty));
 
 
-        //Source="/ConciseDesign.WPF;component/ImageResources/Close-24.png"
-
         public DependencyObject SearchButtonIcon        
         {
             get { return (DependencyObject)GetValue(SearchButtonIconProperty); }
@@ -77,10 +75,4 @@ namespace ConciseDesign.WPF.CustomControls
         }
     }
 }
-//            var _iconImage = new Image()
-//            {
-//                Source = new BitmapImage(new Uri(@"pack://application:,,,/ConciseDesign.WPF;component/ImageResources/Close-24.png")),
-//                Stretch = Stretch.Uniform,
-//                Opacity = 0.5d
-//            };
-//            SearchButtonIconProperty.OverrideMetadata(typeof(SearchBox),new FrameworkPropertyMetadata(_iconImage));
+  

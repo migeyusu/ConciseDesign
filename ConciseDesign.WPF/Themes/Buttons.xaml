@@ -3,7 +3,8 @@
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
-                    xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls">
+                    xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="BaseDefination.xaml"/>
     </ResourceDictionary.MergedDictionaries>
@@ -106,44 +107,7 @@
                 Value="5"/>
         <Setter Property="Content">
             <Setter.Value>
-                <Image Source="/ConciseDesign.WPF;component/ImageResources/Minus-48w.png" >
-                    <Image.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform Y="5"/>
-                        </TransformGroup>
-                    </Image.RenderTransform>
-                </Image>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver"
-                     Value="True">
-                <Setter Property="Background"
-                        Value="LightGray"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="MinimumButtonB"
-           TargetType="{x:Type Button}"
-           BasedOn="{StaticResource ContainerButtonStyle}">
-        <Setter Property="Padding"
-                Value="5"/>
-        <Setter Property="Content">
-            <Setter.Value>
-                <Image Source="/ConciseDesign.WPF;component/ImageResources/Minus-48.png" >
-                    <Image.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform Y="5"/>
-                        </TransformGroup>
-                    </Image.RenderTransform>
-                </Image>
+                <iconPacks:PackIconMaterial Kind="WindowMinimize" />
             </Setter.Value>
         </Setter>
         <Style.Triggers>
@@ -161,26 +125,7 @@
            BasedOn="{StaticResource ContainerButtonStyle}">
         <Setter Property="Content">
             <Setter.Value>
-                <Image Source="/ConciseDesign.WPF;component/ImageResources/Close-48w.png" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Padding"
-                Value="5"/>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver"
-                     Value="True">
-                <Setter Property="Background"
-                        Value="{StaticResource AlarmColor}"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style TargetType="{x:Type Button}"
-           x:Key="CloseButtonB"
-           BasedOn="{StaticResource ContainerButtonStyle}">
-        <Setter Property="Content">
-            <Setter.Value>
-                <Image Source="/ConciseDesign.WPF;component/ImageResources/Close-48.png" />
+                <iconPacks:PackIconMaterial Kind="Close" />
             </Setter.Value>
         </Setter>
         <Setter Property="Padding"

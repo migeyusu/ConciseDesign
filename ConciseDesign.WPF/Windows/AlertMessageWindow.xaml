@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:message="clr-namespace:ConciseDesign.WPF.Message"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Background="Transparent"
         AllowsTransparency="True"
@@ -100,23 +101,26 @@
         <GridSplitter Grid.Column="0"
                       Width="1"
                       Margin="0,15"/>
-        <Image Grid.Column="0"
-               Margin="20"
-               Stretch="Uniform">
-            <Image.Style>
-                <Style TargetType="{x:Type Image}">
-                    <Setter Property="Source"
-                            Value="/ConciseDesign.WPF;component/ImageResources/Warning-Message-128.png"/>
+        <iconPacks:PackIconMaterial Grid.Column="0"
+                                    Margin="20"
+                                    Width="50"
+                                    Height="50"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+            <iconPacks:PackIconMaterial.Style>
+                <Style TargetType="{x:Type iconPacks:PackIconMaterial}">
+                    <Setter Property="Kind"
+                            Value="AlertDecagram"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding  AlertType}"
                                      Value="{x:Static message:AlertType.Message}">
-                            <Setter Property="Source"
-                                    Value="/ConciseDesign.WPF;component/ImageResources/Message-Information-48.png"/>
+                            <Setter Property="Kind"
+                                    Value="Message"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </Image.Style>
-        </Image>
+            </iconPacks:PackIconMaterial.Style>
+        </iconPacks:PackIconMaterial>
         <TextBlock Text="{Binding Message}"
                    Foreground="White"
                    Grid.Column="1"

@@ -5,7 +5,8 @@
     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
     xmlns:local="clr-namespace:ConciseDesign.WPF"
     xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls"
-    xmlns:b="http://schemas.microsoft.com/xaml/behaviors">
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
 
     <Style TargetType="{x:Type customControls:CircularProgressBar}">
         <Setter Property="Template">
@@ -107,9 +108,9 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Border.Style>
-                                <Image Source="/ConciseDesign.WPF;component/ImageResources/Close-24.png"
-                                       Margin="5"
-                                       Opacity="0.5" />
+                                <iconPacks:PackIconMaterial Kind="CloseCircleOutline" 
+                                                            Margin="5"
+                                                            Opacity="0.5" />
                                 <b:Interaction.Triggers>
                                     <b:EventTrigger EventName="MouseDown">
                                         <b:CallMethodAction TargetObject="{Binding ElementName=textBox}"
@@ -168,8 +169,7 @@
                 Value="15" />
         <Setter Property="SearchButtonIcon">
             <Setter.Value>
-                <Image Source="/ConciseDesign.WPF;component/ImageResources/Search-Find-48.png"
-                       Stretch="Uniform" />
+                <iconPacks:PackIconMaterial Kind="Magnify" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -207,20 +207,19 @@
                                                    VerticalAlignment="Center"
                                                    Foreground="White"
                                                    FontSize="13" />
-                                        <Image x:Name="ico"
-                                               Grid.Column="1"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"
-                                               RenderOptions.BitmapScalingMode="HighQuality"
-                                               Source="/ConciseDesign.WPF;component/ImageResources/Arrowhead-Down-01-32.png"
-                                               Stretch="Uniform" />
+                                        <iconPacks:PackIconMaterial Kind="ArrowDown"
+                                                                    x:Name="ico"
+                                                                    Grid.Column="1"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    RenderOptions.BitmapScalingMode="HighQuality"/>
                                     </Grid>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsChecked"
                                                  Value="True">
                                             <Setter TargetName="ico"
-                                                    Property="Source"
-                                                    Value="/ConciseDesign.WPF;component/ImageResources/ArrowUP.png" />
+                                                    Property="Kind"
+                                                    Value="ArrowUp" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
