@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo"
-        xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls;assembly=ConciseDesign.WPF"
+        
+        
         xmlns:userControls="clr-namespace:ConciseDesign.WPF.UserControls;assembly=ConciseDesign.WPF"
+        xmlns:ConciseDesign="http://karl.concisedesign/wpf/"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <customControls:CircularProgressBar Width="80"
+        <ConciseDesign:CircularProgressBar Width="80"
                                             Height="80"
                                             Maximum="100"
                                             Thickness="16"
@@ -23,7 +25,7 @@
                         Height="50"
                         Background="DimGray"/>
             </customControls:CircularProgressBar.Content>-->
-        </customControls:CircularProgressBar>
+        </ConciseDesign:CircularProgressBar>
 
         <userControls:DialogHostControl userControls:DialogRegister.Register="MainDialog" />
     </Grid>
