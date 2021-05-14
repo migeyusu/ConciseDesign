@@ -40,9 +40,9 @@
                             Value="10,0,0,0"/>
                 </Style>
             </StackPanel.Resources>
-            <Button Command="{x:Static control:Commands.CancelDialogCommand}"
+            <Button Command="{x:Static control:DialogCommands.CancelDialogCommand}"
                    Content="取消"/>
-            <Button Command="{x:Static control:Commands.SubmitDialogCommand}"
+            <Button Command="{x:Static control:DialogCommands.SubmitDialogCommand}"
                     Content="确认"/>
         </StackPanel>
     </Grid>

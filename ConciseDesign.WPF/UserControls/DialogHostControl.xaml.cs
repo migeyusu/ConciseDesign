@@ -73,7 +73,7 @@ namespace ConciseDesign.WPF.UserControls
             return await RaiseDialogAsync(new MessageDialog() {DataContext = msg});
         }
 
-        public async Task<bool> RaiseSubmitTaskAsync(string msg)
+        public async Task<bool> RaiseSubmitAsync(string msg)
         {
             return await RaiseDialogAsync(new ConfirmDialog() {Description = msg});
         }
@@ -93,6 +93,8 @@ namespace ConciseDesign.WPF.UserControls
             VisualStateManager.GoToState(this, CloseDialogState, true);
             _executedRoutedEventHandler?.Invoke(sender, e);
             _executedRoutedEventHandler = null;
+            _autoResetEvent.Set();
+            _autoResetEvent.Dispose();
             DialogContent = null;
         }
 
@@ -112,7 +114,6 @@ namespace ConciseDesign.WPF.UserControls
         private void SubmitDialog_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, CloseDialogState, true);
-           
             //_executedRoutedEventHandler?.Invoke(sender, e);
             //_executedRoutedEventHandler = null;
             _dialogTransferObject = e.Parameter;

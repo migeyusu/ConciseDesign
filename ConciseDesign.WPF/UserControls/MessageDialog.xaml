@@ -27,7 +27,7 @@
                    FontSize="14"/>
         <!--防止root传递style -->
         <Button Style="{StaticResource FlatTextButton}"
-                Command="{x:Static control:Commands.CloseDialogCommand}"
+                Command="{x:Static control:DialogCommands.CloseDialogCommand}"
                 Height="30"
                 Width="100"
                 Margin="{StaticResource ControlMargin}"

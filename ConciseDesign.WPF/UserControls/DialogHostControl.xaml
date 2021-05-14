@@ -114,13 +114,13 @@
         </VisualStateManager.VisualStateGroups>
     </Grid>
     <UserControl.CommandBindings>
-        <CommandBinding Command="{x:Static local:Commands.OpenDialogCommand}"
+        <CommandBinding Command="{x:Static local:DialogCommands.OpenDialogCommand}"
                         Executed="OpenDialog_OnExecuted"/>
-        <CommandBinding Command="{x:Static local:Commands.CloseDialogCommand}"
+        <CommandBinding Command="{x:Static local:DialogCommands.CloseDialogCommand}"
                         Executed="CloseDialog_OnExecuted"/>
-        <CommandBinding Command="{x:Static local:Commands.CancelDialogCommand}"
+        <CommandBinding Command="{x:Static local:DialogCommands.CancelDialogCommand}"
                         Executed="CancelDialog_OnExecuted"/>
-        <CommandBinding Command="{x:Static local:Commands.SubmitDialogCommand}"
+        <CommandBinding Command="{x:Static local:DialogCommands.SubmitDialogCommand}"
                         Executed="SubmitDialog_OnExecuted"/>
     </UserControl.CommandBindings>
 </UserControl>
