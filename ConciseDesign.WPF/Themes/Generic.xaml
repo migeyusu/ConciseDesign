@@ -8,16 +8,16 @@
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
 
-    <Style TargetType="{x:Type customControls:CircularProgressBar}">
+    <Style TargetType="{x:Type customControls:CircularSlider}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type customControls:CircularProgressBar}">
+                <ControlTemplate TargetType="{x:Type customControls:CircularSlider}">
                     <Grid>
 
-                        <customControls:CircularProgress Stroke="{TemplateBinding Background}"
+                        <customControls:RoundShape Stroke="{TemplateBinding Background}"
                                                          StrokeThickness="{TemplateBinding Thickness}"
                                                          Value="100" />
-                        <customControls:CircularProgress Stroke="{TemplateBinding Foreground}"
+                        <customControls:RoundShape Stroke="{TemplateBinding Foreground}"
                                                          StrokeThickness="{TemplateBinding Thickness}"
                                                          Value="{TemplateBinding PercentageValue}" />
                         

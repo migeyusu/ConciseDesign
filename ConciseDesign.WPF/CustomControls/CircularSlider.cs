@@ -6,26 +6,26 @@ using System.Windows.Input;
 
 namespace ConciseDesign.WPF.CustomControls
 {
-    public class CircularProgressBar : ProgressBar
+    public class CircularSlider : Slider
     {
-        static CircularProgressBar()
+        static CircularSlider()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CircularProgressBar),
-                new FrameworkPropertyMetadata(typeof(CircularProgressBar)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CircularSlider),
+                new FrameworkPropertyMetadata(typeof(CircularSlider)));
         }
 
-        public CircularProgressBar() { }
+        public CircularSlider() { }
 
         public static RoutedEvent ClickEvent =
             EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler),
-                typeof(CircularProgressBar));
+                typeof(CircularSlider));
 
         public event RoutedEventHandler Click {
             add { AddHandler(ClickEvent, value); }
             remove { RemoveHandler(ClickEvent, value); }
         }
 
-        Point zeroPoint = new Point(0, 0);
+        readonly Point _zeroPoint = new Point(0, 0);
 
         protected virtual void OnClick()
         {
@@ -39,7 +39,7 @@ namespace ConciseDesign.WPF.CustomControls
             if ((int) actualWidth == (int) actualHeight) {
                 //圆形算法
                 var point = new Point(x, y);
-                var length = Point.Subtract(zeroPoint, point).Length;
+                var length = Point.Subtract(_zeroPoint, point).Length;
                 if (actualWidth < length && length < ActualWidth / 2.0) {
                     x = -x;
                     var atan = Math.Atan2(y, x) * 180.0 / Math.PI;
@@ -77,7 +77,7 @@ namespace ConciseDesign.WPF.CustomControls
 
         // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(object), typeof(CircularProgressBar),
+            DependencyProperty.Register("Content", typeof(object), typeof(CircularSlider),
                 new PropertyMetadata(null));
 
 
@@ -121,7 +121,7 @@ namespace ConciseDesign.WPF.CustomControls
 
         // Using a DependencyProperty as the backing store for Percentage.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PercentageValueProperty =
-            DependencyProperty.Register("PercentageValue", typeof(double), typeof(CircularProgressBar),
+            DependencyProperty.Register("PercentageValue", typeof(double), typeof(CircularSlider),
                 new PropertyMetadata(0d));
 
         public double Thickness {
@@ -131,7 +131,7 @@ namespace ConciseDesign.WPF.CustomControls
 
         // Using a DependencyProperty as the backing store for Thickness.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ThicknessProperty =
-            DependencyProperty.Register("Thickness", typeof(double), typeof(CircularProgressBar),
+            DependencyProperty.Register("Thickness", typeof(double), typeof(CircularSlider),
                 new PropertyMetadata(10d));
     }
 }

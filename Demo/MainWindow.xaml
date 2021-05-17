@@ -11,7 +11,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ConciseDesign:CircularProgressBar Width="80"
+        <ConciseDesign:CircularSlider Width="80"
                                             Height="80"
                                             Maximum="100"
                                             Thickness="16"
@@ -25,7 +25,7 @@
                         Height="50"
                         Background="DimGray"/>
             </customControls:CircularProgressBar.Content>-->
-        </ConciseDesign:CircularProgressBar>
+        </ConciseDesign:CircularSlider>
 
         <userControls:DialogHostControl userControls:DialogRegister.Register="MainDialog" />
     </Grid>

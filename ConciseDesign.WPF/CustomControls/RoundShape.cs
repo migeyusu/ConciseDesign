@@ -5,22 +5,22 @@ using System.Windows.Shapes;
 
 namespace ConciseDesign.WPF.CustomControls
 {
-    public class CircularProgress : Shape
+    public class RoundShape : Shape
     {
-        static CircularProgress()
+        static RoundShape()
         {
             Brush myGreenBrush = new SolidColorBrush(Color.FromArgb(255, 6, 176, 37));
             myGreenBrush.Freeze();
 
             StrokeProperty.OverrideMetadata(
-                typeof(CircularProgress),
+                typeof(RoundShape),
                 new FrameworkPropertyMetadata(myGreenBrush));
             FillProperty.OverrideMetadata(
-                typeof(CircularProgress),
+                typeof(RoundShape),
                 new FrameworkPropertyMetadata(Brushes.Transparent));
 
             StrokeThicknessProperty.OverrideMetadata(
-                typeof(CircularProgress),
+                typeof(RoundShape),
                 new FrameworkPropertyMetadata(10.0));
         }
 
@@ -39,7 +39,7 @@ namespace ConciseDesign.WPF.CustomControls
                 new CoerceValueCallback(CoerceValue)); // Coerce value callback
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(CircularProgress), valueMetadata);
+            DependencyProperty.Register("Value", typeof(double), typeof(RoundShape), valueMetadata);
 
         private static object CoerceValue(DependencyObject depObj, object baseVal)
         {
