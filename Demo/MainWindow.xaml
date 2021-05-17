@@ -16,7 +16,7 @@
                                             Maximum="100"
                                             Thickness="16"
                                             Minimum="0"
-                                            Value="100"
+                                            Value="50"
                                             Background="Yellow"
                                             Foreground="Black" 
                                             Click="CircularProgressBar_OnClick">
