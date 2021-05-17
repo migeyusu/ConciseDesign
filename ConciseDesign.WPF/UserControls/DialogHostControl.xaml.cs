@@ -20,15 +20,16 @@ namespace ConciseDesign.WPF.UserControls
         public const string OpenDialogState = "OpenDialog";
 
         public const string CloseDialogState = "CloseDialog";
-        
+
         public object DialogContent
         {
-            get { return (object)GetValue(DialogContentProperty); }
+            get { return (object) GetValue(DialogContentProperty); }
             set { SetValue(DialogContentProperty, value); }
         }
 
         public static readonly DependencyProperty DialogContentProperty =
-            DependencyProperty.Register("DialogContent", typeof(object), typeof(DialogHostControl), new PropertyMetadata(default(object)));
+            DependencyProperty.Register("DialogContent", typeof(object), typeof(DialogHostControl),
+                new PropertyMetadata(default(object)));
 
         private ExecutedRoutedEventHandler _executedRoutedEventHandler;
 
@@ -40,7 +41,7 @@ namespace ConciseDesign.WPF.UserControls
             VisualStateManager.GoToState(this, OpenDialogState, true);
         }
 
-        private  AutoResetEvent _autoResetEvent = new AutoResetEvent(false);
+        private AutoResetEvent _autoResetEvent = new AutoResetEvent(false);
 
         private bool _dialogResult;
 
@@ -48,7 +49,7 @@ namespace ConciseDesign.WPF.UserControls
 
         public Task<bool> RaiseDialogAsync(object content)
         {
-            _autoResetEvent=new AutoResetEvent(false);
+            _autoResetEvent = new AutoResetEvent(false);
             DialogContent = content;
 #if past
             VisualStateManager.GoToState(this, OpenDialogState, true);
@@ -58,7 +59,8 @@ namespace ConciseDesign.WPF.UserControls
                 return _dialogResult;
             });
 #else
-            var task = Task.Run(() => {
+            var task = Task.Run(() =>
+            {
                 _dialogResult = false;
                 _autoResetEvent.WaitOne();
                 return _dialogResult;
@@ -106,9 +108,8 @@ namespace ConciseDesign.WPF.UserControls
             _dialogTransferObject = e.Parameter;
             _dialogResult = false;
             _autoResetEvent.Set();
-            _autoResetEvent.Dispose(); 
+            _autoResetEvent.Dispose();
             DialogContent = null;
-            
         }
 
         private void SubmitDialog_OnExecuted(object sender, ExecutedRoutedEventArgs e)

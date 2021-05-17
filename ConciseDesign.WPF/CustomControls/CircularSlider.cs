@@ -14,13 +14,16 @@ namespace ConciseDesign.WPF.CustomControls
                 new FrameworkPropertyMetadata(typeof(CircularSlider)));
         }
 
-        public CircularSlider() { }
+        public CircularSlider()
+        {
+        }
 
         public static RoutedEvent ClickEvent =
             EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler),
                 typeof(CircularSlider));
 
-        public event RoutedEventHandler Click {
+        public event RoutedEventHandler Click
+        {
             add { AddHandler(ClickEvent, value); }
             remove { RemoveHandler(ClickEvent, value); }
         }
@@ -36,32 +39,45 @@ namespace ConciseDesign.WPF.CustomControls
             var y = -position.Y + ActualHeight / 2.0;
             var actualWidth = ActualWidth / 2.0 - Thickness;
             var actualHeight = ActualHeight / 2.0 - Thickness;
-            if ((int) actualWidth == (int) actualHeight) {
+            if ((int) actualWidth == (int) actualHeight)
+            {
                 //圆形算法
                 var point = new Point(x, y);
                 var length = Point.Subtract(_zeroPoint, point).Length;
-                if (actualWidth < length && length < ActualWidth / 2.0) {
+                if (actualWidth < length && length < ActualWidth / 2.0)
+                {
                     x = -x;
                     var atan = Math.Atan2(y, x) * 180.0 / Math.PI;
-                    if (atan < 0) {
+                    if (atan < 0.0d)
+                    {
                         atan = 360.0 + atan;
                     }
 
-                    //旋转90度
-                    if (atan > 90.0) {
-                        atan -= 90.0;
-                    }
-                    else {
-                        atan += 270.0;
-                    }
-
-                    var percentage = atan / 360.0 * 100;
-                    Value = (Maximum - Minimum) * percentage;
+                    this.CalculateValue((this.Maximum - this.Minimum) *
+                        ((atan <= 90.0 ? atan + 270.0 : atan - 90.0) / 360.0) + this.Minimum);
                 }
             }
 
 
             RaiseEvent(args);
+        }
+
+        protected virtual void CalculateValue(double value)
+        {
+            if (this.IsSnapToTickEnabled)
+            {
+                double num1 = this.Minimum;
+                double num2 = this.Maximum;
+                if (DoubleUtil.GreaterThan(this.TickFrequency, 0.0))
+                {
+                    num1 = this.Minimum + Math.Round((value - this.Minimum) / this.TickFrequency) * this.TickFrequency;
+                    num2 = Math.Min(this.Maximum, num1 + this.TickFrequency);
+                }
+
+                value = DoubleUtil.GreaterThanOrClose(value, (num1 + num2) * 0.5) ? num2 : num1;
+            }
+
+            this.Value = value;
         }
 
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
@@ -70,7 +86,8 @@ namespace ConciseDesign.WPF.CustomControls
             OnClick();
         }
 
-        public object Content {
+        public object Content
+        {
             get { return (object) GetValue(ContentProperty); }
             set { SetValue(ContentProperty, value); }
         }
@@ -114,7 +131,8 @@ namespace ConciseDesign.WPF.CustomControls
         /// <summary>
         /// percentage value
         /// </summary>
-        public double PercentageValue {
+        public double PercentageValue
+        {
             get { return (double) GetValue(PercentageValueProperty); }
             set { SetValue(PercentageValueProperty, value); }
         }
@@ -124,7 +142,8 @@ namespace ConciseDesign.WPF.CustomControls
             DependencyProperty.Register("PercentageValue", typeof(double), typeof(CircularSlider),
                 new PropertyMetadata(0d));
 
-        public double Thickness {
+        public double Thickness
+        {
             get { return (double) GetValue(ThicknessProperty); }
             set { SetValue(ThicknessProperty, value); }
         }
