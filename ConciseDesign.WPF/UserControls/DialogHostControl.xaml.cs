@@ -80,11 +80,24 @@ namespace ConciseDesign.WPF.UserControls
             return await RaiseDialogAsync(new ConfirmDialog() {Description = msg});
         }
 
+        /// <summary>
+        /// cancel directly without any outcome 
+        /// </summary>
+        public void CancelDialog()
+        {
+            VisualStateManager.GoToState(this, CloseDialogState, true);
+            _autoResetEvent.Set();
+            _autoResetEvent.Dispose();
+            DialogContent = null;
+        }
+        
         public DialogHostControl()
         {
             InitializeComponent();
         }
 
+        
+        
         private void OpenDialog_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, OpenDialogState, true);
@@ -103,8 +116,6 @@ namespace ConciseDesign.WPF.UserControls
         private void CancelDialog_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, CloseDialogState, true);
-            //_executedRoutedEventHandler?.Invoke(sender, e);
-            //_executedRoutedEventHandler = null;
             _dialogTransferObject = e.Parameter;
             _dialogResult = false;
             _autoResetEvent.Set();
@@ -115,8 +126,6 @@ namespace ConciseDesign.WPF.UserControls
         private void SubmitDialog_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, CloseDialogState, true);
-            //_executedRoutedEventHandler?.Invoke(sender, e);
-            //_executedRoutedEventHandler = null;
             _dialogTransferObject = e.Parameter;
             _dialogResult = true;
             _autoResetEvent.Set();
