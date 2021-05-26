@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,13 +32,11 @@ namespace ConciseDesign.WPF.UserControls
             DependencyProperty.Register("DialogContent", typeof(object), typeof(DialogHostControl),
                 new PropertyMetadata(default(object)));
 
-        private ExecutedRoutedEventHandler _executedRoutedEventHandler;
-
         //第一类base dialog
-        public void RaiseDialog(object content, ExecutedRoutedEventHandler handler)
+        [Obsolete("async better!")]
+        public void RaiseDialog(object content)
         {
             DialogContent = content;
-            _executedRoutedEventHandler = handler;
             VisualStateManager.GoToState(this, OpenDialogState, true);
         }
 
@@ -45,20 +44,10 @@ namespace ConciseDesign.WPF.UserControls
 
         private bool _dialogResult;
 
-        private object _dialogTransferObject = null;
-
         public Task<bool> RaiseDialogAsync(object content)
         {
-            _autoResetEvent = new AutoResetEvent(false);
             DialogContent = content;
-#if past
-            VisualStateManager.GoToState(this, OpenDialogState, true);
-            return Task.Run(() =>
-            {
-                _autoResetEvent.WaitOne();
-                return _dialogResult;
-            });
-#else
+            _autoResetEvent = new AutoResetEvent(false);
             var task = Task.Run(() =>
             {
                 _dialogResult = false;
@@ -67,7 +56,6 @@ namespace ConciseDesign.WPF.UserControls
             });
             VisualStateManager.GoToState(this, OpenDialogState, true);
             return task;
-#endif
         }
 
         public async Task<bool> RaiseMessageAsync(string msg)
@@ -83,21 +71,21 @@ namespace ConciseDesign.WPF.UserControls
         /// <summary>
         /// cancel directly without any outcome 
         /// </summary>
-        public void CancelDialog()
+        private void Close(object sender, ExecutedRoutedEventArgs e, bool dialogResult = true)
         {
+            e.Handled = true;//防止关闭下一级的dialog
+            _dialogResult = dialogResult;
             VisualStateManager.GoToState(this, CloseDialogState, true);
             _autoResetEvent.Set();
             _autoResetEvent.Dispose();
             DialogContent = null;
         }
-        
+
         public DialogHostControl()
         {
             InitializeComponent();
         }
 
-        
-        
         private void OpenDialog_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, OpenDialogState, true);
@@ -105,32 +93,17 @@ namespace ConciseDesign.WPF.UserControls
 
         private void CloseDialog_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            VisualStateManager.GoToState(this, CloseDialogState, true);
-            _executedRoutedEventHandler?.Invoke(sender, e);
-            _executedRoutedEventHandler = null;
-            _autoResetEvent.Set();
-            _autoResetEvent.Dispose();
-            DialogContent = null;
+            Close(sender, e);
         }
 
         private void CancelDialog_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            VisualStateManager.GoToState(this, CloseDialogState, true);
-            _dialogTransferObject = e.Parameter;
-            _dialogResult = false;
-            _autoResetEvent.Set();
-            _autoResetEvent.Dispose();
-            DialogContent = null;
+            Close(sender, e, false);
         }
 
         private void SubmitDialog_OnExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            VisualStateManager.GoToState(this, CloseDialogState, true);
-            _dialogTransferObject = e.Parameter;
-            _dialogResult = true;
-            _autoResetEvent.Set();
-            _autoResetEvent.Dispose();
-            DialogContent = null;
+            Close(sender, e, true);
         }
     }
 }

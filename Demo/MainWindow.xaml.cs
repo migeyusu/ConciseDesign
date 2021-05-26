@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ConciseDesign.WPF.UserControls;
 
 namespace Demo
 {
@@ -30,6 +31,17 @@ namespace Demo
         {
             
            
+        }
+
+        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dialogHostControl = DialogRegister.GetById("MainDialog");
+            var dialogTest = new DialogTest();
+            var dialogViewModel = new DialogViewModel(dialogTest);
+            dialogTest.DataContext = dialogViewModel;
+            await dialogHostControl.RaiseDialogAsync(dialogTest);
+            // var raiseSubmitAsync = await dialogHostControl.RaiseSubmitAsync("sadfasd");
+
         }
     }
 }

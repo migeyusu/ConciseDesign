@@ -17,7 +17,7 @@
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
     <PackageReleaseNotes>Dialoghostcontrol now can cancel directly.</PackageReleaseNotes>
-    <PackageVersion>3.5.1</PackageVersion>
+    <PackageVersion>3.6.0</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
   </PropertyGroup>

@@ -3,6 +3,7 @@ using System.Windows;
 
 namespace ConciseDesign.WPF.UserControls
 {
+    
     /*2017.8 本类也可以使用behavior实现*/
 
     /// <summary>
@@ -10,7 +11,7 @@ namespace ConciseDesign.WPF.UserControls
     /// </summary>
     public static class DialogRegister
     {
-        private static readonly ConcurrentDictionary<string, DialogHostControl> DialogHostControls =
+        internal static readonly ConcurrentDictionary<string, DialogHostControl> DialogHostControls =
             new ConcurrentDictionary<string, DialogHostControl>();
 
         public static readonly DependencyProperty RegisterProperty = DependencyProperty.RegisterAttached(

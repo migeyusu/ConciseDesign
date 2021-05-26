@@ -11,15 +11,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Button Height="20"
+                Width="80"
+                VerticalAlignment="Top"
+                Click="ButtonBase_OnClick"/>
         <ConciseDesign:CircularSlider Width="80"
-                                            Height="80"
-                                            Maximum="100"
-                                            Thickness="16"
-                                            Minimum="0"
-                                            Value="50"
-                                            Background="Yellow"
-                                            Foreground="Black" 
-                                            Click="CircularProgressBar_OnClick">
+                                      Height="80"
+                                      Maximum="100"
+                                      Thickness="16"
+                                      Minimum="0"
+                                      Value="50"
+                                      Background="Yellow"
+                                      Foreground="Black" 
+                                      Click="CircularProgressBar_OnClick">
             <!--<customControls:CircularProgressBar.Content>
                 <Border Width="50"
                         Height="50"
