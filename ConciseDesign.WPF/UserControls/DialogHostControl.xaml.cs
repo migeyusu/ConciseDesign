@@ -83,7 +83,8 @@ namespace ConciseDesign.WPF.UserControls
 
         public DialogHostControl()
         {
-            InitializeComponent();
+            this.LoadViewFromUri("/ConciseDesign.WPF;component/UserControls/DialogHostControl.xaml");
+            // InitializeComponent();
         }
 
         private void OpenDialog_OnExecuted(object sender, ExecutedRoutedEventArgs e)

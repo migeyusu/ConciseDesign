@@ -16,10 +16,11 @@
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>Dialoghostcontrol now can cancel directly.</PackageReleaseNotes>
-    <PackageVersion>3.6.0</PackageVersion>
+    <PackageReleaseNotes>Designer bug fixed</PackageReleaseNotes>
+    <PackageVersion>3.6.3</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
+    <AssemblyVersion>3.6.3</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
 	  <None Include="xixi.png">
