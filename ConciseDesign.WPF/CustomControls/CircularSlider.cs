@@ -14,6 +14,18 @@ namespace ConciseDesign.WPF.CustomControls
                 new FrameworkPropertyMetadata(typeof(CircularSlider)));
         }
 
+        public static readonly DependencyProperty IsReadonlyProperty = DependencyProperty.Register(
+            "IsReadonly", typeof(bool), typeof(CircularSlider), new PropertyMetadata(default(bool)));
+
+        /// <summary>
+        /// 只读模式时，作为progressbar
+        /// </summary>
+        public bool IsReadonly
+        {
+            get { return (bool) GetValue(IsReadonlyProperty); }
+            set { SetValue(IsReadonlyProperty, value); }
+        }  
+
         public CircularSlider()
         {
         }
@@ -32,7 +44,7 @@ namespace ConciseDesign.WPF.CustomControls
 
         protected virtual void OnClick()
         {
-            RoutedEventArgs args = new RoutedEventArgs(ClickEvent, this);
+            var args = new RoutedEventArgs(ClickEvent, this);
             var position = Mouse.GetPosition(this);
             //转换坐标系
             var x = position.X - ActualWidth / 2.0;
@@ -83,6 +95,10 @@ namespace ConciseDesign.WPF.CustomControls
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonUp(e);
+            if (IsReadonly)
+            {
+                return;
+            }
             OnClick();
         }
 

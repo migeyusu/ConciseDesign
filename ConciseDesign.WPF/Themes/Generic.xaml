@@ -13,14 +13,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type customControls:CircularSlider}">
                     <Grid>
-
                         <customControls:RoundShape Stroke="{TemplateBinding Background}"
-                                                         StrokeThickness="{TemplateBinding Thickness}"
-                                                         Value="100" />
+                                                   StrokeThickness="{TemplateBinding Thickness}"
+                                                   Value="100" />
                         <customControls:RoundShape Stroke="{TemplateBinding Foreground}"
                                                          StrokeThickness="{TemplateBinding Thickness}"
                                                          Value="{TemplateBinding PercentageValue}" />
-                        
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
