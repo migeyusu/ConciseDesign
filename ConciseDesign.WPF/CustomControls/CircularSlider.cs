@@ -24,7 +24,7 @@ namespace ConciseDesign.WPF.CustomControls
         {
             get { return (bool) GetValue(IsReadonlyProperty); }
             set { SetValue(IsReadonlyProperty, value); }
-        }  
+        }
 
         public CircularSlider()
         {
@@ -99,6 +99,7 @@ namespace ConciseDesign.WPF.CustomControls
             {
                 return;
             }
+
             OnClick();
         }
 
@@ -141,7 +142,7 @@ namespace ConciseDesign.WPF.CustomControls
         /// <returns>percentage value</returns>
         private static double ProcessValue(double maximum, double minimum, double value)
         {
-            return (value) / (maximum - minimum) * 100;
+            return (value - minimum) / (maximum - minimum) * 100;
         }
 
         /// <summary>

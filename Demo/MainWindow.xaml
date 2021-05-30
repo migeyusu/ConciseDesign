@@ -16,6 +16,7 @@
                 VerticalAlignment="Top"
                 Click="ButtonBase_OnClick"/>
         <ConciseDesign:CircularSlider Width="80"
+                                      IsReadonly="True"
                                       Height="80"
                                       Maximum="100"
                                       Thickness="16"

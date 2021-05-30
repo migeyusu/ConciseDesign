@@ -16,8 +16,8 @@
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>Add readonly  to circularslider</PackageReleaseNotes>
-    <PackageVersion>3.6.4</PackageVersion>
+    <PackageReleaseNotes>Fixed circularSlider bug. </PackageReleaseNotes>
+    <PackageVersion>3.8.0</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
     <AssemblyVersion>3.6.3</AssemblyVersion>
