@@ -25,7 +25,18 @@
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ContentPresenter Content="{TemplateBinding Header}" />
+                            <Border Background="{TemplateBinding Background}"
+                                    Height="{TemplateBinding HeaderHeight}">
+                                <TextBlock Text="{TemplateBinding HeaderString}"
+                                           FontFamily="{TemplateBinding FontFamily}"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           FontStretch="{TemplateBinding FontStretch}"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           FontStyle="{TemplateBinding FontStyle}"
+                                           FontWeight="{TemplateBinding FontWeight}"
+                                           Margin="20,0"
+                                           VerticalAlignment="Center"/>
+                            </Border>
                             <ContentPresenter Grid.Row="1"
                                               Content="{TemplateBinding Content}" />
                             <StackPanel Grid.Row="2"
@@ -36,6 +47,8 @@
                                            BasedOn="{StaticResource FlatTextButton}">
                                         <Setter Property="Width"
                                                 Value="100" />
+                                        <Setter Property="Height"
+                                                Value="35"/>
                                         <Setter Property="Margin"
                                                 Value="0,10,10,10" />
                                     </Style>
@@ -52,16 +65,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Header">
-            <Setter.Value>
-                <Border Background="DodgerBlue"
-                        Height="200">
-                    <TextBlock Text="{TemplateBinding}"
-                               Margin="10"
-                               Foreground="White"/>
-                </Border>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="HeaderHeight"
+                Value="45"/>
+        <Setter Property="FontSize"
+                Value="15"/>
     </Style>
     <Style TargetType="{x:Type customControls:CircularSlider}">
         <Setter Property="Template">

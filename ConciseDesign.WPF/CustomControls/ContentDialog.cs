@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
-using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using ConciseDesign.WPF.Command;
 using ConciseDesign.WPF.UserControls;
 
@@ -19,24 +19,23 @@ namespace ConciseDesign.WPF.CustomControls
                 new FrameworkPropertyMetadata(typeof(ContentDialog)));
         }
 
-        
-        public static readonly DependencyProperty HeaderBackgroundProperty = DependencyProperty.Register(
-            "HeaderBackground", typeof(Brush), typeof(ContentDialog), new PropertyMetadata(Brushes.DodgerBlue));
-        
-        public Brush HeaderBackground
+        public static readonly DependencyProperty HeaderHeightProperty = DependencyProperty.Register(
+            "HeaderHeight", typeof(double), typeof(ContentDialog), new PropertyMetadata(80d));
+
+        public double HeaderHeight
         {
-            get { return (Brush) GetValue(HeaderBackgroundProperty); }
-            set { SetValue(HeaderBackgroundProperty, value); }
+            get { return (double) GetValue(HeaderHeightProperty); }
+            set { SetValue(HeaderHeightProperty, value); }
         }
         
-        public object Header
+        public string HeaderString
         {
-            get { return (object) GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
+            get { return (string) GetValue(HeaderStringProperty); }
+            set { SetValue(HeaderStringProperty, value); }
         }
 
-        public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(object), typeof(ContentDialog),
+        public static readonly DependencyProperty HeaderStringProperty =
+            DependencyProperty.Register("HeaderString", typeof(string), typeof(ContentDialog),
                 new PropertyMetadata(null));
 
         public FrameworkElement Content

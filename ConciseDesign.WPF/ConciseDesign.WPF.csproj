@@ -16,8 +16,8 @@
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>Fixed circularSlider bug. </PackageReleaseNotes>
-    <PackageVersion>3.8.0</PackageVersion>
+    <PackageReleaseNotes>Include dialogcontent</PackageReleaseNotes>
+    <PackageVersion>3.9.0</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
     <AssemblyVersion>3.6.3</AssemblyVersion>

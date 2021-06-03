@@ -11,11 +11,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
-        <ConciseDesign:ContentDialog Header="asd;gasdjg"
+        <ConciseDesign:ColorTip></ConciseDesign:ColorTip>
+        <ConciseDesign:ContentDialog HeaderString="asd;gasdjg"
+                                     Background="DodgerBlue"
                                      Width="200"
                                      Height="200"
-                                     
                                      VerticalAlignment="Center"
                                      HorizontalAlignment="Center">
             
