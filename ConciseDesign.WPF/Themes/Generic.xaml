@@ -6,8 +6,63 @@
     xmlns:local="clr-namespace:ConciseDesign.WPF"
     xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
-
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:control="clr-namespace:ConciseDesign.WPF.UserControls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Buttons.xaml"/>
+        <ResourceDictionary Source="Converters.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="{x:Type customControls:ContentDialog}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type customControls:ContentDialog}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter Content="{TemplateBinding Header}" />
+                            <ContentPresenter Grid.Row="1"
+                                              Content="{TemplateBinding Content}" />
+                            <StackPanel Grid.Row="2"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Button}"
+                                           BasedOn="{StaticResource FlatTextButton}">
+                                        <Setter Property="Width"
+                                                Value="100" />
+                                        <Setter Property="Margin"
+                                                Value="0,10,10,10" />
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Button Content="取消"
+                                        Command="{x:Static control:DialogCommands.CancelDialogCommand}"
+                                        Visibility="{TemplateBinding CanCancel,Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <Button Content="提交"
+                                        x:Name="PART_SubmitButton"
+                                        Visibility="{TemplateBinding CanSubmit,Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Header">
+            <Setter.Value>
+                <Border Background="DodgerBlue"
+                        Height="200">
+                    <TextBlock Text="{TemplateBinding}"
+                               Margin="10"
+                               Foreground="White"/>
+                </Border>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="{x:Type customControls:CircularSlider}">
         <Setter Property="Template">
             <Setter.Value>

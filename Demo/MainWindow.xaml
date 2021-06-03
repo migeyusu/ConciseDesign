@@ -11,11 +11,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        
+        <ConciseDesign:ContentDialog Header="asd;gasdjg"
+                                     Width="200"
+                                     Height="200"
+                                     
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center">
+            
+        </ConciseDesign:ContentDialog>
         <Button Height="20"
                 Width="80"
                 VerticalAlignment="Top"
                 Click="ButtonBase_OnClick"/>
         <ConciseDesign:CircularSlider Width="80"
+                                      Visibility="Collapsed"
                                       IsReadonly="True"
                                       Height="80"
                                       Maximum="100"

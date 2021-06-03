@@ -3,6 +3,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="BaseDefination.xaml"/>
     </ResourceDictionary.MergedDictionaries>
+    
     <!--<ItemsPanelTemplate x:Key="FluidMoveStackPanel">
         <StackPanel>
             <i:Interaction.Behaviors>

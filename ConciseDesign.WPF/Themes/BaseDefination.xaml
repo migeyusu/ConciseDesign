@@ -4,7 +4,7 @@
                     xmlns:converters="clr-namespace:ConciseDesign.WPF.Converters"
                     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions">
     <Thickness x:Key="ControlMargin">0,10,0,0</Thickness>
-
+    
     <!--经过测试，如果在xaml中定义commands 然后发布到nuget后，使用的工程无法运行 -->
     <!--<RoutedCommand x:Key="OpenDialogCommand"/>
     <RoutedCommand x:Key="CloseDialogCommand" />
