@@ -6,6 +6,10 @@ using System.Windows.Data;
 
 namespace ConciseDesign.WPF.Behavior
 {
+    
+    /// <summary>
+    /// support mvvm for selecteditems on listbox
+    /// </summary>
     public class BindableSelectedItemListBoxBehavior : Behavior<ListBox>
     {
         /// <summary>

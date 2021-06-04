@@ -11,8 +11,7 @@ namespace ConciseDesign.WPF.CustomControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ColorTip), new FrameworkPropertyMetadata(typeof(ColorTip)));
         }
 
-
-
+        
         public Brush TipBrush
         {
             get { return (Brush)GetValue(TipBrushProperty); }
@@ -30,10 +29,7 @@ namespace ConciseDesign.WPF.CustomControls
 
         public static readonly DependencyProperty TipRadiusProperty =       
             DependencyProperty.Register("TipRadius", typeof(double), typeof(ColorTip), new PropertyMetadata((double)10.00));
-
-
-
-
+        
 
         public string Text
         {

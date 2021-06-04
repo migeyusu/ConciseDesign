@@ -1,0 +1,15 @@
+动画的几个特性：
+1.简化在控件代码下的storyboard
+2.支持statemachine的控件绑定
+3.支持各个控件动画的暴露
+4.支持统一调度各个控件的动画
+5.支持控件动画注册到任意级别statemachine
+6.支持datatrigger动画、eventtrigger（enter、exit）的简化
+7.支持绑定到控件的事件（类似6）[Transitionz.Translate]
+8.通用的、简化的类，支持所有控件的载入时的常规动作，譬如缓动 [XamlFlair]
+
+3，4，5的目的都是statemachine和控件动画的解耦
+可以设想这种做法：每个控件都可以响应特定的vm属性（statemachine状态值），这样就相当于实现了状态机，
+不需要在控件级别定义状态机。
+这种做法简化了写法，但是可能会导致状态的无法统一管理，代码不够直观。
+当前，这种做法需要使用style+datatrigger方式，非常不方便

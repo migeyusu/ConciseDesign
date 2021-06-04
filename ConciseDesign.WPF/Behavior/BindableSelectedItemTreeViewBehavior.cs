@@ -5,6 +5,10 @@ using Microsoft.Xaml.Behaviors;
 
 namespace ConciseDesign.WPF.Behavior
 {
+    
+    /// <summary>
+    /// support mvvm for selecteditems on treeview
+    /// </summary>
     public class BindableSelectedItemTreeViewBehavior: Behavior<TreeView>
     {
         #region SelectedItem Property
@@ -33,7 +37,6 @@ namespace ConciseDesign.WPF.Behavior
         protected override void OnAttached()
         {
             base.OnAttached();
-            
             this.AssociatedObject.SelectedItemChanged += OnTreeViewSelectedItemChanged;
         }
 

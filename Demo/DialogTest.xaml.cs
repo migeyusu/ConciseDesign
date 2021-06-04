@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using ConciseDesign.WPF.Command;
+using ConciseDesign.WPF.Message;
 using ConciseDesign.WPF.UserControls;
 
 namespace Demo
@@ -23,7 +24,9 @@ namespace Demo
 
         public BaseCommand BaseCommand => new BaseCommand((o =>
         {
-            _userControl.CancelDialog();
+            var desktopMessageService = new DesktopMessageService();
+            desktopMessageService.Raise("asdf",AlertType.Warning);
+            // _userControl.CancelDialog();
         }));
     }
 }

@@ -6,7 +6,7 @@ using ConciseDesign.WPF.Message;
 namespace ConciseDesign.WPF.Windows
 {
     /// <summary>
-    /// MessageWindow.xaml µÄ½»»¥Âß¼­
+    /// MessageWindow.xaml çš„äº¤äº’é€»è¾‘
     /// </summary>
     public partial class AlertMessageWindow : Window
     {
@@ -45,7 +45,7 @@ namespace ConciseDesign.WPF.Windows
 
         //// Using a DependencyProperty as the backing store for Message.  This enables animation, styling, binding, etc...
         //public static readonly DependencyProperty MessageProperty =
-        //    DependencyProperty.Register("Message", typeof(string), typeof(MessageWindow), new PropertyMetadata("ÎŞĞÅÏ¢"));
+        //    DependencyProperty.Register("Message", typeof(string), typeof(MessageWindow), new PropertyMetadata("æ— ä¿¡æ¯"));
 
         private void MessageWindow_OnLoaded(object sender, RoutedEventArgs e)
         {

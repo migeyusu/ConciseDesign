@@ -4,28 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo"
-        
-        
+        d:DataContext="{d:DesignInstance local:MainWindow}"
         xmlns:userControls="clr-namespace:ConciseDesign.WPF.UserControls;assembly=ConciseDesign.WPF"
         xmlns:ConciseDesign="http://karl.concisedesign/wpf/"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" 
+        Height="450" 
+        Width="800">
     <Grid>
-        <ConciseDesign:ColorTip></ConciseDesign:ColorTip>
-        <ConciseDesign:ContentDialog HeaderString="asd;gasdjg"
-                                     Background="DodgerBlue"
-                                     Width="200"
-                                     Height="200"
-                                     VerticalAlignment="Center"
-                                     HorizontalAlignment="Center">
-            
-        </ConciseDesign:ContentDialog>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup Name="DefaultGroup">
+                <VisualState Name="Default"/>
+                <VisualState Name="Active">
+                    <Storyboard TargetName="Button">
+                        <DoubleAnimation From="0" To="200" Duration="0:0:1"
+                                         Storyboard.TargetProperty="(FrameworkElement.Width)"/>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ConciseDesign:StateMachineBehavior State="{Binding TestState}" UseTransitions="True"/>
         <Button Height="20"
                 Width="80"
+                x:Name="Button"
                 VerticalAlignment="Top"
-                Click="ButtonBase_OnClick"/>
+                Click="ButtonBase_OnClick" />
         <ConciseDesign:CircularSlider Width="80"
-                                      Visibility="Collapsed"
                                       IsReadonly="True"
                                       Height="80"
                                       Maximum="100"
@@ -33,13 +37,8 @@
                                       Minimum="0"
                                       Value="50"
                                       Background="Yellow"
-                                      Foreground="Black" 
-                                      Click="CircularProgressBar_OnClick">
-            <!--<customControls:CircularProgressBar.Content>
-                <Border Width="50"
-                        Height="50"
-                        Background="DimGray"/>
-            </customControls:CircularProgressBar.Content>-->
+                                      Foreground="Black">
+            
         </ConciseDesign:CircularSlider>
 
         <userControls:DialogHostControl userControls:DialogRegister.Register="MainDialog" />

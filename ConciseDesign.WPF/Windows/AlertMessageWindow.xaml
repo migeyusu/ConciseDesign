@@ -83,11 +83,6 @@
                     <Setter Property="Background"
                             Value="Red" />
                     <Style.Triggers>
-                        <!--<DataTrigger Binding="{Binding AlertType}"
-                                     Value="{x:Static message:AlertType.Warning}">
-                            <Setter Property="Background"
-                                    Value="Red" />
-                        </DataTrigger>-->
                         <DataTrigger Binding="{Binding AlertType}"
                                      Value="{x:Static message:AlertType.Message}">
                             <Setter Property="Background"
@@ -100,13 +95,20 @@
         <!--default：warning-->
         <GridSplitter Grid.Column="0"
                       Width="1"
+                      Background="White"
                       Margin="0,15"/>
         <iconPacks:PackIconMaterial Grid.Column="0"
                                     Margin="20"
-                                    Width="50"
-                                    Height="50"
+                                    Width="35"
+                                    Height="35"
                                     VerticalAlignment="Center"
-                                    HorizontalAlignment="Center">
+                                    HorizontalAlignment="Center"
+                                    Foreground="White">
+            <iconPacks:PackIconMaterial.Effect>
+                <DropShadowEffect BlurRadius="6"
+                                  RenderingBias="Performance"
+                                  ShadowDepth="1"/>
+            </iconPacks:PackIconMaterial.Effect>
             <iconPacks:PackIconMaterial.Style>
                 <Style TargetType="{x:Type iconPacks:PackIconMaterial}">
                     <Setter Property="Kind"
@@ -126,8 +128,8 @@
                    Grid.Column="1"
                    TextWrapping="Wrap"
                    TextTrimming="CharacterEllipsis"
-                   FontSize="14"
-                   VerticalAlignment="Top"
+                   FontSize="16"
+                   VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    Margin="20,10" />
     </Grid>
