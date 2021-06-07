@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:converters="clr-namespace:ConciseDesign.WPF.Converters"
-                    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions">
+                    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors">
     <Thickness x:Key="ControlMargin">0,10,0,0</Thickness>
     
     <!--经过测试，如果在xaml中定义commands 然后发布到nuget后，使用的工程无法运行 -->
@@ -60,15 +61,14 @@
                       ShadowDepth="2"
                       Color="DimGray"
                       Direction="-90" />
-    <!--<ei:FluidMoveBehavior x:Key="DefaultFluidMoveBehavior"
+    <b:FluidMoveBehavior x:Key="DefaultFluidMoveBehavior"
                           AppliesTo="Children"
                           Duration="0:0:0.6">
-        <ei:FluidMoveBehavior.EaseY>
+        <b:FluidMoveBehavior.EaseY>
             <CircleEase EasingMode="EaseOut" />
-        </ei:FluidMoveBehavior.EaseY>
-        <ei:FluidMoveBehavior.EaseX>
+        </b:FluidMoveBehavior.EaseY>
+        <b:FluidMoveBehavior.EaseX>
             <CircleEase EasingMode="EaseOut" />
-        </ei:FluidMoveBehavior.EaseX>
-    </ei:FluidMoveBehavior>-->
-
+        </b:FluidMoveBehavior.EaseX>
+    </b:FluidMoveBehavior>
 </ResourceDictionary>

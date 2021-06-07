@@ -1,24 +1,25 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="BaseDefination.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
-    <!--<ItemsPanelTemplate x:Key="FluidMoveStackPanel">
+    <ItemsPanelTemplate x:Key="FluidMoveStackPanel">
         <StackPanel>
-            <i:Interaction.Behaviors>
+            <b:Interaction.Behaviors>
                 <StaticResource ResourceKey="DefaultFluidMoveBehavior" />
-            </i:Interaction.Behaviors>
+            </b:Interaction.Behaviors>
         </StackPanel>
     </ItemsPanelTemplate>
 
     <ItemsPanelTemplate x:Key="FluidMoveWrapPanel">
         <WrapPanel>
-            <i:Interaction.Behaviors>
+            <b:Interaction.Behaviors>
                 <StaticResource ResourceKey="DefaultFluidMoveBehavior" />
-            </i:Interaction.Behaviors>
+            </b:Interaction.Behaviors>
         </WrapPanel>
-    </ItemsPanelTemplate>-->
+    </ItemsPanelTemplate>
     <Style x:Key="BlockGrid"
            TargetType="{x:Type Grid}">
         <Setter Property="Background"
