@@ -312,13 +312,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type customControls:ColorTip}">
-                    <StackPanel Orientation="Horizontal">
+                    <DockPanel>
                         <Ellipse Width="{TemplateBinding TipRadius}"
                                  Height="{TemplateBinding TipRadius}"
-                                 Fill="{TemplateBinding TipBrush}" />
+                                 Fill="{TemplateBinding TipBrush}" 
+                                 DockPanel.Dock="Left"/>
                         <TextBlock Text="{TemplateBinding Text}"
-                                   Margin="5,0,0,0" />
-                    </StackPanel>
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   DockPanel.Dock="Right"/>
+                    </DockPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

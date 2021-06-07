@@ -63,7 +63,7 @@
                       Direction="-90" />
     <b:FluidMoveBehavior x:Key="DefaultFluidMoveBehavior"
                           AppliesTo="Children"
-                          Duration="0:0:0.6">
+                          Duration="0:0:0.3">
         <b:FluidMoveBehavior.EaseY>
             <CircleEase EasingMode="EaseOut" />
         </b:FluidMoveBehavior.EaseY>

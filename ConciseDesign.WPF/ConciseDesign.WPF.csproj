@@ -16,8 +16,8 @@
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>Recover the 'defaultfulidmovebehavior' static resource.</PackageReleaseNotes>
-    <PackageVersion>3.10.0</PackageVersion>
+    <PackageReleaseNotes>reset 'defaultfulidmovebehavior' duration</PackageReleaseNotes>
+    <PackageVersion>3.10.1</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
     <AssemblyVersion>3.6.3</AssemblyVersion>
