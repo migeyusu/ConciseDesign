@@ -187,11 +187,14 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
-    <!--仿material button -->
+    
     <Style x:Key="FlatTextButton"
            TargetType="{x:Type Button}"
            BasedOn="{StaticResource ContainerButtonStyle}">
+        <Setter Property="Width"
+                Value="100"/>
+        <Setter Property="Height"
+                Value="30"/>
         <Setter Property="Foreground"
                 Value="White"/>
         <Setter Property="Background"
@@ -201,6 +204,38 @@
                      Value="True">
                 <Setter Property="Background"
                         Value="DodgerBlue" />
+            </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="RoyalBlue"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="CancelFlatButtonStyle"
+           TargetType="{x:Type Button}"
+           BasedOn="{StaticResource ContainerButtonStyle}">
+        <Setter Property="Width"
+                Value="100"/>
+        <Setter Property="Height"
+                Value="30"/>
+        <Setter Property="Foreground"
+                Value="Black"/>
+        <Setter Property="Background"
+                Value="White"/>
+        <Setter Property="BorderThickness"
+                Value="1"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="DarkGray" />
+            </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="Gray"/>
             </Trigger>
         </Style.Triggers>
     </Style>

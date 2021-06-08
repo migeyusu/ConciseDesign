@@ -16,8 +16,8 @@
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>reset 'defaultfulidmovebehavior' duration</PackageReleaseNotes>
-    <PackageVersion>3.10.1</PackageVersion>
+    <PackageReleaseNotes>Add new content window</PackageReleaseNotes>
+    <PackageVersion>3.11.0</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
     <AssemblyVersion>3.6.3</AssemblyVersion>

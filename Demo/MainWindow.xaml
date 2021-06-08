@@ -23,7 +23,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <ConciseDesign:StateMachineBehavior State="{Binding TestState}" UseTransitions="True"/>
+        <!-- <ConciseDesign:StateMachineBehavior State="{Binding TestState}" UseTransitions="True"/> -->
         <Button Height="20"
                 Width="80"
                 x:Name="Button"

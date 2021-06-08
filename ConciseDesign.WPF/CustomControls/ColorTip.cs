@@ -30,7 +30,6 @@ namespace ConciseDesign.WPF.CustomControls
         public static readonly DependencyProperty TipRadiusProperty =       
             DependencyProperty.Register("TipRadius", typeof(double), typeof(ColorTip), new PropertyMetadata((double)10.00));
         
-
         public string Text
         {
             get { return (string)GetValue(TextProperty); }

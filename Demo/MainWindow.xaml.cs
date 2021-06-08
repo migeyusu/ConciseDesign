@@ -15,8 +15,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ConciseDesign.WPF.CustomControls;
 using ConciseDesign.WPF.Message;
 using ConciseDesign.WPF.UserControls;
+using ConciseDesign.WPF.Windows;
 using Demo.Annotations;
 
 namespace Demo
@@ -57,9 +59,19 @@ namespace Demo
            
         }
 
-        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            this.TestState = TestState.Active;
+            var submitWindow = new SubmitWindow()
+            {
+                ContentView = new Rectangle()
+                {
+                    Width = 1000,
+                    Height = 1000,
+                    Fill = Brushes.Red
+                }
+            };
+            submitWindow.Show();
+            // this.TestState = TestState.Active;
             /*var desktopMessageService = new DesktopMessageService();
             desktopMessageService.Raise("asdf",AlertType.Message);*/
             /*var dialogHostControl = DialogRegister.GetById("MainDialog");
@@ -68,7 +80,6 @@ namespace Demo
             dialogTest.DataContext = dialogViewModel;
             await dialogHostControl.RaiseDialogAsync(dialogTest);*/
             // var raiseSubmitAsync = await dialogHostControl.RaiseSubmitAsync("sadfasd");
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
