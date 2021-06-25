@@ -5,6 +5,7 @@ using System.Windows.Media;
 using ConciseDesign.WPF.Command;
 using ConciseDesign.WPF.UserControls;
 using FORCEBuild.Concurrency;
+using FORCEBuild.Configuration;
 using Microsoft.Win32;
 
 namespace ConciseDesign.WPF.Dialog
@@ -21,7 +22,7 @@ namespace ConciseDesign.WPF.Dialog
         public DialogHostControl DialogHost { get; set; }
 
         public ResourcesManager<ImageSource> ResourcesManager { get; private set; }
-
+        
         public int MinimumCount { get; set; }
 
         /// <summary>

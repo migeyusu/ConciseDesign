@@ -17,7 +17,7 @@
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
     <PackageReleaseNotes>Add new content window</PackageReleaseNotes>
-    <PackageVersion>3.11.0</PackageVersion>
+    <PackageVersion>3.12.0</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
     <AssemblyVersion>3.6.3</AssemblyVersion>
@@ -33,7 +33,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FORCEBuild" Version="3.1.5" />
+    <PackageReference Include="FORCEBuild" Version="3.2.1" />
     <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.8.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
