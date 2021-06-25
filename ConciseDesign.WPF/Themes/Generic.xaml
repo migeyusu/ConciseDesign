@@ -42,21 +42,12 @@
                             <StackPanel Grid.Row="2"
                                         Orientation="Horizontal"
                                         HorizontalAlignment="Right">
-                                <StackPanel.Resources>
-                                    <Style TargetType="{x:Type Button}"
-                                           BasedOn="{StaticResource FlatTextButton}">
-                                        <Setter Property="Width"
-                                                Value="100" />
-                                        <Setter Property="Height"
-                                                Value="35"/>
-                                        <Setter Property="Margin"
-                                                Value="0,10,10,10" />
-                                    </Style>
-                                </StackPanel.Resources>
                                 <Button Content="取消"
+                                        Style="{StaticResource CancelFlatButtonStyle}"
                                         Command="{x:Static control:DialogCommands.CancelDialogCommand}"
                                         Visibility="{TemplateBinding CanCancel,Converter={StaticResource BooleanToVisibilityConverter}}" />
                                 <Button Content="提交"
+                                        Style="{StaticResource FlatTextButton}"
                                         x:Name="PART_SubmitButton"
                                         Visibility="{TemplateBinding CanSubmit,Converter={StaticResource BooleanToVisibilityConverter}}" />
                             </StackPanel>

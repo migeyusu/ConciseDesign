@@ -9,15 +9,15 @@
     <WarningLevel>4</WarningLevel>
     <UserSecretsId>af371226-ad84-4862-ad23-b30a8fdc5121</UserSecretsId>
     <Version>3.4.0</Version>
-    <Description>WPF UI Library</Description>
+    <Description>WPF Light UI Library (under development)</Description>
     <Copyright>2021</Copyright>
     <PackageIcon>xixi.png</PackageIcon>
     <PackageProjectUrl>https://github.com/migeyusu/ConciseDesign</PackageProjectUrl>
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>Add new content window</PackageReleaseNotes>
-    <PackageVersion>3.12.0</PackageVersion>
+    <PackageReleaseNotes>Add ui pool, all user to prerender the uielemnt</PackageReleaseNotes>
+    <PackageVersion>3.13.0</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
     <AssemblyVersion>3.6.3</AssemblyVersion>
