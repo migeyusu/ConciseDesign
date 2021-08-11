@@ -16,16 +16,15 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type customControls:ContentDialog}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid Background="White">
+                        <Grid Background="{TemplateBinding Background}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Border Background="{TemplateBinding Background}"
+                            <Border Background="{TemplateBinding  HeaderBackground}"
                                     Height="{TemplateBinding HeaderHeight}">
                                 <TextBlock Text="{TemplateBinding HeaderString}"
                                            FontFamily="{TemplateBinding FontFamily}"
@@ -38,15 +37,18 @@
                                            VerticalAlignment="Center"/>
                             </Border>
                             <ContentPresenter Grid.Row="1"
+                                              Margin="{TemplateBinding Padding}"
                                               Content="{TemplateBinding Content}" />
                             <StackPanel Grid.Row="2"
                                         Orientation="Horizontal"
-                                        HorizontalAlignment="Right">
+                                        HorizontalAlignment="Right"
+                                        Margin="10">
                                 <Button Content="取消"
                                         Style="{StaticResource CancelFlatButtonStyle}"
                                         Command="{x:Static control:DialogCommands.CancelDialogCommand}"
                                         Visibility="{TemplateBinding CanCancel,Converter={StaticResource BooleanToVisibilityConverter}}" />
                                 <Button Content="提交"
+                                        Margin="10,0,0,0"
                                         Style="{StaticResource FlatTextButton}"
                                         x:Name="PART_SubmitButton"
                                         Visibility="{TemplateBinding CanSubmit,Converter={StaticResource BooleanToVisibilityConverter}}" />
@@ -57,9 +59,15 @@
             </Setter.Value>
         </Setter>
         <Setter Property="HeaderHeight"
-                Value="45"/>
+                Value="35"/>
         <Setter Property="FontSize"
-                Value="15"/>
+                Value="14"/>
+        <Setter Property="Padding"
+                Value="10"/>
+        <Setter Property="Background"
+                Value="White"/>
+        <Setter Property="CanCancel"
+                Value="True"/>
     </Style>
     <Style TargetType="{x:Type customControls:CircularSlider}">
         <Setter Property="Template">

@@ -11,7 +11,33 @@
     
     <RoutedCommand x:Key="SubmitDialogCommand" />
     <RoutedCommand x:Key="CancelDialogCommand"/>-->
-    
+    <!--<Color x:Key="Primary50">#e3f2fd</Color>
+    <Color x:Key="Primary50Foreground">#DD000000</Color>
+    <Color x:Key="Primary100">#bbdefb</Color>
+    <Color x:Key="Primary100Foreground">#DD000000</Color>
+    <Color x:Key="Primary200">#90caf9</Color>
+    <Color x:Key="Primary200Foreground">#DD000000</Color>
+    <Color x:Key="Primary300">#64b5f6</Color>
+    <Color x:Key="Primary300Foreground">#DD000000</Color>
+    <Color x:Key="Primary400">#42a5f5</Color>
+    <Color x:Key="Primary400Foreground">#DD000000</Color>
+    <Color x:Key="Primary500">#2196f3</Color>
+    <Color x:Key="Primary500Foreground">#FFFFFFFF</Color>
+    <Color x:Key="Primary600">#1e88e5</Color>
+    <Color x:Key="Primary600Foreground">#DDFFFFFF</Color>
+    <Color x:Key="Primary700">#1976d2</Color>
+    <Color x:Key="Primary700Foreground">#DDFFFFFF</Color>
+    <Color x:Key="Primary800">#1565c0</Color>
+    <Color x:Key="Primary800Foreground">#DDFFFFFF</Color>
+    <Color x:Key="Primary900">#0d47a1</Color>
+    <Color x:Key="Primary900Foreground">#DDFFFFFF</Color>
+    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{StaticResource Primary200}"/>
+    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="{StaticResource Primary200Foreground}" />
+    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="{StaticResource Primary500}" />
+    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="{StaticResource Primary500Foreground}" />
+    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="{StaticResource Primary700}"  />
+    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="{StaticResource Primary700Foreground}" />-->
+
     <converters:MenuAutoWidthConverter x:Key="MenuAutoWidthConverter"/> 
     <RoutedUICommand x:Key="Previous"
                      Text="pageback" />
@@ -22,9 +48,7 @@
     <SolidColorBrush x:Key="BlockCover">#7FFFFFFF</SolidColorBrush>
     <SolidColorBrush x:Key="BlockBase">#33FFFFFF</SolidColorBrush>
     <SolidColorBrush x:Key="Listboxitemback">#FF4FD7ED</SolidColorBrush>
-    <SolidColorBrush x:Key="Mouselectback">#FF86C3FF</SolidColorBrush>
     <SolidColorBrush x:Key="UnFocusColor">DimGray</SolidColorBrush>
-    <SolidColorBrush x:Key="FlatCover">DodgerBlue</SolidColorBrush>
     <SolidColorBrush x:Key="AlarmColor">Red</SolidColorBrush>
     <SolidColorBrush x:Key="DialogBlockBlackColor">#FF242424</SolidColorBrush>
     <SolidColorBrush x:Key="MaterialLightBack">#FFFAFAFA</SolidColorBrush>

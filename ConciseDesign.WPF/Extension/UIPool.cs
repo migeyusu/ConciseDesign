@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
 using Castle.MicroKernel.Registration;
@@ -24,6 +25,7 @@ namespace ConciseDesign.WPF.Extension
                 var uiElement = _objectGenerator.Invoke();
                 _objects.Add(uiElement);
             }
+
         }
 
         public void PreRender()

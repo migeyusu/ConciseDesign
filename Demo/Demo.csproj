@@ -43,6 +43,10 @@
       <HintPath>..\packages\MahApps.Metro.IconPacks.Material.4.8.0\lib\net47\MahApps.Metro.IconPacks.Material.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MaterialDesignColors, Version=2.0.0.2422, Culture=neutral, PublicKeyToken=df2a72020bd7962a">
+      <HintPath>..\packages\MaterialDesignColors.2.0.0\lib\net452\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Windows.Design.Extensibility, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>

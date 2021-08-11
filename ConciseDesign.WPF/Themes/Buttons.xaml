@@ -198,17 +198,17 @@
         <Setter Property="Foreground"
                 Value="White"/>
         <Setter Property="Background"
-                Value="CornflowerBlue" />
+                Value="{DynamicResource PrimaryHueMidBrush}" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver"
                      Value="True">
                 <Setter Property="Background"
-                        Value="DodgerBlue" />
+                        Value="{DynamicResource PrimaryHueLightBrush}" />
             </Trigger>
             <Trigger Property="IsPressed"
                      Value="True">
                 <Setter Property="Background"
-                        Value="RoyalBlue"/>
+                        Value="{DynamicResource PrimaryHueDarkBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -230,12 +230,12 @@
             <Trigger Property="IsMouseOver"
                      Value="True">
                 <Setter Property="Background"
-                        Value="DarkGray" />
+                        Value="LightGray" />
             </Trigger>
             <Trigger Property="IsPressed"
                      Value="True">
                 <Setter Property="Background"
-                        Value="Gray"/>
+                        Value="DarkGray"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -365,7 +365,7 @@
            x:Key="BlueBlockImgButton"
            BasedOn="{StaticResource ContainerButtonStyle}">
         <Setter Property="Background"
-                Value="{StaticResource FlatCover}"/>
+                Value="{DynamicResource PrimaryHueMidBrush}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver"
                      Value="True">
@@ -398,7 +398,7 @@
             <Trigger Property="IsMouseOver"
                      Value="True">
                 <Setter Property="Background"
-                        Value="{StaticResource FlatCover}"/>
+                        Value="{DynamicResource PrimaryHueMidBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -14,6 +14,7 @@
         <ResourceDictionary Source="MenuControls.xaml" />
         <ResourceDictionary Source="Texts.xaml" />
         <ResourceDictionary Source="Generic.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/materialdesigncolor.blue.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

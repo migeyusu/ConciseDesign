@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -36,14 +37,14 @@ namespace ConciseDesign.WPF.CustomControls
                 0.0, // Default value
                 FrameworkPropertyMetadataOptions.AffectsRender,
                 null, // Property changed callback
-                new CoerceValueCallback(CoerceValue)); // Coerce value callback
+                CoerceValue); // Coerce value callback
 
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(double), typeof(RoundShape), valueMetadata);
 
         private static object CoerceValue(DependencyObject depObj, object baseVal)
         {
-            double val = (double) baseVal;
+            var val = (double) baseVal;
             val = Math.Min(val, 99.999);
             val = Math.Max(val, 0.0);
             return val;
@@ -51,39 +52,43 @@ namespace ConciseDesign.WPF.CustomControls
 
         protected override Geometry DefiningGeometry {
             get {
-                double startAngle = 90.0;
-                double endAngle = 90.0 - ((Value / 100.0) * 360.0);
-
-                double maxWidth = Math.Max(0.0, RenderSize.Width - StrokeThickness);
-                double maxHeight = Math.Max(0.0, RenderSize.Height - StrokeThickness);
-
-                double xStart = maxWidth / 2.0 * Math.Cos(startAngle * Math.PI / 180.0);
-                double yStart = maxHeight / 2.0 * Math.Sin(startAngle * Math.PI / 180.0);
-
-                double xEnd = maxWidth / 2.0 * Math.Cos(endAngle * Math.PI / 180.0);
-                double yEnd = maxHeight / 2.0 * Math.Sin(endAngle * Math.PI / 180.0);
-
-                StreamGeometry geom = new StreamGeometry();
-                using (StreamGeometryContext ctx = geom.Open()) {
-                    ctx.BeginFigure(
-                        new Point((RenderSize.Width / 2.0) + xStart,
-                            (RenderSize.Height / 2.0) - yStart),
+                var startAngle = 90.0;
+                var endAngle = 90.0 - ((Value / 100.0) * 360.0);
+                var maxWidth = Math.Max(0.0, RenderSize.Width - StrokeThickness);
+                var maxHeight = Math.Max(0.0, RenderSize.Height - StrokeThickness);
+                var xStart = maxWidth / 2.0 * Math.Cos(startAngle * Math.PI / 180.0);
+                var yStart = maxHeight / 2.0 * Math.Sin(startAngle * Math.PI / 180.0);
+                var xEnd = maxWidth / 2.0 * Math.Cos(endAngle * Math.PI / 180.0);
+                var yEnd = maxHeight / 2.0 * Math.Sin(endAngle * Math.PI / 180.0);
+                var streamGeometry = new StreamGeometry();
+                var endPoint = new Point(RenderSize.Width / 2.0 + xEnd,
+                    RenderSize.Height / 2.0 - yEnd);
+                using (var context = streamGeometry.Open()) {
+                    context.BeginFigure(
+                        new Point(RenderSize.Width / 2.0 + xStart,
+                            RenderSize.Height / 2.0 - yStart),
                         true, // Filled
                         false); // Closed
-                    ctx.ArcTo(
-                        new Point((RenderSize.Width / 2.0) + xEnd,
-                            (RenderSize.Height / 2.0) - yEnd),
+                    
+                    context.ArcTo(
+                        endPoint,
                         new Size(maxWidth / 2.0, maxHeight / 2),
                         0.0, // rotationAngle
                         (startAngle - endAngle) > 180, // greater than 180 deg?
                         SweepDirection.Clockwise,
                         true, // isStroked
                         false);
-                    //    ctx.LineTo(new Point((RenderSize.Width / 2.0), (RenderSize.Height / 2.0)), true, true);                }
-
-                    return geom;
+                    return streamGeometry;
                 }
             }
         }
+        
+        void DrawBezierFigure(StreamGeometryContext ctx, PathFigure figure)
+        {
+            ctx.BeginFigure(figure.StartPoint, figure.IsFilled, figure.IsClosed);
+            foreach(var segment in figure.Segments.OfType<BezierSegment>())
+                ctx.BezierTo(segment.Point1, segment.Point2, segment.Point3, segment.IsStroked, segment.IsSmoothJoin);
+        }
+        
     }
 }

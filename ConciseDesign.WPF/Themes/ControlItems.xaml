@@ -278,7 +278,7 @@
                                      Value="True">
                                 <Setter TargetName="bd"
                                         Property="Background"
-                                        Value="{StaticResource Mouselectback}" />
+                                        Value="{DynamicResource PrimaryHueLightBrush}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -321,7 +321,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Rectangle Height="20"
-                       Fill="{StaticResource FlatCover}"
+                       Fill="{DynamicResource PrimaryHueMidBrush}"
                        Visibility="Collapsed"
                        x:Name="rect" />
             <Border Grid.Column="2"
@@ -348,7 +348,7 @@
                      Value="True">
                 <Setter TargetName="bd"
                         Property="Background"
-                        Value="{StaticResource Mouselectback}" />
+                        Value="{DynamicResource PrimaryHueLightBrush}" />
             </Trigger>
             <EventTrigger RoutedEvent="TreeViewItem.Selected">
                 <BeginStoryboard>

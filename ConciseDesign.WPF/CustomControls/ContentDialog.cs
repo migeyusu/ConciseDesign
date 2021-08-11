@@ -38,6 +38,15 @@ namespace ConciseDesign.WPF.CustomControls
             DependencyProperty.Register("HeaderString", typeof(string), typeof(ContentDialog),
                 new PropertyMetadata(null));
 
+        public static readonly DependencyProperty HeaderBackgroundProperty = DependencyProperty.Register(
+            "HeaderBackground", typeof(Brush), typeof(ContentDialog), new PropertyMetadata(Brushes.DodgerBlue));
+
+        public Brush HeaderBackground
+        {
+            get { return (Brush) GetValue(HeaderBackgroundProperty); }
+            set { SetValue(HeaderBackgroundProperty, value); }
+        }
+        
         public FrameworkElement Content
         {
             get { return (FrameworkElement) GetValue(ContentProperty); }

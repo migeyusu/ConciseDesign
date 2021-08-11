@@ -128,13 +128,13 @@
             <Trigger Property="IsChecked"
                      Value="True">
                 <Setter Property="Background"
-                        Value="{StaticResource FlatCover}"
+                        Value="{DynamicResource PrimaryHueMidBrush}"
                         TargetName="img" />
             </Trigger>
             <Trigger Property="IsMouseOver"
                      Value="True">
                 <Setter Property="Background"
-                        Value="{StaticResource Mouselectback}"
+                        Value="{DynamicResource PrimaryHueLightBrush}"
                         TargetName="img" />
             </Trigger>
         </ControlTemplate.Triggers>
@@ -316,7 +316,7 @@
                         <Trigger Property="IsMouseOver"
                                  Value="True">
                             <Setter Property="Background"
-                                    Value="{StaticResource Mouselectback}"
+                                    Value="{DynamicResource PrimaryHueLightBrush}"
                                     TargetName="bd" />
                         </Trigger>
                     </ControlTemplate.Triggers>
