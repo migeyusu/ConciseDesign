@@ -28,11 +28,11 @@ namespace Demo
         Default,
         Active,
     }
-    
+
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window,INotifyPropertyChanged
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private TestState _testState;
 
@@ -55,8 +55,6 @@ namespace Demo
 
         private void CircularProgressBar_OnClick(object sender, RoutedEventArgs e)
         {
-            
-           
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -70,7 +68,9 @@ namespace Demo
                     Fill = Brushes.Red
                 }
             };
-            submitWindow.Show();
+            if (submitWindow.ShowDialog() == true)
+            {
+            }
             // this.TestState = TestState.Active;
             /*var desktopMessageService = new DesktopMessageService();
             desktopMessageService.Raise("asdf",AlertType.Message);*/
@@ -88,6 +88,12 @@ namespace Demo
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private async void ControlDialogButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dialogHostControl = DialogRegister.GetById("MainDialog");
+            await dialogHostControl.RaiseMessageAsync("asdf");
         }
     }
 }

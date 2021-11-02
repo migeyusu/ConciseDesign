@@ -17,10 +17,10 @@
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
     <PackageReleaseNotes>include materialdesign colors</PackageReleaseNotes>
-    <PackageVersion>3.15.0</PackageVersion>
+    <PackageVersion>3.16.0</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
-    <AssemblyVersion>3.6.3</AssemblyVersion>
+    <AssemblyVersion>3.16.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DefineConstants>TRACE</DefineConstants>

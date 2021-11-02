@@ -12,47 +12,41 @@
         Height="450" 
         Width="800">
     <Grid>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup Name="DefaultGroup">
-                <VisualState Name="Default"/>
-                <VisualState Name="Active">
-                    <Storyboard TargetName="Button">
-                        <DoubleAnimation From="0" To="200" Duration="0:0:1"
-                                         Storyboard.TargetProperty="(FrameworkElement.Width)"/>
-                    </Storyboard>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        <Grid>
+            <ConciseDesign:ContentDialog Width="400"
+                                         HeaderBackground="Aqua"
+                                         HeaderHeight="35"
+                                         HeaderString="vf asdfll;weroowon"
+                                         Background="White"
+                                         CanCancel="True"
+                                         Height="300"
+                                         Padding="30"
+                                         BorderBrush="Black"
+                                         BorderThickness="2">
+                <ConciseDesign:ContentDialog.Content>
+                    <ConciseDesign:CircularSlider Width="80"
+                                                  Height="80"
+                                                  Maximum="100"
+                                                  Thickness="16"
+                                                  Minimum="0"
+                                                  Value="50"
+                                                  Background="Yellow"
+                                                  Foreground="Black"/>
+                </ConciseDesign:ContentDialog.Content>
+            </ConciseDesign:ContentDialog>
+
+            <userControls:DialogHostControl userControls:DialogRegister.Register="MainDialog" />
+        </Grid>
         <!-- <ConciseDesign:StateMachineBehavior State="{Binding T
                 Width="80"estState}" UseTransitions="True"/> -->
-        <Button Height="20"
-                x:Name="Button"
-                VerticalAlignment="Top"
-                Click="ButtonBase_OnClick" />
-
-
-        <ConciseDesign:ContentDialog Width="400"
-                                     HeaderBackground="Aqua"
-                                     HeaderHeight="35"
-                                     HeaderString="vf asdfll;weroowon"
-                                     Background="White"
-                                     CanCancel="True"
-                                     Height="300"
-                                     Padding="30"
-                                     BorderBrush="Black"
-                                     BorderThickness="2">
-            <ConciseDesign:ContentDialog.Content>
-                <ConciseDesign:CircularSlider Width="80"
-                                              Height="80"
-                                              Maximum="100"
-                                              Thickness="16"
-                                              Minimum="0"
-                                              Value="50"
-                                              Background="Yellow"
-                                              Foreground="Black"/>
-            </ConciseDesign:ContentDialog.Content>
-        </ConciseDesign:ContentDialog>
-
-        <userControls:DialogHostControl userControls:DialogRegister.Register="MainDialog" />
+        <StackPanel VerticalAlignment="Top"
+                    HorizontalAlignment="Left">
+            <Button Height="30"
+                    Content="Window Dialog"
+                    Click="ButtonBase_OnClick" />
+            <Button Height="30"
+                    Content="Control Dialog"
+                    Click="ControlDialogButtonBase_OnClick"/>            
+        </StackPanel>
     </Grid>
 </Window>
