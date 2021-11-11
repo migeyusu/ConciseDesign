@@ -90,10 +90,21 @@ namespace Demo
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        Guid _guid = Guid.NewGuid();
+
         private async void ControlDialogButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             var dialogHostControl = DialogRegister.GetById("MainDialog");
-            await dialogHostControl.RaiseMessageAsync("asdf");
+            await dialogHostControl.RaiseMessageAsync("asdf",_guid);
+        }
+
+        private void Check_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dialogHostControl = DialogRegister.GetById("MainDialog");
+            if (dialogHostControl.Contains(_guid))
+            {
+                Debugger.Break();
+            }
         }
     }
 }

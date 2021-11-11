@@ -46,7 +46,10 @@
                     Click="ButtonBase_OnClick" />
             <Button Height="30"
                     Content="Control Dialog"
-                    Click="ControlDialogButtonBase_OnClick"/>            
+                    Click="ControlDialogButtonBase_OnClick"/>       
+            <Button Height="30"
+                    Content="check"
+                    Click="Check_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>

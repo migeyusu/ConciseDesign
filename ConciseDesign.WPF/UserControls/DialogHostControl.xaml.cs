@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -47,41 +48,46 @@ namespace ConciseDesign.WPF.UserControls
         public static readonly DependencyProperty DialogContentProperty =
             DependencyProperty.Register("DialogContent", typeof(object), typeof(DialogHostControl),
                 new PropertyMetadata(default(object)));
-
-        // private readonly AutoResetEvent _autoResetEvent = new AutoResetEvent(false);
+        
+        private ConcurrentQueue<DialogEntry> _dialogEntriesQueue = new ConcurrentQueue<DialogEntry>();
 
         /// <summary>
-        /// 由于命令总是从ui thread发出，不需要线程安全处理
+        /// raise message as dialog content
         /// </summary>
-        private Queue<DialogEntry> _dialogEntries = new Queue<DialogEntry>();
-
-        // private bool _dialogResult;
-
-        public async Task<bool> RaiseMessageAsync(string msg)
+        /// <param name="msg"></param>
+        /// <param name="dialogId">trace dialog status</param>
+        /// <returns></returns>
+        public async Task RaiseMessageAsync(string msg, Guid dialogId = default)
         {
-            return await RaiseDialogAsync(new MessageDialog() {DataContext = msg});
+            await RaiseDialogAsync(new MessageDialog() {DataContext = msg}, dialogId);
         }
 
-        public async Task<bool> RaiseSubmitAsync(string msg)
+        /// <summary>
+        /// dialog with acceptance
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="dialogId">trace dialog status</param>
+        /// <returns></returns>
+        public async Task<bool> RaiseSubmitAsync(string msg, Guid dialogId = default)
         {
-            return await RaiseDialogAsync(new ConfirmDialog() {Description = msg});
+            return await RaiseDialogAsync(new ConfirmDialog() {Description = msg}, dialogId);
         }
 
-        public Task<bool> RaiseDialogAsync(object content)
+        public Task<bool> RaiseDialogAsync(object content, Guid dialogId = default)
         {
             var dialogEntry = new DialogEntry()
             {
                 DialogContent = content,
+                Id = dialogId,
             };
-            _dialogEntries.Enqueue(dialogEntry);
+            _dialogEntriesQueue.Enqueue(dialogEntry);
             LoopDialog();
             return dialogEntry.TaskCompletionSource.Task;
-            /*var task = Task.Run(() =>
-                {
-                    _dialogResult = false;
-                    _autoResetEvent.WaitOne();
-                    return _dialogResult;
-                });*/
+        }
+
+        public bool Contains(Guid dialogId)
+        {
+            return _dialogEntriesQueue.Any(entry => entry.Id == dialogId);
         }
 
         /// <summary>
@@ -93,7 +99,8 @@ namespace ConciseDesign.WPF.UserControls
             // _dialogResult = dialogResult;
             VisualStateManager.GoToState(this, CloseDialogState, true);
             DialogContent = null;
-            var dialogEntry = _dialogEntries.Dequeue();
+            
+            _dialogEntriesQueue.TryDequeue(out var dialogEntry);
             dialogEntry.TaskCompletionSource.SetResult(dialogResult);
             IsDialogOpened = false;
             LoopDialog();
@@ -101,14 +108,13 @@ namespace ConciseDesign.WPF.UserControls
 
         private void LoopDialog()
         {
-            if (!IsDialogOpened && _dialogEntries.Any())
+            if (!IsDialogOpened &&_dialogEntriesQueue.TryPeek(out var dialogEntry))
             {
                 IsDialogOpened = true;
-                this.DialogContent = _dialogEntries.Peek().DialogContent;
+                this.DialogContent = dialogEntry.DialogContent;
                 VisualStateManager.GoToState(this, OpenDialogState, true);
             }
         }
-
 
         public DialogHostControl()
         {
@@ -144,6 +150,8 @@ namespace ConciseDesign.WPF.UserControls
             public TaskCompletionSource<bool> TaskCompletionSource { get; }
 
             public object DialogContent { get; set; }
+
+            public Guid Id { get; set; }
 
             public DialogEntry()
             {
