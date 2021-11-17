@@ -8,7 +8,7 @@
     <AssemblyName>ConciseDesign.WPF</AssemblyName>
     <WarningLevel>4</WarningLevel>
     <UserSecretsId>af371226-ad84-4862-ad23-b30a8fdc5121</UserSecretsId>
-    <Version>3.4.0</Version>
+    <Version>3.17.0</Version>
     <Description>WPF Light UI Library (under development)</Description>
     <Copyright>2021</Copyright>
     <PackageIcon>xixi.png</PackageIcon>
@@ -16,11 +16,11 @@
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>Add id for tracing dialog status in  dialoghostcontrol</PackageReleaseNotes>
-    <PackageVersion>3.16.1</PackageVersion>
+    <PackageReleaseNotes>Upgrade reference version, add IDialogContent to SubmitWindow.xaml.cs</PackageReleaseNotes>
+    <PackageVersion>3.17.0</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
-    <AssemblyVersion>3.16.1</AssemblyVersion>
+    <AssemblyVersion>3.17.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DefineConstants>TRACE</DefineConstants>
@@ -33,7 +33,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FORCEBuild" Version="3.2.2.1" />
+    <PackageReference Include="FORCEBuild" Version="3.4.0" />
     <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.8.0" />
     <PackageReference Include="MaterialDesignColors" Version="2.0.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
