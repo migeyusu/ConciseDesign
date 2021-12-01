@@ -14,9 +14,7 @@
     <Grid>
         <Grid>
             <ConciseDesign:ContentDialog Width="400"
-                                         HeaderBackground="Aqua"
-                                         HeaderHeight="35"
-                                         HeaderString="vf asdfll;weroowon"
+                                         Header="vf asdfll;weroowon"
                                          Background="White"
                                          CanCancel="True"
                                          Height="300"

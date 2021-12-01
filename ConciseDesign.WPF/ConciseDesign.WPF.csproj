@@ -16,11 +16,11 @@
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>Upgrade reference version, add IDialogContent to SubmitWindow.xaml.cs</PackageReleaseNotes>
-    <PackageVersion>3.17.0</PackageVersion>
+    <PackageReleaseNotes>Add parameter support to dialoghostcontrol</PackageReleaseNotes>
+    <PackageVersion>3.18.2</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
-    <AssemblyVersion>3.17.0</AssemblyVersion>
+    <AssemblyVersion>3.18.2</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DefineConstants>TRACE</DefineConstants>

@@ -7,10 +7,11 @@
     xmlns:customControls="clr-namespace:ConciseDesign.WPF.CustomControls"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-    xmlns:control="clr-namespace:ConciseDesign.WPF.UserControls">
+    xmlns:control="clr-namespace:ConciseDesign.WPF.UserControls"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Buttons.xaml"/>
-        <ResourceDictionary Source="Converters.xaml"/>
+        <ResourceDictionary Source="Buttons.xaml" />
+        <ResourceDictionary Source="Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="{x:Type customControls:ContentDialog}">
         <Setter Property="Template">
@@ -24,18 +25,9 @@
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Border Background="{TemplateBinding  HeaderBackground}"
-                                    Height="{TemplateBinding HeaderHeight}">
-                                <TextBlock Text="{TemplateBinding HeaderString}"
-                                           FontFamily="{TemplateBinding FontFamily}"
-                                           FontSize="{TemplateBinding FontSize}"
-                                           FontStretch="{TemplateBinding FontStretch}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontStyle="{TemplateBinding FontStyle}"
-                                           FontWeight="{TemplateBinding FontWeight}"
-                                           Margin="20,0"
-                                           VerticalAlignment="Center"/>
-                            </Border>
+                            <ContentPresenter Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              ContentStringFormat="{TemplateBinding HeaderStringFormat}" />
                             <ContentPresenter Grid.Row="1"
                                               Margin="{TemplateBinding Padding}"
                                               Content="{TemplateBinding Content}" />
@@ -59,15 +51,27 @@
             </Setter.Value>
         </Setter>
         <Setter Property="HeaderHeight"
-                Value="35"/>
+                Value="35" />
         <Setter Property="FontSize"
-                Value="14"/>
+                Value="14" />
         <Setter Property="Padding"
-                Value="10"/>
+                Value="10" />
         <Setter Property="Background"
-                Value="White"/>
+                Value="White" />
         <Setter Property="CanCancel"
-                Value="True"/>
+                Value="True" />
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate DataType="{x:Type system:String}">
+                    <Border Background="{DynamicResource PrimaryHueLightBrush}"
+                            Height="35">
+                        <TextBlock Text="{Binding}"
+                                   VerticalAlignment="Center"
+                                   Margin="20,0,0,0"/>
+                    </Border>                    
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     <Style TargetType="{x:Type customControls:CircularSlider}">
         <Setter Property="Template">
@@ -78,8 +82,8 @@
                                                    StrokeThickness="{TemplateBinding Thickness}"
                                                    Value="100" />
                         <customControls:RoundShape Stroke="{TemplateBinding Foreground}"
-                                                         StrokeThickness="{TemplateBinding Thickness}"
-                                                         Value="{TemplateBinding PercentageValue}" />
+                                                   StrokeThickness="{TemplateBinding Thickness}"
+                                                   Value="{TemplateBinding PercentageValue}" />
                         <ContentPresenter Content="{TemplateBinding Content}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -167,7 +171,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Border.Style>
-                                <iconPacks:PackIconMaterial Kind="CloseCircleOutline" 
+                                <iconPacks:PackIconMaterial Kind="CloseCircleOutline"
                                                             Margin="5"
                                                             Opacity="0.5" />
                                 <b:Interaction.Triggers>
@@ -271,7 +275,7 @@
                                                                     Grid.Column="1"
                                                                     HorizontalAlignment="Center"
                                                                     VerticalAlignment="Center"
-                                                                    RenderOptions.BitmapScalingMode="HighQuality"/>
+                                                                    RenderOptions.BitmapScalingMode="HighQuality" />
                                     </Grid>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsChecked"
@@ -314,12 +318,12 @@
                     <DockPanel>
                         <Ellipse Width="{TemplateBinding TipRadius}"
                                  Height="{TemplateBinding TipRadius}"
-                                 Fill="{TemplateBinding TipBrush}" 
-                                 DockPanel.Dock="Left"/>
+                                 Fill="{TemplateBinding TipBrush}"
+                                 DockPanel.Dock="Left" />
                         <TextBlock Text="{TemplateBinding Text}"
                                    Margin="5,0,0,0"
                                    VerticalAlignment="Center"
-                                   DockPanel.Dock="Right"/>
+                                   DockPanel.Dock="Right" />
                     </DockPanel>
                 </ControlTemplate>
             </Setter.Value>

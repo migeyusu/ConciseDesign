@@ -17,26 +17,25 @@ namespace ConciseDesign.WPF.UserControls
 
         public static readonly RoutedCommand CancelDialogCommand = new RoutedCommand("Cancel", typeof(DialogCommands));
 
-        public static void CancelDialog(this Control userControl)
+        public static void CancelDialog(this Control userControl, object parameter = null)
         {
-            CancelDialogCommand.Execute(null, userControl);
+            CancelDialogCommand.Execute(parameter, userControl);
         }
 
-        public static void CloseDialog(this Control control)
+        public static void CloseDialog(this Control control, object parameter = null)
         {
-            CloseDialogCommand.Execute(null,control);
+            CloseDialogCommand.Execute(parameter, control);
         }
 
-        public static void SubmitDialog(this Control control)
+        public static void SubmitDialog(this Control control, object parameter = null)
         {
-            SubmitDialogCommand.Execute(null,control);
-        }
-        
-        public static void OpenDialog(this Control control)
-        {
-            OpenDialogCommand.Execute(null,control);
+            SubmitDialogCommand.Execute(parameter, control);
         }
 
+        public static void OpenDialog(this Control control, object parameter = null)
+        {
+            OpenDialogCommand.Execute(parameter, control);
+        }
     }
 
     public enum DialogAction

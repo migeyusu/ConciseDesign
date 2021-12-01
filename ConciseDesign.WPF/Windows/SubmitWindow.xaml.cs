@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using ConciseDesign.WPF.CustomControls;
 
 namespace ConciseDesign.WPF.Windows
@@ -23,7 +24,10 @@ namespace ConciseDesign.WPF.Windows
 
         public static readonly DependencyProperty ContentViewProperty = DependencyProperty.Register(
             "ContentView", typeof(object), typeof(SubmitWindow), new PropertyMetadata(default(object)));
-
+        
+        /// <summary>
+        /// Real content
+        /// </summary>
         public object ContentView
         {
             get { return (object) GetValue(ContentViewProperty); }

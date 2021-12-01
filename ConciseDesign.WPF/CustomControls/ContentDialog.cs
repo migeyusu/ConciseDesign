@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -9,7 +10,7 @@ using ConciseDesign.WPF.UserControls;
 namespace ConciseDesign.WPF.CustomControls
 {
     [TemplatePart(Name = "PART_SubmitButton", Type = typeof(Button))]
-    public class ContentDialog : Control
+    public class ContentDialog : HeaderedContentControl
     {
         public const string SubmitButtonName = "PART_SubmitButton";
 
@@ -22,12 +23,14 @@ namespace ConciseDesign.WPF.CustomControls
         public static readonly DependencyProperty HeaderHeightProperty = DependencyProperty.Register(
             "HeaderHeight", typeof(double), typeof(ContentDialog), new PropertyMetadata(80d));
 
+        [Obsolete("Use header instead")]
         public double HeaderHeight
         {
             get { return (double) GetValue(HeaderHeightProperty); }
             set { SetValue(HeaderHeightProperty, value); }
         }
         
+        [Obsolete("Use header instead")]
         public string HeaderString
         {
             get { return (string) GetValue(HeaderStringProperty); }
@@ -41,25 +44,13 @@ namespace ConciseDesign.WPF.CustomControls
         public static readonly DependencyProperty HeaderBackgroundProperty = DependencyProperty.Register(
             "HeaderBackground", typeof(Brush), typeof(ContentDialog), new PropertyMetadata(Brushes.DodgerBlue));
 
+        [Obsolete("Use header instead")]
         public Brush HeaderBackground
         {
             get { return (Brush) GetValue(HeaderBackgroundProperty); }
             set { SetValue(HeaderBackgroundProperty, value); }
         }
         
-        public FrameworkElement Content
-        {
-            get { return (FrameworkElement) GetValue(ContentProperty); }
-            set { SetValue(ContentProperty, value); }
-        }
-
-        public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(FrameworkElement), typeof(ContentDialog),
-                new PropertyMetadata(null));
-
-        /// <summary>
-        /// 是否显示取消按钮
-        /// </summary>
         public bool CanCancel
         {
             get { return (bool) GetValue(CanCancelProperty); }
@@ -72,7 +63,8 @@ namespace ConciseDesign.WPF.CustomControls
         public static readonly DependencyProperty DialogContentModelProperty = DependencyProperty.Register(
             "DialogContentModel", typeof(IDialogContent), typeof(ContentDialog),
             new PropertyMetadata(default(IDialogContent)));
-
+        
+        [Obsolete("Submit will be called on Content property")]
         public IDialogContent DialogContentModel
         {
             get { return (IDialogContent) GetValue(DialogContentModelProperty); }
@@ -101,9 +93,9 @@ namespace ConciseDesign.WPF.CustomControls
         private void SubmitButtonOnClick(object sender, RoutedEventArgs e)
         {
             e.Handled = true;
-            if (DialogContentModel != null)
+            if (Content is IDialogContent dialogContent)
             {
-                if (!DialogContentModel.TrySubmit())
+                if (!dialogContent.TrySubmit())
                 {
                     return;
                 }

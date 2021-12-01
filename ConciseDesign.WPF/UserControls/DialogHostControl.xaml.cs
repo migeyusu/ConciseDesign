@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +21,15 @@ namespace ConciseDesign.WPF.UserControls
         public const string OpenDialogState = "OpenDialog";
 
         public const string CloseDialogState = "CloseDialog";
+
+        public static readonly DependencyProperty LastCommandParameterProperty = DependencyProperty.Register(
+            "LastCommandParameter", typeof(object), typeof(DialogHostControl), new PropertyMetadata(default(object)));
+
+        public object LastCommandParameter
+        {
+            get { return (object) GetValue(LastCommandParameterProperty); }
+            set { SetValue(LastCommandParameterProperty, value); }
+        }
 
         public static readonly DependencyProperty IsDialogOpenedProperty = DependencyProperty.Register(
             "IsDialogOpened", typeof(bool), typeof(DialogHostControl), new PropertyMetadata(default(bool)));
@@ -48,8 +55,8 @@ namespace ConciseDesign.WPF.UserControls
         public static readonly DependencyProperty DialogContentProperty =
             DependencyProperty.Register("DialogContent", typeof(object), typeof(DialogHostControl),
                 new PropertyMetadata(default(object)));
-        
-        private ConcurrentQueue<DialogEntry> _dialogEntriesQueue = new ConcurrentQueue<DialogEntry>();
+
+        private readonly ConcurrentQueue<DialogEntry> _dialogEntriesQueue = new ConcurrentQueue<DialogEntry>();
 
         /// <summary>
         /// raise message as dialog content
@@ -73,6 +80,12 @@ namespace ConciseDesign.WPF.UserControls
             return await RaiseDialogAsync(new ConfirmDialog() {Description = msg}, dialogId);
         }
 
+        /// <summary>
+        /// raise view for a dialog content
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="dialogId"></param>
+        /// <returns></returns>
         public Task<bool> RaiseDialogAsync(object content, Guid dialogId = default)
         {
             var dialogEntry = new DialogEntry()
@@ -81,7 +94,7 @@ namespace ConciseDesign.WPF.UserControls
                 Id = dialogId,
             };
             _dialogEntriesQueue.Enqueue(dialogEntry);
-            LoopDialog();
+            RaiseDialog();
             return dialogEntry.TaskCompletionSource.Task;
         }
 
@@ -95,21 +108,22 @@ namespace ConciseDesign.WPF.UserControls
         /// </summary>
         private void Close(ExecutedRoutedEventArgs e, bool dialogResult = true)
         {
+            LastCommandParameter = e.Parameter;
             e.Handled = true; //防止关闭下一级的dialog
             // _dialogResult = dialogResult;
             VisualStateManager.GoToState(this, CloseDialogState, true);
             DialogContent = null;
-            
             _dialogEntriesQueue.TryDequeue(out var dialogEntry);
             dialogEntry.TaskCompletionSource.SetResult(dialogResult);
             IsDialogOpened = false;
-            LoopDialog();
+            RaiseDialog();
         }
 
-        private void LoopDialog()
+        private void RaiseDialog()
         {
-            if (!IsDialogOpened &&_dialogEntriesQueue.TryPeek(out var dialogEntry))
+            if (!IsDialogOpened && _dialogEntriesQueue.TryPeek(out var dialogEntry))
             {
+                LastCommandParameter = null;
                 IsDialogOpened = true;
                 this.DialogContent = dialogEntry.DialogContent;
                 VisualStateManager.GoToState(this, OpenDialogState, true);
