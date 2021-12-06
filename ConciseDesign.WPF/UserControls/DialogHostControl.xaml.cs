@@ -108,9 +108,12 @@ namespace ConciseDesign.WPF.UserControls
         /// </summary>
         private void Close(ExecutedRoutedEventArgs e, bool dialogResult = true)
         {
+            if (!IsDialogOpened)
+            {
+                return;
+            }
             LastCommandParameter = e.Parameter;
             e.Handled = true; //防止关闭下一级的dialog
-            // _dialogResult = dialogResult;
             VisualStateManager.GoToState(this, CloseDialogState, true);
             DialogContent = null;
             _dialogEntriesQueue.TryDequeue(out var dialogEntry);

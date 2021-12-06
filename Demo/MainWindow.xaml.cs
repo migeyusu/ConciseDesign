@@ -94,17 +94,25 @@ namespace Demo
 
         private async void ControlDialogButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var dialogHostControl = DialogRegister.GetById("MainDialog");
-            await dialogHostControl.RaiseMessageAsync("asdf",_guid);
+            await DialogHost.RaiseMessageAsync("asdf",_guid);
         }
 
         private void Check_OnClick(object sender, RoutedEventArgs e)
         {
-            var dialogHostControl = DialogRegister.GetById("MainDialog");
-            if (dialogHostControl.Contains(_guid))
+            if (DialogHost.Contains(_guid))
             {
                 Debugger.Break();
             }
+        }
+
+        private Lazy<DialogHostControl> dialogHostControlLazy =
+            new Lazy<DialogHostControl>((() => DialogRegister.GetById("MainDialog")));
+
+        private DialogHostControl DialogHost => dialogHostControlLazy.Value;
+        
+        private void CloseButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            DialogHost.CloseDialog();
         }
     }
 }

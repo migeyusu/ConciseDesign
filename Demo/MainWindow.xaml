@@ -48,6 +48,8 @@
             <Button Height="30"
                     Content="check"
                     Click="Check_OnClick"/>
+            <Button Click="CloseButton_OnClick"
+                    Content="关闭"></Button>
         </StackPanel>
     </Grid>
 </Window>
