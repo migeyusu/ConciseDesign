@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,6 +46,16 @@ namespace ConciseDesign.WPF.UserControls
             set { SetValue(IsDialogOpenedProperty, value); }
         }
 
+        public static readonly DependencyProperty CurrentDialogProperty = DependencyProperty.Register(
+            "CurrentDialog", typeof(DialogEntry), typeof(DialogHostControl),
+            new PropertyMetadata(default(DialogEntry)));
+
+        public DialogEntry CurrentDialog
+        {
+            get { return (DialogEntry) GetValue(CurrentDialogProperty); }
+            set { SetValue(CurrentDialogProperty, value); }
+        }
+
         /// <summary>
         /// 当前对话的内容
         /// </summary>
@@ -56,6 +69,12 @@ namespace ConciseDesign.WPF.UserControls
             DependencyProperty.Register("DialogContent", typeof(object), typeof(DialogHostControl),
                 new PropertyMetadata(default(object)));
 
+        public IReadOnlyList<DialogEntry> DialogEntries =>
+            new ReadOnlyCollection<DialogEntry>(_dialogEntriesQueue.ToArray());
+
+        /// <summary>
+        /// dialog waiting queue, dialog will 
+        /// </summary>
         private readonly ConcurrentQueue<DialogEntry> _dialogEntriesQueue = new ConcurrentQueue<DialogEntry>();
 
         /// <summary>
@@ -64,10 +83,11 @@ namespace ConciseDesign.WPF.UserControls
         /// <param name="msg"></param>
         /// <param name="dialogId">trace dialog status</param>
         /// <returns></returns>
-        public async Task RaiseMessageAsync(string msg, Guid dialogId = default)
+        public DialogEntry RaiseMessageAsync(string msg, Guid dialogId = default)
         {
-            await RaiseDialogAsync(new MessageDialog() {DataContext = msg}, dialogId);
+            return RaiseDialogAsync(new MessageDialog() {DataContext = msg}, dialogId);
         }
+
 
         /// <summary>
         /// dialog with acceptance
@@ -75,9 +95,9 @@ namespace ConciseDesign.WPF.UserControls
         /// <param name="msg"></param>
         /// <param name="dialogId">trace dialog status</param>
         /// <returns></returns>
-        public async Task<bool> RaiseSubmitAsync(string msg, Guid dialogId = default)
+        public DialogEntry RaiseSubmitAsync(string msg, Guid dialogId = default)
         {
-            return await RaiseDialogAsync(new ConfirmDialog() {Description = msg}, dialogId);
+            return RaiseDialogAsync(new ConfirmDialog() {Description = msg}, dialogId);
         }
 
         /// <summary>
@@ -86,21 +106,42 @@ namespace ConciseDesign.WPF.UserControls
         /// <param name="content"></param>
         /// <param name="dialogId"></param>
         /// <returns></returns>
-        public Task<bool> RaiseDialogAsync(object content, Guid dialogId = default)
+        public DialogEntry RaiseDialogAsync(object content, Guid dialogId = default)
         {
-            var dialogEntry = new DialogEntry()
-            {
-                DialogContent = content,
-                Id = dialogId,
-            };
+            var dialogEntry = new DialogEntry(content, dialogId);
             _dialogEntriesQueue.Enqueue(dialogEntry);
-            RaiseDialog();
-            return dialogEntry.TaskCompletionSource.Task;
+            TryRaiseDialog();
+            return dialogEntry;
         }
 
+        /// <summary>
+        /// check if exist in queue
+        /// </summary>
+        /// <param name="dialogId"></param>
+        /// <returns></returns>
         public bool Contains(Guid dialogId)
         {
+            if (CurrentDialog?.Id.Equals(dialogId) == true)
+            {
+                return true;
+            }
+
             return _dialogEntriesQueue.Any(entry => entry.Id == dialogId);
+        }
+
+        /// <summary>
+        /// check if exist in queue
+        /// </summary>
+        /// <param name="dialogEntry"></param>
+        /// <returns></returns>
+        public bool Contains(DialogEntry dialogEntry)
+        {
+            if (Equals(CurrentDialog, dialogEntry))
+            {
+                return true;
+            }
+
+            return _dialogEntriesQueue.Any(entry => entry.Equals(dialogEntry));
         }
 
         /// <summary>
@@ -112,26 +153,31 @@ namespace ConciseDesign.WPF.UserControls
             {
                 return;
             }
+
             LastCommandParameter = e.Parameter;
             e.Handled = true; //防止关闭下一级的dialog
-            VisualStateManager.GoToState(this, CloseDialogState, true);
-            DialogContent = null;
-            _dialogEntriesQueue.TryDequeue(out var dialogEntry);
-            dialogEntry.TaskCompletionSource.SetResult(dialogResult);
-            IsDialogOpened = false;
-            RaiseDialog();
+            this.CurrentDialog.TaskCompletionSource.TrySetResult(dialogResult);
+            TryRaiseDialog();
         }
 
-        private void RaiseDialog()
+        private async void TryRaiseDialog()
         {
-            if (!IsDialogOpened && _dialogEntriesQueue.TryPeek(out var dialogEntry))
+            while (!IsDialogOpened && _dialogEntriesQueue.TryDequeue(out var dialogEntry)
+                                   && !dialogEntry.TaskCompletionSource.Task.IsCanceled)
             {
-                LastCommandParameter = null;
+                // LastCommandParameter = null;
                 IsDialogOpened = true;
+                this.CurrentDialog = dialogEntry;
                 this.DialogContent = dialogEntry.DialogContent;
                 VisualStateManager.GoToState(this, OpenDialogState, true);
+                await dialogEntry;
+                VisualStateManager.GoToState(this, CloseDialogState, true);
+                DialogContent = null;
+                IsDialogOpened = false;
+                CurrentDialog = default;
             }
         }
+
 
         public DialogHostControl()
         {
@@ -158,21 +204,55 @@ namespace ConciseDesign.WPF.UserControls
         {
             Close(e);
         }
+    }
 
-        /// <summary>
-        /// 对话项
-        /// </summary>
-        internal class DialogEntry
+    /// <summary>
+    /// 对话项
+    /// </summary>
+    public class DialogEntry
+    {
+        internal TaskCompletionSource<bool> TaskCompletionSource { get; }
+
+        public object DialogContent { get; }
+
+        public Guid Id { get; }
+
+        internal DialogEntry(object dialogContent, Guid id)
         {
-            public TaskCompletionSource<bool> TaskCompletionSource { get; }
+            DialogContent = dialogContent;
+            Id = id;
+            this.TaskCompletionSource = new TaskCompletionSource<bool>();
+        }
 
-            public object DialogContent { get; set; }
+        public void Cancel()
+        {
+            this.TaskCompletionSource.TrySetCanceled();
+        }
 
-            public Guid Id { get; set; }
+        public void Close()
+        {
+            this.TaskCompletionSource.TrySetResult(false);
+        }
 
-            public DialogEntry()
+
+        protected bool Equals(DialogEntry other)
+        {
+            return Equals(DialogContent, other.DialogContent) && Id.Equals(other.Id);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((DialogEntry) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
             {
-                this.TaskCompletionSource = new TaskCompletionSource<bool>();
+                return ((DialogContent != null ? DialogContent.GetHashCode() : 0) * 397) ^ Id.GetHashCode();
             }
         }
     }

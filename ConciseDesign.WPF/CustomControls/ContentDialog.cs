@@ -1,14 +1,16 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
-using ConciseDesign.WPF.Command;
 using ConciseDesign.WPF.UserControls;
 
 namespace ConciseDesign.WPF.CustomControls
 {
+    /// <summary>
+    /// used as dialog content wrapper of <see cref="DialogHostControl"/>.
+    /// set  content and header to create a dialog which user can submit or cancel
+    /// <para>submit button can auto take use of <see cref="IDialogContent"/></para>
+    /// </summary>
     [TemplatePart(Name = "PART_SubmitButton", Type = typeof(Button))]
     public class ContentDialog : HeaderedContentControl
     {
@@ -18,6 +20,10 @@ namespace ConciseDesign.WPF.CustomControls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ContentDialog),
                 new FrameworkPropertyMetadata(typeof(ContentDialog)));
+            VerticalContentAlignmentProperty.OverrideMetadata(typeof(ContentDialog),
+                new FrameworkPropertyMetadata(System.Windows.VerticalAlignment.Center));
+            HorizontalContentAlignmentProperty.OverrideMetadata(typeof(ContentDialog),
+                new FrameworkPropertyMetadata(System.Windows.HorizontalAlignment.Center));
         }
 
         public static readonly DependencyProperty HeaderHeightProperty = DependencyProperty.Register(
@@ -29,7 +35,7 @@ namespace ConciseDesign.WPF.CustomControls
             get { return (double) GetValue(HeaderHeightProperty); }
             set { SetValue(HeaderHeightProperty, value); }
         }
-        
+
         [Obsolete("Use header instead")]
         public string HeaderString
         {
@@ -50,7 +56,7 @@ namespace ConciseDesign.WPF.CustomControls
             get { return (Brush) GetValue(HeaderBackgroundProperty); }
             set { SetValue(HeaderBackgroundProperty, value); }
         }
-        
+
         public bool CanCancel
         {
             get { return (bool) GetValue(CanCancelProperty); }
@@ -63,7 +69,7 @@ namespace ConciseDesign.WPF.CustomControls
         public static readonly DependencyProperty DialogContentModelProperty = DependencyProperty.Register(
             "DialogContentModel", typeof(IDialogContent), typeof(ContentDialog),
             new PropertyMetadata(default(IDialogContent)));
-        
+
         [Obsolete("Submit will be called on Content property")]
         public IDialogContent DialogContentModel
         {

@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -35,6 +36,11 @@ namespace ConciseDesign.WPF.UserControls
         public static void OpenDialog(this Control control, object parameter = null)
         {
             OpenDialogCommand.Execute(parameter, control);
+        }
+
+        public static TaskAwaiter<bool> GetAwaiter(this DialogEntry dialogEntry)
+        {
+            return dialogEntry.TaskCompletionSource.Task.GetAwaiter();
         }
     }
 

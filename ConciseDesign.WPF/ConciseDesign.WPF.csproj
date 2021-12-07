@@ -16,11 +16,11 @@
     <RepositoryUrl>https://github.com/migeyusu/ConciseDesign</RepositoryUrl>
     <RepositoryType>.Net</RepositoryType>
     <PackageTags>WPF</PackageTags>
-    <PackageReleaseNotes>Add parameter support to dialoghostcontrol</PackageReleaseNotes>
-    <PackageVersion>3.18.2</PackageVersion>
+    <PackageReleaseNotes>Add dialogcontrol, refactor dialoghostcontrol for  await support </PackageReleaseNotes>
+    <PackageVersion>3.19.0</PackageVersion>
     <Title>ConciseDesign.WPF</Title>
     <Authors>Karl.Zhu</Authors>
-    <AssemblyVersion>3.18.2</AssemblyVersion>
+    <AssemblyVersion>3.19.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DefineConstants>TRACE</DefineConstants>

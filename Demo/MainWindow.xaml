@@ -8,48 +8,85 @@
         xmlns:userControls="clr-namespace:ConciseDesign.WPF.UserControls;assembly=ConciseDesign.WPF"
         xmlns:ConciseDesign="http://karl.concisedesign/wpf/"
         mc:Ignorable="d"
-        Title="MainWindow" 
-        Height="450" 
+        Title="MainWindow"
+        Height="450"
         Width="800">
     <Grid>
-        <Grid>
-            <ConciseDesign:ContentDialog Width="400"
-                                         Header="vf asdfll;weroowon"
-                                         Background="White"
-                                         CanCancel="True"
-                                         Height="300"
-                                         Padding="30"
-                                         BorderBrush="Black"
-                                         BorderThickness="2">
-                <ConciseDesign:ContentDialog.Content>
-                    <ConciseDesign:CircularSlider Width="80"
-                                                  Height="80"
-                                                  Maximum="100"
-                                                  Thickness="16"
-                                                  Minimum="0"
-                                                  Value="50"
-                                                  Background="Yellow"
-                                                  Foreground="Black"/>
-                </ConciseDesign:ContentDialog.Content>
-            </ConciseDesign:ContentDialog>
-
-            <userControls:DialogHostControl userControls:DialogRegister.Register="MainDialog" />
-        </Grid>
+        <TabControl>
+            <TabItem Header="Window">
+                <Grid>
+                    <TextBlock Text="{Binding ParameterString,StringFormat=parameter:{0},TargetNullValue=no para}"/>
+                    <userControls:DialogHostControl userControls:DialogRegister.Register="MainDialog" />
+                    <StackPanel VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Height"
+                                        Value="30"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button Content="Window Dialog"
+                                Click="WindowDialogButton_OnClick" />
+                        <Button Content="message Dialog"
+                                Click="ControlDialogButtonBase_OnClick" />
+                        <Button Content="parameter test"
+                                Click="SubmitButton_OnClick"></Button>
+                        <Button Content="dialog contains"
+                                Click="Check_OnClick" />
+                        <Button Content="cancel dialog entry"
+                                Click="CloseEntryButtonBase_OnClick"/>
+                        <Button Click="CloseButton_OnClick"
+                                Content="关闭" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Dialog">
+                <Grid Background="White">
+                    <ConciseDesign:DialogControl
+                        IsDialogOpen="{Binding DialogOpen}">
+                        <StackPanel Background="White"
+                                    Margin="10">
+                            <TextBlock Text="whewepfhwqepbvsdfghsdf"
+                                       TextWrapping="Wrap" />
+                            <Rectangle Fill="Aqua"
+                                       Width="200"
+                                       Height="200" />
+                        </StackPanel>
+                    </ConciseDesign:DialogControl>
+                    <StackPanel VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Background="White">
+                        <Button Click="DialogControlControl_OnClick" 
+                                Content="更改dialog状态"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="ContentDialog">
+                <ConciseDesign:ContentDialog Width="400"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"
+                                             Header="vf asdfll;weroowon"
+                                             Background="White"
+                                             CanCancel="True"
+                                             Height="300"
+                                             Padding="30"
+                                             BorderBrush="Black"
+                                             BorderThickness="2">
+                    <ConciseDesign:ContentDialog.Content>
+                        <ConciseDesign:CircularSlider Width="80"
+                                                      Height="80"
+                                                      Maximum="100"
+                                                      Thickness="16"
+                                                      Minimum="0"
+                                                      Value="50"
+                                                      Background="Yellow"
+                                                      Foreground="Black" />
+                    </ConciseDesign:ContentDialog.Content>
+                </ConciseDesign:ContentDialog>
+            </TabItem>
+        </TabControl>
         <!-- <ConciseDesign:StateMachineBehavior State="{Binding T
                 Width="80"estState}" UseTransitions="True"/> -->
-        <StackPanel VerticalAlignment="Top"
-                    HorizontalAlignment="Left">
-            <Button Height="30"
-                    Content="Window Dialog"
-                    Click="ButtonBase_OnClick" />
-            <Button Height="30"
-                    Content="Control Dialog"
-                    Click="ControlDialogButtonBase_OnClick"/>       
-            <Button Height="30"
-                    Content="check"
-                    Click="Check_OnClick"/>
-            <Button Click="CloseButton_OnClick"
-                    Content="关闭"></Button>
-        </StackPanel>
+
     </Grid>
 </Window>

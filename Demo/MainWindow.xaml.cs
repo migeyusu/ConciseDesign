@@ -49,15 +49,15 @@ namespace Demo
 
         public MainWindow()
         {
-            InitializeComponent();
             this.DataContext = this;
+            InitializeComponent();
         }
 
         private void CircularProgressBar_OnClick(object sender, RoutedEventArgs e)
         {
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void WindowDialogButton_OnClick(object sender, RoutedEventArgs e)
         {
             var submitWindow = new SubmitWindow()
             {
@@ -94,7 +94,9 @@ namespace Demo
 
         private async void ControlDialogButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            await DialogHost.RaiseMessageAsync("asdf",_guid);
+            await DialogHost.RaiseMessageAsync("asdf", _guid);
+            var dialogHostLastCommandParameter = DialogHost.LastCommandParameter;
+            this.ParameterString = dialogHostLastCommandParameter?.ToString();
         }
 
         private void Check_OnClick(object sender, RoutedEventArgs e)
@@ -108,11 +110,56 @@ namespace Demo
         private Lazy<DialogHostControl> dialogHostControlLazy =
             new Lazy<DialogHostControl>((() => DialogRegister.GetById("MainDialog")));
 
+        private bool _dialogOpen;
+        private string _parameterString;
+
         private DialogHostControl DialogHost => dialogHostControlLazy.Value;
-        
+
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
             DialogHost.CloseDialog();
+        }
+
+        public bool DialogOpen
+        {
+            get => _dialogOpen;
+            set
+            {
+                if (value == _dialogOpen) return;
+                _dialogOpen = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void DialogControlControl_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.DialogOpen = !this.DialogOpen;
+        }
+
+        public string ParameterString
+        {
+            get => _parameterString;
+            set
+            {
+                if (value == _parameterString) return;
+                _parameterString = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private DialogEntry _entry;
+
+        private async void SubmitButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _entry = DialogHost.RaiseDialogAsync(new TestDialogContent());
+            await _entry;
+            var dialogHostLastCommandParameter = DialogHost.LastCommandParameter;
+            this.ParameterString = dialogHostLastCommandParameter?.ToString();
+        }
+
+        private void CloseEntryButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            _entry.Cancel();
         }
     }
 }

@@ -77,6 +77,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TestDialogContent.xaml.cs">
+      <DependentUpon>TestDialogContent.xaml</DependentUpon>
+    </Compile>
     <Page Include="DialogTest.xaml" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -93,6 +96,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TestDialogContent.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\Annotations.cs" />

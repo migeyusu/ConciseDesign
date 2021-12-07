@@ -1,12 +1,13 @@
 ﻿namespace ConciseDesign.WPF.CustomControls
 {
     /// <summary>
-    /// 用于可提交的对话矿
+    /// a procedure can be confirmed before submit.
+    /// can be used in dialog or form 
     /// </summary>
     public interface IDialogContent
     {
         /// <summary>
-        /// 尝试提交，实现应进行检验
+        /// confirm the user input 
         /// </summary>
         bool TrySubmit();
     }
