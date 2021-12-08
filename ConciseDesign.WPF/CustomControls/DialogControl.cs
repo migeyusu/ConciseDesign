@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ConciseDesign.WPF.CustomControls
 {
@@ -15,6 +16,8 @@ namespace ConciseDesign.WPF.CustomControls
                 new FrameworkPropertyMetadata(typeof(DialogControl)));
             VerticalContentAlignmentProperty.OverrideMetadata(typeof(DialogControl),new FrameworkPropertyMetadata(VerticalAlignment.Center));
             HorizontalContentAlignmentProperty.OverrideMetadata(typeof(DialogControl),new FrameworkPropertyMetadata(HorizontalAlignment.Center));
+            BackgroundProperty.OverrideMetadata(typeof(DialogControl),new FrameworkPropertyMetadata(Brushes.Transparent));
+            PaddingProperty.OverrideMetadata(typeof(DialogControl),new FrameworkPropertyMetadata(new Thickness(10)));
         }
 
         public static readonly DependencyProperty IsDialogOpenProperty = DependencyProperty.Register(

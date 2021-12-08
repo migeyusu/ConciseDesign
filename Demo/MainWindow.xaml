@@ -15,14 +15,14 @@
         <TabControl>
             <TabItem Header="Window">
                 <Grid>
-                    <TextBlock Text="{Binding ParameterString,StringFormat=parameter:{0},TargetNullValue=no para}"/>
+                    <TextBlock Text="{Binding ParameterString,StringFormat=parameter:{0},TargetNullValue=no para}" />
                     <userControls:DialogHostControl userControls:DialogRegister.Register="MainDialog" />
                     <StackPanel VerticalAlignment="Bottom"
                                 HorizontalAlignment="Left">
                         <StackPanel.Resources>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Height"
-                                        Value="30"/>
+                                        Value="30" />
                             </Style>
                         </StackPanel.Resources>
                         <Button Content="Window Dialog"
@@ -30,11 +30,11 @@
                         <Button Content="message Dialog"
                                 Click="ControlDialogButtonBase_OnClick" />
                         <Button Content="parameter test"
-                                Click="SubmitButton_OnClick"></Button>
+                                Click="SubmitButton_OnClick" />
                         <Button Content="dialog contains"
                                 Click="Check_OnClick" />
                         <Button Content="cancel dialog entry"
-                                Click="CloseEntryButtonBase_OnClick"/>
+                                Click="CloseEntryButtonBase_OnClick" />
                         <Button Click="CloseButton_OnClick"
                                 Content="关闭" />
                     </StackPanel>
@@ -42,10 +42,9 @@
             </TabItem>
             <TabItem Header="Dialog">
                 <Grid Background="White">
-                    <ConciseDesign:DialogControl
-                        IsDialogOpen="{Binding DialogOpen}">
-                        <StackPanel Background="White"
-                                    Margin="10">
+                    <ConciseDesign:DialogControl IsDialogOpen="{Binding DialogOpen}"
+                                                 Background="White">
+                        <StackPanel>
                             <TextBlock Text="whewepfhwqepbvsdfghsdf"
                                        TextWrapping="Wrap" />
                             <Rectangle Fill="Aqua"
@@ -56,8 +55,8 @@
                     <StackPanel VerticalAlignment="Bottom"
                                 HorizontalAlignment="Left"
                                 Background="White">
-                        <Button Click="DialogControlControl_OnClick" 
-                                Content="更改dialog状态"/>
+                        <Button Click="DialogControlControl_OnClick"
+                                Content="更改dialog状态" />
                     </StackPanel>
                 </Grid>
             </TabItem>

@@ -23,12 +23,17 @@
                         <Rectangle x:Name="HostCover"
                                    Fill="Black" />
                         <Border x:Name="DialogControl"
-                                Margin="8"
-                                Background="Transparent"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                 CornerRadius="5"
-                                ClipToBounds="True"
-                                Effect="{StaticResource GenDropShadowEffect}"
                                 RenderTransformOrigin="0.5,0.5">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="10"
+                                                  ShadowDepth="1"/>
+                            </Border.Effect>
                             <Border.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform />
@@ -38,10 +43,9 @@
                                 </TransformGroup>
                             </Border.RenderTransform>
                             <ContentPresenter Content="{TemplateBinding Content}"
+                                              Margin="{TemplateBinding Padding}"
                                               ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                                              ContentTemplate="{TemplateBinding ContentTemplate}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>

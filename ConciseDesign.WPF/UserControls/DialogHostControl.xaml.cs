@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ConciseDesign.WPF.CustomControls;
 
 namespace ConciseDesign.WPF.UserControls
 {
@@ -88,6 +89,11 @@ namespace ConciseDesign.WPF.UserControls
             return RaiseDialogAsync(new MessageDialog() {DataContext = msg}, dialogId);
         }
 
+        public DialogEntry RaiseSubmitAsync(string title, object content, Guid dialogId = default)
+        {
+            return RaiseDialogAsync(
+                new ContentDialog() {Header = title, Content = content, CanCancel = true, CanSubmit = true}, dialogId);
+        }
 
         /// <summary>
         /// dialog with acceptance
